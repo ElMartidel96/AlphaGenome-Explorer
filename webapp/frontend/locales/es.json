@@ -1,0 +1,212 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Exitoso",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "copy": "Copiar",
+    "download": "Descargar",
+    "share": "Compartir",
+    "analyze": "Analizar",
+    "explore": "Explorar",
+    "learn": "Aprender",
+    "comingSoon": "Proximamente",
+    "poweredBy": "Impulsado por Google DeepMind"
+  },
+  "header": {
+    "title": "AlphaGenome Explorer",
+    "subtitle": "Descubre Tu Potencial Genetico",
+    "apiConfigured": "API Key Configurada",
+    "apiRequired": "API Key Requerida",
+    "docs": "Docs"
+  },
+  "apiKey": {
+    "title": "Configura Tu API Key de AlphaGenome",
+    "description": "Para usar esta aplicacion, necesitas proporcionar tu propia API key de AlphaGenome. La API es GRATIS para uso de investigacion no comercial.",
+    "configured": "API Key Configurada",
+    "configuredDesc": "Tu API key esta guardada de forma segura en tu navegador.",
+    "changeKey": "Cambiar Key",
+    "howToGet": "Como obtener tu API key",
+    "step1": "Visita",
+    "step2": "Inicia sesion con tu cuenta de Google",
+    "step3": "Solicita una API key (aprobacion usualmente instantanea)",
+    "step4": "Copia y pega tu key abajo",
+    "enterKey": "Ingresa tu API Key",
+    "placeholder": "AIzaSy...",
+    "saveKey": "Guardar Key",
+    "privacyTitle": "Tu privacidad esta protegida",
+    "privacyDesc": "Tu API key se guarda solo en tu navegador (localStorage). Nunca se envia a nuestros servidores para almacenamiento. La key solo se usa al hacer peticiones a la API de AlphaGenome.",
+    "invalidKey": "Por favor ingresa una API key valida",
+    "keySaved": "API key guardada exitosamente!",
+    "keyRemoved": "API key eliminada"
+  },
+  "nav": {
+    "variantAnalyzer": "Analizador de Variantes",
+    "regionExplorer": "Explorador de Regiones",
+    "batchAnalysis": "Analisis por Lote",
+    "myDna": "Mi ADN",
+    "learn": "Aprender",
+    "tools": "Herramientas"
+  },
+  "variant": {
+    "title": "Analizar Variante Genetica",
+    "description": "Ingresa una variante para predecir su efecto en la expresion genica, splicing y mas.",
+    "inputLabel": "Variante (ej: chr22:36201698:A>C)",
+    "inputPlaceholder": "chr22:36201698:A>C",
+    "inputHelp": "Formato: cromosoma:posicion:referencia>alternativa",
+    "outputTypes": "Tipos de Salida",
+    "tissues": "Tejidos",
+    "sequenceContext": "Contexto de Secuencia",
+    "analyzing": "Analizando...",
+    "analyzeButton": "Analizar",
+    "invalidFormat": "Formato de variante invalido. Usa: chr22:36201698:A>C",
+    "enterVariant": "Por favor ingresa una variante",
+    "configureKey": "Por favor configura tu API key primero",
+    "completed": "Analisis completado!",
+    "failed": "Analisis fallido"
+  },
+  "results": {
+    "impactLevel": "Nivel de Impacto",
+    "affectedGenes": "Genes Afectados",
+    "topEffect": "Efecto Principal",
+    "confidence": "Confianza",
+    "noEffect": "Sin efecto significativo",
+    "geneScores": "Puntuaciones de Genes",
+    "genesAnalyzed": "{count} genes analizados",
+    "tableView": "Vista de Tabla",
+    "json": "JSON",
+    "markdown": "Markdown",
+    "gene": "Gen",
+    "tissue": "Tejido",
+    "score": "Puntuacion",
+    "quantile": "Cuantil",
+    "effect": "Efecto",
+    "showingOf": "Mostrando {shown} de {total} genes. Descarga para datos completos.",
+    "copyJson": "Copiar JSON",
+    "copyMarkdown": "Copiar Markdown"
+  },
+  "export": {
+    "copyAs": "Copiar como",
+    "downloadAs": "Descargar como",
+    "copied": "Copiado como {format}!",
+    "downloaded": "Descargado como {format}!",
+    "copyFailed": "Error al copiar al portapapeles",
+    "downloadFailed": "Error en la descarga"
+  },
+  "features": {
+    "title": "Capacidades de AlphaGenome",
+    "geneExpression": {
+      "title": "Expresion Genica",
+      "desc": "Predice senales de RNA-seq, CAGE y PRO-cap para entender como las variantes afectan los niveles de expresion genica."
+    },
+    "chromatin": {
+      "title": "Accesibilidad de Cromatina",
+      "desc": "Analiza predicciones de DNase-seq y ATAC-seq para identificar regiones regulatorias afectadas por variantes."
+    },
+    "splicing": {
+      "title": "Efectos de Splicing",
+      "desc": "Detecta creacion/destruccion de sitios de splicing, salto de exones y cambios en uso de isoformas."
+    },
+    "histone": {
+      "title": "Modificaciones de Histonas",
+      "desc": "Predice efectos en marcas de histonas como H3K4me3, H3K27ac y otras caracteristicas epigeneticas."
+    },
+    "tfBinding": {
+      "title": "Union de TF",
+      "desc": "Identifica sitios de union de factores de transcripcion afectados por variantes geneticas."
+    },
+    "structure3d": {
+      "title": "Estructura 3D del Genoma",
+      "desc": "Analiza mapas de contacto para entender efectos en TADs e interacciones de largo alcance."
+    }
+  },
+  "useCases": {
+    "title": "Que Puedes Descubrir?",
+    "subtitle": "Desde genetica personal hasta investigacion cientifica",
+    "personal": {
+      "title": "Genetica Personal",
+      "myDna": {
+        "title": "Analisis de Mi ADN",
+        "desc": "Sube tus resultados de 23andMe/Ancestry y descubre que significan tus variantes"
+      },
+      "familyRisk": {
+        "title": "Salud Familiar",
+        "desc": "Entiende patrones de riesgo hereditario en tu familia"
+      },
+      "superpowers": {
+        "title": "Superpoderes Geneticos",
+        "desc": "Descubre variantes asociadas con longevidad, memoria y rendimiento atletico"
+      }
+    },
+    "education": {
+      "title": "Aprendizaje y Educacion",
+      "virtualLab": {
+        "title": "Laboratorio Virtual",
+        "desc": "Experimenta con mutaciones geneticas de forma segura en un ambiente virtual"
+      },
+      "evolution": {
+        "title": "Simulador de Evolucion",
+        "desc": "Observa como los cambios geneticos afectan rasgos a traves de generaciones"
+      },
+      "detective": {
+        "title": "Detective de Enfermedades",
+        "desc": "Resuelve casos clinicos identificando variantes causantes"
+      }
+    },
+    "research": {
+      "title": "Herramientas de Investigacion",
+      "batchAnalysis": {
+        "title": "Analisis por Lote",
+        "desc": "Analiza miles de variantes desde archivos VCF"
+      },
+      "drugTargets": {
+        "title": "Blancos Terapeuticos",
+        "desc": "Identifica genes adecuados para nuevos enfoques terapeuticos"
+      },
+      "populations": {
+        "title": "Genetica de Poblaciones",
+        "desc": "Compara variacion genetica entre poblaciones humanas"
+      }
+    }
+  },
+  "footer": {
+    "poweredBy": "Impulsado por Google DeepMind AlphaGenome API",
+    "citation": "Citacion: Avsec et al. \"Advancing regulatory variant effect prediction with AlphaGenome\" Nature 2026",
+    "documentation": "Documentacion",
+    "github": "GitHub",
+    "community": "Comunidad"
+  },
+  "impact": {
+    "HIGH": "Alto",
+    "MODERATE": "Moderado",
+    "LOW": "Bajo",
+    "MODIFIER": "Modificador"
+  },
+  "tissues": {
+    "brain": "Cerebro",
+    "heart": "Corazon",
+    "liver": "Higado",
+    "lung": "Pulmon",
+    "kidney": "Rinon",
+    "colon": "Colon (Transverso)",
+    "blood": "Sangre",
+    "skin": "Piel",
+    "k562": "K562 (Leucemia)",
+    "hepg2": "HepG2 (Cancer de Higado)"
+  },
+  "outputs": {
+    "rnaSeq": "RNA-seq (Expresion)",
+    "dnase": "DNase-seq (Accesibilidad)",
+    "atac": "ATAC-seq (Accesibilidad)",
+    "spliceSites": "Sitios de Splicing",
+    "histoneChip": "Modificaciones de Histonas"
+  },
+  "sequenceLength": {
+    "16kb": "16 KB (Rapido)",
+    "100kb": "100 KB",
+    "500kb": "500 KB",
+    "1mb": "1 MB (Completo)"
+  }
+}
