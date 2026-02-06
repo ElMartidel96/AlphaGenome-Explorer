@@ -30,17 +30,34 @@ import {
   Upload,
   Target,
   Globe2,
+  Utensils,
+  Wrench,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useApiKeyStore } from '@/lib/store'
 import { VariantAnalyzer } from '@/components/variant-analyzer'
 import { ApiKeySetup } from '@/components/api-key-setup'
 import { LanguageToggle } from '@/components/language-toggle'
+import { MyDnaPersonal } from '@/components/tools/my-dna-personal'
+import { GeneticSuperpowers } from '@/components/tools/genetic-superpowers'
+import { GeneticDiet } from '@/components/tools/genetic-diet'
+import { CrisprSimulator } from '@/components/tools/crispr-simulator'
+import { RegulatoryNetworks } from '@/components/tools/regulatory-networks'
+import { MindGenomeConnector } from '@/components/tools/mind-genome-connector'
+import { AgingPredictor } from '@/components/tools/aging-predictor'
+import { CapabilitiesOptimizer } from '@/components/tools/capabilities-optimizer'
+import { FamilyRiskAssessment } from '@/components/tools/family-risk-assessment'
+import { AncestryExplorer } from '@/components/tools/ancestry-explorer'
+import { VirtualLab } from '@/components/tools/virtual-lab'
+import { EvolutionSimulator } from '@/components/tools/evolution-simulator'
+import { GeneticDetective } from '@/components/tools/genetic-detective'
+import { FeatureRequestPlaceholder } from '@/components/feature-request-placeholder'
 
 export default function HomePage() {
   const t = useTranslations()
   const { isConfigured } = useApiKeyStore()
-  const [activeTab, setActiveTab] = useState<'analyze' | 'explore' | 'batch' | 'learn'>('analyze')
+  const [activeTab, setActiveTab] = useState<'analyze' | 'explore' | 'batch' | 'myDna' | 'tools' | 'learn'>('analyze')
+  const [activeTool, setActiveTool] = useState<'dna' | 'superpowers' | 'diet' | 'crispr' | 'networks' | 'mindgenome' | 'aging' | 'capabilities' | 'familyrisk' | 'ancestors' | 'virtuallab' | 'evolution' | 'detective'>('dna')
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -124,6 +141,20 @@ export default function HomePage() {
           >
             {t('nav.learn')}
           </Button>
+          <Button
+            variant={activeTab === 'myDna' ? 'primary' : 'secondary'}
+            onClick={() => setActiveTab('myDna')}
+            icon={Dna}
+          >
+            {t('nav.myDna')}
+          </Button>
+          <Button
+            variant={activeTab === 'tools' ? 'primary' : 'secondary'}
+            onClick={() => setActiveTab('tools')}
+            icon={Wrench}
+          >
+            {t('nav.tools')}
+          </Button>
         </div>
 
         {/* Main Content */}
@@ -134,6 +165,146 @@ export default function HomePage() {
         {activeTab === 'explore' && isConfigured && <RegionExplorer t={t} />}
         {activeTab === 'batch' && isConfigured && <BatchAnalysis t={t} />}
         {activeTab === 'learn' && <LearnSection t={t} />}
+
+        {/* My DNA Section with sub-tools */}
+        {activeTab === 'myDna' && (
+          <div className="space-y-6">
+            {/* Sub-navigation for My DNA tools */}
+            <div className="flex flex-wrap gap-2 p-2 bg-gray-100 rounded-lg">
+              <Button
+                variant={activeTool === 'dna' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('dna')}
+                icon={Upload}
+              >
+                {t('tools.myDna.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'superpowers' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('superpowers')}
+                icon={Zap}
+              >
+                {t('tools.superpowers.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'diet' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('diet')}
+                icon={Utensils}
+              >
+                {t('tools.diet.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'crispr' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('crispr')}
+                icon={FlaskConical}
+              >
+                {t('tools.crispr.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'networks' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('networks')}
+                icon={Layers}
+              >
+                {t('tools.regulatoryNetworks.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'mindgenome' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('mindgenome')}
+                icon={Brain}
+              >
+                {t('tools.mindGenome.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'aging' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('aging')}
+                icon={Heart}
+              >
+                {t('tools.agingPredictor.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'capabilities' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('capabilities')}
+                icon={Target}
+              >
+                {t('tools.capabilitiesOptimizer.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'familyrisk' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('familyrisk')}
+                icon={Users}
+              >
+                {t('tools.familyRisk.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'ancestors' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('ancestors')}
+                icon={Globe2}
+              >
+                {t('tools.ancestors.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'virtuallab' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('virtuallab')}
+                icon={FlaskConical}
+              >
+                {t('tools.virtualLab.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'evolution' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('evolution')}
+                icon={Globe2}
+              >
+                {t('tools.evolution.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'detective' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('detective')}
+                icon={Search}
+              >
+                {t('tools.detective.title')}
+              </Button>
+            </div>
+
+            {/* Tool content */}
+            {activeTool === 'dna' && <MyDnaPersonal />}
+            {activeTool === 'superpowers' && <GeneticSuperpowers />}
+            {activeTool === 'diet' && <GeneticDiet />}
+            {activeTool === 'crispr' && <CrisprSimulator />}
+            {activeTool === 'networks' && <RegulatoryNetworks />}
+            {activeTool === 'mindgenome' && <MindGenomeConnector />}
+            {activeTool === 'aging' && <AgingPredictor />}
+            {activeTool === 'capabilities' && <CapabilitiesOptimizer />}
+            {activeTool === 'familyrisk' && <FamilyRiskAssessment />}
+            {activeTool === 'ancestors' && <AncestryExplorer />}
+            {activeTool === 'virtuallab' && <VirtualLab />}
+            {activeTool === 'evolution' && <EvolutionSimulator />}
+            {activeTool === 'detective' && <GeneticDetective />}
+          </div>
+        )}
+
+        {/* Tools Section (placeholder for future tools) */}
+        {activeTab === 'tools' && (
+          <ToolsSection
+            t={t}
+            onToolSelect={(toolId) => {
+              // Navigate to My DNA tab and select the tool
+              setActiveTab('myDna')
+              setActiveTool(toolId as typeof activeTool)
+            }}
+          />
+        )}
 
         {/* Use Cases Section */}
         <UseCasesSection t={t} />
@@ -442,6 +613,169 @@ function FeaturesSection({ t }: { t: any }) {
             <Text>{t('features.structure3d.desc')}</Text>
           </Card>
         </Col>
+      </Grid>
+    </div>
+  )
+}
+
+// Tools Section - All available tools with placeholders for future features
+function ToolsSection({ t, onToolSelect }: { t: any; onToolSelect: (toolId: string) => void }) {
+  const tools = [
+    // Phase 1 - MVP (Implemented)
+    {
+      id: 'my-dna',
+      name: t('tools.myDna.title'),
+      description: t('tools.myDna.description'),
+      icon: Upload,
+      color: 'blue' as const,
+      implemented: true,
+    },
+    {
+      id: 'superpowers',
+      name: t('tools.superpowers.title'),
+      description: t('tools.superpowers.description'),
+      icon: Zap,
+      color: 'purple' as const,
+      implemented: true,
+    },
+    {
+      id: 'diet',
+      name: t('tools.diet.title'),
+      description: t('tools.diet.description'),
+      icon: Utensils,
+      color: 'green' as const,
+      implemented: true,
+    },
+    {
+      id: 'crispr',
+      name: t('tools.crispr.title'),
+      description: t('tools.crispr.description'),
+      icon: FlaskConical,
+      color: 'purple' as const,
+      implemented: true,
+    },
+    {
+      id: 'networks',
+      name: t('tools.regulatoryNetworks.title'),
+      description: t('tools.regulatoryNetworks.description'),
+      icon: Layers,
+      color: 'blue' as const,
+      implemented: true,
+    },
+    {
+      id: 'mindgenome',
+      name: t('tools.mindGenome.title'),
+      description: t('tools.mindGenome.description'),
+      icon: Brain,
+      color: 'purple' as const,
+      implemented: true,
+    },
+    {
+      id: 'aging',
+      name: t('tools.agingPredictor.title'),
+      description: t('tools.agingPredictor.description'),
+      icon: Heart,
+      color: 'orange' as const,
+      implemented: true,
+    },
+    {
+      id: 'capabilities',
+      name: t('tools.capabilitiesOptimizer.title'),
+      description: t('tools.capabilitiesOptimizer.description'),
+      icon: Target,
+      color: 'cyan' as const,
+      implemented: true,
+    },
+    {
+      id: 'familyrisk',
+      name: t('tools.familyRisk.title'),
+      description: t('tools.familyRisk.description'),
+      icon: Users,
+      color: 'pink' as const,
+      implemented: true,
+    },
+    {
+      id: 'ancestors',
+      name: t('tools.ancestors.title'),
+      description: t('tools.ancestors.description'),
+      icon: Globe2,
+      color: 'blue' as const,
+      implemented: true,
+    },
+    {
+      id: 'virtuallab',
+      name: t('tools.virtualLab.title'),
+      description: t('tools.virtualLab.description'),
+      icon: FlaskConical,
+      color: 'purple' as const,
+      implemented: true,
+    },
+    {
+      id: 'evolution',
+      name: t('tools.evolution.title'),
+      description: t('tools.evolution.description'),
+      icon: Globe2,
+      color: 'green' as const,
+      implemented: true,
+    },
+    {
+      id: 'detective',
+      name: t('tools.detective.title'),
+      description: t('tools.detective.description'),
+      icon: Search,
+      color: 'orange' as const,
+      implemented: true,
+    },
+  ]
+
+  return (
+    <div className="space-y-6">
+      <Card className="bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="flex items-center gap-3">
+          <Wrench className="w-8 h-8 text-blue-600" />
+          <div>
+            <Title>{t('nav.tools')}</Title>
+            <Text>All available genetic analysis tools</Text>
+          </div>
+        </div>
+      </Card>
+
+      <Grid numItems={1} numItemsSm={2} numItemsLg={3} className="gap-4">
+        {tools.map((tool) => (
+          <Col key={tool.id}>
+            {tool.implemented ? (
+              <Card
+                className="h-full hover:shadow-lg transition-shadow cursor-pointer hover:ring-2 hover:ring-blue-500"
+                onClick={() => onToolSelect(tool.id)}
+              >
+                <div className="flex items-start gap-3">
+                  <div className={`w-10 h-10 bg-${tool.color}-100 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <tool.icon className={`w-5 h-5 text-${tool.color}-600`} />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="font-semibold text-gray-800">{tool.name}</p>
+                      <Badge color="green" size="xs">Ready</Badge>
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">{tool.description}</p>
+                    <p className="text-xs text-blue-600 mt-2 flex items-center gap-1">
+                      <span>→</span> {t('tools.clickToOpen') || 'Click to open'}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ) : (
+              <FeatureRequestPlaceholder
+                featureId={tool.id}
+                featureName={tool.name}
+                featureDescription={tool.description}
+                featureIcon={<tool.icon className="w-6 h-6" />}
+                estimatedPhase={tool.phase}
+                color={tool.color}
+              />
+            )}
+          </Col>
+        ))}
       </Grid>
     </div>
   )
