@@ -71,7 +71,10 @@ const STR_LOCI = ['D3S1358', 'vWA', 'FGA', 'D8S1179', 'D21S11', 'D18S51', 'D5S81
 
 // Generate random DNA profile
 const generateProfile = (seed?: number): DnaMarker[] => {
-  const random = seed ? () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff) : Math.random
+  let currentSeed = seed ?? 0
+  const random = seed !== undefined
+    ? () => ((currentSeed = (currentSeed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff)
+    : Math.random
   return STR_LOCI.slice(0, 6).map(locus => ({
     locus,
     allele1: Math.floor(random() * 10) + 10,

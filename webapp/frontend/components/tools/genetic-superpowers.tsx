@@ -162,7 +162,7 @@ export function GeneticSuperpowers() {
         setTimeout(() => {
           setAnimatingId(sp.id)
           setTimeout(() => {
-            setUnlockedIds((prev) => new Set([...prev, sp.id]))
+            setUnlockedIds((prev) => new Set([...Array.from(prev), sp.id]))
             setAnimatingId(null)
           }, 600)
         }, index * 800)
