@@ -351,7 +351,7 @@ export function CapabilitiesOptimizer() {
       </div>
 
       {/* Navigation */}
-      <div className="flex gap-2 p-1 bg-surface-muted rounded-lg">
+      <div className="flex gap-2 p-1 bg-surface-muted rounded-xl">
         {[
           { id: 'profile', label: 'Cognitive Profile', icon: Brain },
           { id: 'program', label: 'Weekly Program', icon: BookOpen },
@@ -361,7 +361,7 @@ export function CapabilitiesOptimizer() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all flex-1 justify-center ${
               activeTab === tab.id
                 ? 'bg-white shadow text-blue-700'
                 : 'text-body hover:text-title'
@@ -489,7 +489,7 @@ export function CapabilitiesOptimizer() {
 
                 {isSelected && (
                   <div className="mt-4 pt-4 border-t border-adaptive space-y-3">
-                    <div className="p-3 bg-success-soft rounded-lg">
+                    <div className="p-3 bg-success-soft rounded-xl">
                       <p className="text-xs font-medium text-green-700 uppercase mb-1">Expected Impact</p>
                       <p className="text-sm text-body">{intervention.impact}</p>
                     </div>
@@ -621,7 +621,7 @@ export function CapabilitiesOptimizer() {
           <Card>
             <Title className="mb-4">Achievements</Title>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {ACHIEVEMENTS.map(achievement => {
                 const Icon = achievement.icon
                 return (

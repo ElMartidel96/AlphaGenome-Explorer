@@ -35,7 +35,7 @@ export function LanguageToggle() {
   }
 
   return (
-    <div className="flex items-center gap-1 bg-gray-100 dark:bg-slate-800 rounded-lg p-1">
+    <div className="flex items-center gap-1 bg-gray-100 dark:bg-slate-800 rounded-xl p-1">
       {isChanging ? (
         <Loader2 className="w-4 h-4 text-blue-500 ml-1 animate-spin" />
       ) : (

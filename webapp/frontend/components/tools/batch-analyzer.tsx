@@ -226,7 +226,7 @@ export function BatchAnalyzer() {
               <select
                 value={filters.chromosome}
                 onChange={(e) => setFilters({ ...filters, chromosome: e.target.value })}
-                className="w-full p-2 bg-surface-soft border border-adaptive rounded-lg text-body text-sm"
+                className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
               >
                 {CHROMOSOMES.map((c) => (
                   <option key={c} value={c}>{c}</option>
@@ -238,7 +238,7 @@ export function BatchAnalyzer() {
               <select
                 value={filters.impact}
                 onChange={(e) => setFilters({ ...filters, impact: e.target.value })}
-                className="w-full p-2 bg-surface-soft border border-adaptive rounded-lg text-body text-sm"
+                className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
               >
                 {IMPACTS.map((i) => (
                   <option key={i} value={i}>{i === 'Todos' ? 'Todos' : i}</option>
@@ -267,7 +267,7 @@ export function BatchAnalyzer() {
                   value={filters.gene}
                   onChange={(e) => setFilters({ ...filters, gene: e.target.value })}
                   placeholder="Buscar gen..."
-                  className="w-full pl-7 pr-3 py-2 bg-surface-soft border border-adaptive rounded-lg text-body text-sm"
+                  className="w-full pl-7 pr-3 py-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
                 />
               </div>
             </div>
@@ -283,7 +283,7 @@ export function BatchAnalyzer() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="p-1.5 bg-surface-soft border border-adaptive rounded-lg text-body text-xs"
+              className="p-1.5 bg-surface-soft border border-adaptive rounded-xl text-body text-xs"
             >
               <option value="score">Ordenar por Score</option>
               <option value="impact">Ordenar por Impacto</option>

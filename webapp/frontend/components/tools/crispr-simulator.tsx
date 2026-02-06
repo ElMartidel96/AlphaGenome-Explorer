@@ -426,23 +426,23 @@ export function CrisprSimulator() {
           </button>
 
           {showEducation && (
-            <div className="mt-4 p-4 bg-info-soft rounded-lg space-y-3">
+            <div className="mt-4 p-4 bg-info-soft rounded-xl space-y-3">
               <p className="text-sm text-body">
                 <strong>CRISPR-Cas9</strong> is a revolutionary gene-editing tool that works like molecular scissors.
                 It uses a guide RNA to find a specific DNA sequence, then the Cas9 protein cuts the DNA at that location.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="p-3 bg-white rounded-lg">
+                <div className="p-3 bg-white rounded-xl">
                   <Target className="w-5 h-5 text-purple-500 mb-2" />
                   <p className="text-xs font-medium text-title">1. Target</p>
                   <p className="text-xs text-body">Guide RNA finds the DNA sequence</p>
                 </div>
-                <div className="p-3 bg-white rounded-lg">
+                <div className="p-3 bg-white rounded-xl">
                   <Scissors className="w-5 h-5 text-red-500 mb-2" />
                   <p className="text-xs font-medium text-title">2. Cut</p>
                   <p className="text-xs text-body">Cas9 protein cuts the DNA</p>
                 </div>
-                <div className="p-3 bg-white rounded-lg">
+                <div className="p-3 bg-white rounded-xl">
                   <Sparkles className="w-5 h-5 text-green-500 mb-2" />
                   <p className="text-xs font-medium text-title">3. Repair</p>
                   <p className="text-xs text-body">Cell repairs the break (with edits)</p>
@@ -522,7 +522,7 @@ export function CrisprSimulator() {
           <Text className="mb-4">Select target region for CRISPR editing (20bp guide + PAM)</Text>
 
           {/* Sequence display */}
-          <div className="p-4 bg-gray-900 rounded-lg overflow-x-auto">
+          <div className="p-4 bg-gray-900 rounded-xl overflow-x-auto">
             <p className="text-xs text-subtle mb-2">5' →</p>
             {renderSequence(selectedGene.sequence, Math.max(0, targetPosition - 20), targetPosition, targetPosition + 23)}
             <p className="text-xs text-subtle mt-2">→ 3'</p>
@@ -564,7 +564,7 @@ export function CrisprSimulator() {
             <Title>Guide RNA (sgRNA)</Title>
           </div>
 
-          <div className="p-4 bg-accent-soft rounded-lg">
+          <div className="p-4 bg-accent-soft rounded-xl">
             <p className="text-xs text-muted mb-2">20bp guide sequence:</p>
             <div className="font-mono text-lg tracking-wider text-purple-700 font-bold">
               {guideRNA}
@@ -572,7 +572,7 @@ export function CrisprSimulator() {
             <p className="text-xs text-muted mt-2">+ PAM sequence: <span className="font-mono font-bold">NGG</span></p>
           </div>
 
-          <div className="mt-4 p-3 bg-surface-soft rounded-lg">
+          <div className="mt-4 p-3 bg-surface-soft rounded-xl">
             <p className="text-xs text-body">
               <Info className="w-3 h-3 inline mr-1" />
               The guide RNA directs Cas9 to cut 3 base pairs upstream of the PAM sequence (NGG).
@@ -583,7 +583,7 @@ export function CrisprSimulator() {
         {/* Edit Type Selection */}
         <Card>
           <Title className="mb-4">Select Edit Type</Title>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div
               onClick={() => setEditType('knockout')}
               className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
@@ -681,7 +681,7 @@ export function CrisprSimulator() {
 
             {/* Sequence visualization during cutting */}
             {state === 'cutting' && (
-              <div className="mt-6 p-4 bg-gray-900 rounded-lg inline-block">
+              <div className="mt-6 p-4 bg-gray-900 rounded-xl inline-block">
                 <div className="font-mono text-sm">
                   {selectedGene.sequence.slice(targetPosition, targetPosition + 20).split('').map((base, idx) => (
                     <span
@@ -734,7 +734,7 @@ export function CrisprSimulator() {
 
           <div className="space-y-4">
             {/* Protein Level */}
-            <div className="p-4 bg-info-soft rounded-lg">
+            <div className="p-4 bg-info-soft rounded-xl">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-8 h-8 bg-info-soft0 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">P</span>
@@ -745,7 +745,7 @@ export function CrisprSimulator() {
             </div>
 
             {/* Cellular Level */}
-            <div className="p-4 bg-accent-soft rounded-lg">
+            <div className="p-4 bg-accent-soft rounded-xl">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-8 h-8 bg-accent-soft0 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">C</span>
@@ -756,7 +756,7 @@ export function CrisprSimulator() {
             </div>
 
             {/* Organism Level */}
-            <div className="p-4 bg-success-soft rounded-lg">
+            <div className="p-4 bg-success-soft rounded-xl">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-8 h-8 bg-success-soft0 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">O</span>

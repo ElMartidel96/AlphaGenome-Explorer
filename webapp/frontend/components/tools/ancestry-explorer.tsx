@@ -315,7 +315,7 @@ export function AncestryExplorer() {
                   </Button>
                 </div>
                 {/* SVG World Map Visualization */}
-                <div className="relative h-48 bg-gradient-to-b from-blue-100 to-blue-50 rounded-lg overflow-hidden">
+                <div className="relative h-48 bg-gradient-to-b from-blue-100 to-blue-50 rounded-xl overflow-hidden">
                   <svg viewBox="0 0 400 200" className="w-full h-full">
                     {/* Simplified continents */}
                     {/* Africa */}
@@ -374,7 +374,7 @@ export function AncestryExplorer() {
               {DEMO_ANCESTRY.map(region => (
                 <div key={region.id} className="space-y-2">
                   <div
-                    className="flex items-center justify-between cursor-pointer hover:bg-surface-soft p-2 rounded-lg transition-colors"
+                    className="flex items-center justify-between cursor-pointer hover:bg-surface-soft p-2 rounded-xl transition-colors"
                     onClick={() => setExpandedRegion(expandedRegion === region.id ? null : region.id)}
                   >
                     <div className="flex items-center gap-3">
@@ -413,7 +413,7 @@ export function AncestryExplorer() {
                       </div>
 
                       {/* Description */}
-                      <p className="text-sm text-body bg-surface-soft p-3 rounded-lg">
+                      <p className="text-sm text-body bg-surface-soft p-3 rounded-xl">
                         {isSpanish ? region.descriptionEs : region.description}
                       </p>
 
@@ -458,7 +458,7 @@ export function AncestryExplorer() {
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1 ml-8 bg-gradient-to-r from-blue-50 to-transparent p-4 rounded-lg">
+                  <div className="flex-1 ml-8 bg-gradient-to-r from-blue-50 to-transparent p-4 rounded-xl">
                     <div className="flex items-center gap-2 mb-2">
                       <Badge color="blue">{migration.years}</Badge>
                     </div>
@@ -539,7 +539,7 @@ export function AncestryExplorer() {
                     </div>
                   </div>
 
-                  <p className="text-sm text-body mt-4 p-3 bg-white/50 rounded-lg">
+                  <p className="text-sm text-body mt-4 p-3 bg-white/50 rounded-xl">
                     {isSpanish ? haplo.descriptionEs : haplo.description}
                   </p>
 
@@ -595,7 +595,7 @@ export function AncestryExplorer() {
                     </p>
                     <p className="text-4xl font-bold text-amber-600">{ANCIENT_DNA.neanderthal}%</p>
                   </div>
-                  <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center">
                     <Users className="w-8 h-8 text-amber-600" />
                   </div>
                 </div>
@@ -606,8 +606,8 @@ export function AncestryExplorer() {
                     : 'Neanderthals lived in Europe and western Asia from 400,000-40,000 years ago. Your Neanderthal DNA may influence your immune system, skin, and hair.'}
                 </p>
 
-                <div className="mt-4 p-3 bg-amber-50 rounded-lg">
-                  <p className="text-sm font-medium text-amber-800 mb-2">
+                <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                  <p className="text-sm font-medium text-amber-800 dark:text-amber-300 mb-2">
                     {isSpanish ? 'Posibles rasgos heredados:' : 'Possible inherited traits:'}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -634,7 +634,7 @@ export function AncestryExplorer() {
                     </p>
                     <p className="text-4xl font-bold text-accent">{ANCIENT_DNA.denisovan}%</p>
                   </div>
-                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
                     <Users className="w-8 h-8 text-accent" />
                   </div>
                 </div>
@@ -645,7 +645,7 @@ export function AncestryExplorer() {
                     : 'Denisovans are mysterious cousins of Neanderthals, known mainly from DNA found in a Siberian cave. They left more genetic imprint in Asian and Oceanian populations.'}
                 </p>
 
-                <div className="mt-4 p-3 bg-accent-soft rounded-lg">
+                <div className="mt-4 p-3 bg-accent-soft rounded-xl">
                   <p className="text-sm font-medium text-purple-800 mb-2">
                     {isSpanish ? 'Posibles rasgos heredados:' : 'Possible inherited traits:'}
                   </p>

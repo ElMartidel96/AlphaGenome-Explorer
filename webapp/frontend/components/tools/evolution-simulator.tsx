@@ -291,9 +291,9 @@ export function EvolutionSimulator() {
   return (
     <div className="space-y-6">
       {/* Header Card */}
-      <Card className="bg-gradient-to-br from-green-50 to-blue-50">
+      <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/30 dark:to-blue-950/30">
         <div className="flex items-start gap-4">
-          <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center">
+          <div className="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center">
             <Globe2 className="w-8 h-8 text-success" />
           </div>
           <div className="flex-1">
@@ -384,7 +384,7 @@ export function EvolutionSimulator() {
               <p className="text-sm font-medium text-body mb-2">
                 {isSpanish ? 'Poblacion:' : 'Population:'}
               </p>
-              <div className="flex flex-wrap gap-1 p-4 bg-surface-soft rounded-lg max-h-32 overflow-hidden">
+              <div className="flex flex-wrap gap-1 p-4 bg-surface-soft rounded-xl max-h-32 overflow-hidden">
                 {simulation.population.slice(0, 100).map((org, idx) => (
                   <div
                     key={idx}
@@ -461,7 +461,7 @@ export function EvolutionSimulator() {
                 className="h-60"
               />
             ) : (
-              <div className="h-60 flex items-center justify-center bg-surface-soft rounded-lg">
+              <div className="h-60 flex items-center justify-center bg-surface-soft rounded-xl">
                 <p className="text-muted">
                   {isSpanish
                     ? 'Inicia la simulacion para ver datos'
@@ -583,7 +583,7 @@ export function EvolutionSimulator() {
                   factEs: 'Los humanos todavia evolucionan - la tolerancia a la lactosa evoluciono hace solo 10,000 anos',
                 },
               ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-surface-soft rounded-lg">
+                <div key={idx} className="flex items-start gap-3 p-3 bg-surface-soft rounded-xl">
                   <Dna className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <p className="text-body">{isSpanish ? item.factEs : item.fact}</p>
                 </div>
@@ -688,7 +688,7 @@ export function EvolutionSimulator() {
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-warning-soft rounded-lg">
+          <div className="mt-6 p-4 bg-warning-soft rounded-xl">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded-full bg-yellow-400" />
               <span className="text-sm font-medium text-yellow-800">

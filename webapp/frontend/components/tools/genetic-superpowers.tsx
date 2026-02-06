@@ -354,13 +354,13 @@ export function GeneticSuperpowers() {
               {isExpanded && isUnlocked && (
                 <div className="mt-4 pt-4 border-t border-adaptive space-y-4">
                   {/* Science section */}
-                  <div className="p-3 bg-surface-soft rounded-lg">
+                  <div className="p-3 bg-surface-soft rounded-xl">
                     <p className="text-xs font-medium text-muted uppercase mb-1">{t('seeScience')}</p>
                     <p className="text-sm text-body">{superpower.science}</p>
                   </div>
 
                   {/* Enhancement tips */}
-                  <div className="p-3 bg-success-soft rounded-lg">
+                  <div className="p-3 bg-success-soft rounded-xl">
                     <p className="text-xs font-medium text-success uppercase mb-2">{t('howToEnhance')}</p>
                     <ul className="space-y-1">
                       {superpower.enhancement.map((tip, i) => (

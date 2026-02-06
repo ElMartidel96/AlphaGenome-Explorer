@@ -201,7 +201,7 @@ export function GenomeComparator() {
                 onClick={() => setSelectedPop(pop)}
               >
                 <div className="flex items-center gap-4">
-                  <div className={`w-10 h-10 bg-${pop.color}-100 dark:bg-${pop.color}-900/30 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                  <div className={`w-10 h-10 bg-${pop.color}-100 dark:bg-${pop.color}-900/30 rounded-xl flex items-center justify-center flex-shrink-0`}>
                     <Users className={`w-5 h-5 text-${pop.color}-500`} />
                   </div>
                   <div className="flex-1">
@@ -236,15 +236,15 @@ export function GenomeComparator() {
                 <Text className="text-muted text-sm">{selectedPop.regionEs}</Text>
                 <p className="text-sm text-body mt-3">{selectedPop.descriptionEs}</p>
                 <div className="space-y-3 mt-4">
-                  <div className="p-3 bg-surface-soft rounded-lg">
+                  <div className="p-3 bg-surface-soft rounded-xl">
                     <span className="text-xs text-muted">Tamano de muestra</span>
                     <p className="font-bold text-title">{selectedPop.sampleSize}</p>
                   </div>
-                  <div className="p-3 bg-surface-soft rounded-lg">
+                  <div className="p-3 bg-surface-soft rounded-xl">
                     <span className="text-xs text-muted">Heterocigosidad</span>
                     <p className="font-bold text-title">{selectedPop.heterozygosity.toFixed(4)}</p>
                   </div>
-                  <div className="p-3 bg-surface-soft rounded-lg">
+                  <div className="p-3 bg-surface-soft rounded-xl">
                     <span className="text-xs text-muted">SNPs Privados</span>
                     <p className="font-bold text-title">{(selectedPop.privateSNPs / 1000000).toFixed(1)}M</p>
                   </div>
@@ -265,13 +265,13 @@ export function GenomeComparator() {
       {viewMode === 'fst' && (
         <Card>
           <Title className="text-title text-sm mb-4">Distancia Genetica (Fst) entre Poblaciones</Title>
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <div>
               <Text className="text-xs text-muted mb-1">Poblacion 1</Text>
               <select
                 value={comparePop1}
                 onChange={(e) => setComparePop1(e.target.value)}
-                className="w-full p-2 bg-surface-soft border border-adaptive rounded-lg text-body text-sm"
+                className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
               >
                 {POPULATIONS.map((p) => (
                   <option key={p.id} value={p.id}>{p.nameEs} ({p.code})</option>
@@ -283,7 +283,7 @@ export function GenomeComparator() {
               <select
                 value={comparePop2}
                 onChange={(e) => setComparePop2(e.target.value)}
-                className="w-full p-2 bg-surface-soft border border-adaptive rounded-lg text-body text-sm"
+                className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
               >
                 {POPULATIONS.map((p) => (
                   <option key={p.id} value={p.id}>{p.nameEs} ({p.code})</option>

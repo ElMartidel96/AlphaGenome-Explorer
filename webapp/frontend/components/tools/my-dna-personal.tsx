@@ -309,7 +309,7 @@ export function MyDnaPersonal() {
     return (
       <Card>
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 bg-info-soft rounded-lg flex items-center justify-center">
+          <div className="w-10 h-10 bg-info-soft rounded-xl flex items-center justify-center">
             <Dna className="w-5 h-5 text-info" />
           </div>
           <div>
@@ -491,7 +491,7 @@ export function MyDnaPersonal() {
                 key={variant.rsid}
                 onClick={() => setSelectedVariant(selectedVariant?.rsid === variant.rsid ? null : variant)}
                 className={`
-                  p-4 rounded-lg border cursor-pointer transition-all
+                  p-4 rounded-xl border cursor-pointer transition-all
                   ${selectedVariant?.rsid === variant.rsid
                     ? 'border-info bg-info-soft'
                     : 'border-adaptive bg-surface-soft hover:border-adaptive-subtle'
@@ -500,7 +500,7 @@ export function MyDnaPersonal() {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-surface-elevated rounded-lg flex items-center justify-center shadow-sm border border-adaptive">
+                    <div className="w-10 h-10 bg-surface-elevated rounded-xl flex items-center justify-center shadow-sm border border-adaptive">
                       <span className="text-sm font-mono font-bold text-body">
                         {variant.gene || variant.rsid.slice(0, 4)}
                       </span>

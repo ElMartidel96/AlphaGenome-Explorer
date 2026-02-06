@@ -210,7 +210,7 @@ export function CoupleCompatibility() {
           <div className="space-y-4">
             {result.positiveHighlights.map((highlight, i) => (
               <div key={i} className="flex items-start gap-3 p-3 bg-surface-soft rounded-xl">
-                <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                   {highlight.icon === 'heart' && <Heart className="w-5 h-5 text-green-600 dark:text-green-400" />}
                   {highlight.icon === 'shield' && <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />}
                   {highlight.icon === 'sparkles' && <Sparkles className="w-5 h-5 text-green-600 dark:text-green-400" />}
@@ -253,7 +253,7 @@ export function CoupleCompatibility() {
                 </button>
                 {expandedCondition === condition.id && (
                   <div className="px-4 pb-4 pt-0 border-t border-adaptive">
-                    <div className="grid grid-cols-2 gap-3 mt-3 text-sm">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3 text-sm">
                       <div>
                         <span className="text-muted">Persona A:</span>
                         <span className="ml-1 text-body">{condition.geneA}</span>

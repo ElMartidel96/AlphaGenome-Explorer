@@ -368,7 +368,7 @@ export function DrugTargetFinder() {
                 <Title className="text-title text-sm mb-3">Compuestos en Desarrollo</Title>
                 <div className="space-y-2">
                   {selectedTarget.compounds.map((compound, i) => (
-                    <div key={i} className="flex items-center justify-between p-2 bg-surface-soft rounded-lg">
+                    <div key={i} className="flex items-center justify-between p-2 bg-surface-soft rounded-xl">
                       <div>
                         <p className="text-sm font-medium text-title">{compound.name}</p>
                         <p className="text-xs text-muted">{compound.company}</p>

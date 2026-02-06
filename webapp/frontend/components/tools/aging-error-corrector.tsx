@@ -315,7 +315,7 @@ export function AgingErrorCorrector() {
                 </div>
                 <div className="space-y-2">
                   {selectedBug.trialExamples.map((trial, i) => (
-                    <div key={i} className="p-3 bg-surface-soft rounded-lg">
+                    <div key={i} className="p-3 bg-surface-soft rounded-xl">
                       <p className="text-sm font-medium text-title">{trial.name}</p>
                       <div className="flex items-center gap-2 mt-1">
                         <Badge color="blue" size="xs">{trial.phase}</Badge>

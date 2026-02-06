@@ -447,7 +447,7 @@ export function VariantAnalyzer() {
                 </TabPanel>
 
                 <TabPanel>
-                  <pre className="mt-4 p-4 bg-gray-900 text-gray-100 rounded-lg overflow-x-auto text-sm">
+                  <pre className="mt-4 p-4 bg-gray-900 text-gray-100 rounded-xl overflow-x-auto text-sm">
                     {JSON.stringify(result.exportData, null, 2)}
                   </pre>
                   <Button
@@ -462,7 +462,7 @@ export function VariantAnalyzer() {
                 </TabPanel>
 
                 <TabPanel>
-                  <pre className="mt-4 p-4 bg-surface-soft rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
+                  <pre className="mt-4 p-4 bg-surface-soft rounded-xl overflow-x-auto text-sm whitespace-pre-wrap">
                     {generateMarkdown(result)}
                   </pre>
                   <Button

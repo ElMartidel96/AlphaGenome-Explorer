@@ -327,9 +327,9 @@ export function VirtualLab() {
   if (!selectedExperiment) {
     return (
       <div className="space-y-6">
-        <Card className="bg-gradient-to-br from-purple-50 to-blue-50">
+        <Card className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30">
           <div className="flex items-start gap-4">
-            <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center">
+            <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
               <FlaskConical className="w-8 h-8 text-accent" />
             </div>
             <div className="flex-1">
@@ -546,10 +546,10 @@ export function VirtualLab() {
 
             {/* Current Step Details */}
             {experiment && (
-              <div className="bg-surface-soft rounded-lg p-6">
+              <div className="bg-surface-soft rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                    isRunning ? 'bg-blue-100 animate-pulse' : 'bg-gray-200'
+                    isRunning ? 'bg-blue-100 dark:bg-blue-900/30 animate-pulse' : 'bg-gray-200 dark:bg-slate-700'
                   }`}>
                     <span className="text-lg font-bold text-body">{currentStep + 1}</span>
                   </div>
@@ -577,7 +577,7 @@ export function VirtualLab() {
                 )}
 
                 {/* Visualization Area */}
-                <div className="mt-6 h-40 bg-white rounded-lg border-2 border-dashed border-adaptive flex items-center justify-center">
+                <div className="mt-6 h-40 bg-white rounded-xl border-2 border-dashed border-adaptive flex items-center justify-center">
                   {isRunning ? (
                     <div className="text-center">
                       {/* Simple animations based on step */}
@@ -706,7 +706,7 @@ export function VirtualLab() {
               {experiment?.steps.map((step, idx) => (
                 <div
                   key={step.id}
-                  className={`flex items-center gap-3 p-3 rounded-lg ${
+                  className={`flex items-center gap-3 p-3 rounded-xl ${
                     idx < currentStep
                       ? 'bg-success-soft'
                       : idx === currentStep

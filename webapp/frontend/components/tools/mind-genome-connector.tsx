@@ -215,13 +215,13 @@ const ACHIEVEMENTS: Achievement[] = [
   { id: 'brain-optimizer', name: 'Brain Optimizer', nameEs: 'Optimizador Cerebral', description: 'Improve focus score by 20%', descriptionEs: 'Mejorar puntuacion de enfoque 20%', icon: Brain, unlocked: false, progress: 15, target: 20 },
 ]
 
-// Category icons and colors
+// Category icons and colors with explicit Tailwind classes
 const HABIT_CATEGORIES = {
-  meditation: { icon: Brain, color: 'purple', label: 'Meditation' },
-  exercise: { icon: Dumbbell, color: 'green', label: 'Exercise' },
-  sleep: { icon: Moon, color: 'blue', label: 'Sleep' },
-  cognitive: { icon: BookOpen, color: 'orange', label: 'Cognitive' },
-  nutrition: { icon: Coffee, color: 'amber', label: 'Nutrition' },
+  meditation: { icon: Brain, color: 'purple', label: 'Meditation', bgClass: 'bg-purple-100 dark:bg-purple-900/30', textClass: 'text-purple-600' },
+  exercise: { icon: Dumbbell, color: 'green', label: 'Exercise', bgClass: 'bg-green-100 dark:bg-green-900/30', textClass: 'text-green-600' },
+  sleep: { icon: Moon, color: 'blue', label: 'Sleep', bgClass: 'bg-blue-100 dark:bg-blue-900/30', textClass: 'text-blue-600' },
+  cognitive: { icon: BookOpen, color: 'orange', label: 'Cognitive', bgClass: 'bg-orange-100 dark:bg-orange-900/30', textClass: 'text-orange-600' },
+  nutrition: { icon: Coffee, color: 'amber', label: 'Nutrition', bgClass: 'bg-amber-100 dark:bg-amber-900/30', textClass: 'text-amber-600' },
 }
 
 export function MindGenomeConnector() {
@@ -323,7 +323,7 @@ export function MindGenomeConnector() {
           <button
             key={n}
             onClick={() => onChange(n)}
-            className={`w-10 h-10 rounded-lg font-medium transition-all ${
+            className={`w-10 h-10 rounded-xl font-medium transition-all ${
               value === n
                 ? 'bg-accent-soft0 text-white scale-110'
                 : 'bg-surface-muted text-body hover:bg-gray-200'
@@ -339,7 +339,7 @@ export function MindGenomeConnector() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <Card className="bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50">
+      <Card className="bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 dark:from-purple-950/30 dark:via-indigo-950/30 dark:to-blue-950/30">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
@@ -352,16 +352,16 @@ export function MindGenomeConnector() {
           </div>
 
           {/* Streak badge */}
-          <div className="flex items-center gap-2 bg-orange-100 px-4 py-2 rounded-full">
+          <div className="flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 px-4 py-2 rounded-full">
             <Flame className="w-5 h-5 text-orange-500" />
-            <span className="font-bold text-orange-700">{streak}</span>
-            <span className="text-sm text-orange-600">day streak</span>
+            <span className="font-bold text-orange-700 dark:text-orange-400">{streak}</span>
+            <span className="text-sm text-orange-600 dark:text-orange-400">day streak</span>
           </div>
         </div>
       </Card>
 
       {/* Navigation */}
-      <div className="flex gap-2 p-1 bg-surface-muted rounded-lg">
+      <div className="flex gap-2 p-1 bg-surface-muted rounded-xl">
         {[
           { id: 'checkin', label: 'Daily Check-in', icon: CheckCircle },
           { id: 'profile', label: 'Neurogenic Profile', icon: Brain },
@@ -371,9 +371,9 @@ export function MindGenomeConnector() {
           <button
             key={tab.id}
             onClick={() => setActiveSection(tab.id as any)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all flex-1 justify-center ${
               activeSection === tab.id
-                ? 'bg-white shadow text-purple-700'
+                ? 'bg-white dark:bg-slate-800 shadow text-purple-700 dark:text-purple-400'
                 : 'text-body hover:text-title'
             }`}
           >
@@ -467,8 +467,8 @@ export function MindGenomeConnector() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                      gene.status === 'strength' ? 'bg-green-100' :
-                      gene.status === 'opportunity' ? 'bg-amber-100' : 'bg-surface-muted'
+                      gene.status === 'strength' ? 'bg-green-100 dark:bg-green-900/30' :
+                      gene.status === 'opportunity' ? 'bg-amber-100 dark:bg-amber-900/30' : 'bg-surface-muted'
                     }`}>
                       <span className={`text-lg font-bold ${
                         gene.status === 'strength' ? 'text-success' :
@@ -504,10 +504,10 @@ export function MindGenomeConnector() {
                   <div className="mt-4 pt-4 border-t border-adaptive space-y-4">
                     <p className="text-sm text-body">{gene.description}</p>
 
-                    <div className="p-3 bg-accent-soft rounded-lg">
+                    <div className="p-3 bg-accent-soft rounded-xl">
                       <div className="flex items-center gap-2 mb-2">
                         <Info className="w-4 h-4 text-purple-500" />
-                        <p className="text-xs font-medium text-purple-700 uppercase">The Science</p>
+                        <p className="text-xs font-medium text-purple-700 dark:text-purple-400 uppercase">The Science</p>
                       </div>
                       <p className="text-sm text-body">{gene.science}</p>
                     </div>
@@ -539,7 +539,7 @@ export function MindGenomeConnector() {
                     className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
                       habit.completed
                         ? 'bg-success-soft0 text-white'
-                        : `bg-${category.color}-100 text-${category.color}-600 hover:scale-110`
+                        : `${category.bgClass} ${category.textClass} hover:scale-110`
                     }`}
                   >
                     {habit.completed ? (
@@ -551,7 +551,7 @@ export function MindGenomeConnector() {
 
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <p className={`font-medium ${habit.completed ? 'text-green-800 line-through' : 'text-title'}`}>
+                      <p className={`font-medium ${habit.completed ? 'text-green-800 dark:text-green-300 line-through' : 'text-title'}`}>
                         {habit.name}
                       </p>
                       <Badge color="gray" size="xs">{habit.duration}</Badge>
@@ -560,7 +560,7 @@ export function MindGenomeConnector() {
                     <div className="flex items-center gap-2 mt-1">
                       <Badge color="purple" size="xs">{habit.relatedGene}</Badge>
                       {habit.streak > 0 && (
-                        <span className="text-xs text-orange-600 flex items-center gap-1">
+                        <span className="text-xs text-orange-600 dark:text-orange-400 flex items-center gap-1">
                           <Flame className="w-3 h-3" /> {habit.streak} day streak
                         </span>
                       )}
@@ -629,7 +629,7 @@ export function MindGenomeConnector() {
           <Card>
             <Title className="mb-4">Achievements</Title>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {ACHIEVEMENTS.map(achievement => {
                 const Icon = achievement.icon
                 return (

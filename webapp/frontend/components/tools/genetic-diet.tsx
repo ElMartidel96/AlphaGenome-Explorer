@@ -307,7 +307,7 @@ export function GeneticDiet() {
         <div className="text-center py-12">
           <div className="w-20 h-20 mx-auto mb-6 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 rounded-full animate-spin opacity-20"></div>
-            <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center">
+            <div className="absolute inset-2 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center">
               <Utensils className="w-8 h-8 text-success animate-pulse" />
             </div>
           </div>
@@ -426,7 +426,7 @@ export function GeneticDiet() {
       <Card>
         <div className="flex items-center gap-2 mb-4">
           <AlertTriangle className="w-5 h-5 text-amber-600" />
-          <Title className="text-amber-700">{t('alerts')}</Title>
+          <Title className="text-amber-700 dark:text-amber-400">{t('alerts')}</Title>
         </div>
 
         <div className="space-y-3">
@@ -437,12 +437,12 @@ export function GeneticDiet() {
             return (
               <div
                 key={trait.id}
-                className="p-4 bg-amber-50 rounded-lg border border-amber-200 cursor-pointer hover:bg-amber-100 transition-colors"
+                className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-700/40 cursor-pointer hover:bg-amber-100 dark:hover:bg-amber-900/30 transition-colors"
                 onClick={() => toggleAlert(trait.id)}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center">
                       <Icon className="w-5 h-5 text-amber-600" />
                     </div>
                     <div>
@@ -472,7 +472,7 @@ export function GeneticDiet() {
       <Card>
         <div className="flex items-center gap-2 mb-4">
           <Leaf className="w-5 h-5 text-success" />
-          <Title className="text-green-700">{t('superfoods')}</Title>
+          <Title className="text-green-700 dark:text-green-400">{t('superfoods')}</Title>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -481,9 +481,9 @@ export function GeneticDiet() {
             return (
               <div
                 key={food.id}
-                className="p-3 bg-success-soft rounded-lg border border-success flex items-start gap-3"
+                className="p-3 bg-success-soft rounded-xl border border-success flex items-start gap-3"
               >
-                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Icon className="w-5 h-5 text-success" />
                 </div>
                 <div>
@@ -501,7 +501,7 @@ export function GeneticDiet() {
       <Card>
         <div className="flex items-center gap-2 mb-4">
           <Info className="w-5 h-5 text-info" />
-          <Title className="text-blue-700">{t('moderate')}</Title>
+          <Title className="text-blue-700 dark:text-blue-400">{t('moderate')}</Title>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -510,9 +510,9 @@ export function GeneticDiet() {
             return (
               <div
                 key={food.id}
-                className="p-3 bg-info-soft rounded-lg border border-info flex items-start gap-3"
+                className="p-3 bg-info-soft rounded-xl border border-info flex items-start gap-3"
               >
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Icon className="w-5 h-5 text-info" />
                 </div>
                 <div>
@@ -551,7 +551,7 @@ export function GeneticDiet() {
         {selectedCuisine && CUISINE_RECOMMENDATIONS[selectedCuisine] && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Recommend */}
-            <div className="p-4 bg-success-soft rounded-lg border border-success">
+            <div className="p-4 bg-success-soft rounded-xl border border-success">
               <div className="flex items-center gap-2 mb-3">
                 <ThumbsUp className="w-5 h-5 text-success" />
                 <p className="font-semibold text-green-700">{t('recommend')}</p>
@@ -567,7 +567,7 @@ export function GeneticDiet() {
             </div>
 
             {/* Avoid */}
-            <div className="p-4 bg-danger-soft rounded-lg border border-danger">
+            <div className="p-4 bg-danger-soft rounded-xl border border-danger">
               <div className="flex items-center gap-2 mb-3">
                 <ThumbsDown className="w-5 h-5 text-danger" />
                 <p className="font-semibold text-red-700">{t('avoid')}</p>

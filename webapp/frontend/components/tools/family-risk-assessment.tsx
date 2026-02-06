@@ -305,42 +305,42 @@ export function FamilyRiskAssessment() {
     const parent2 = isDominant ? ['a', 'a'] : ['C', 'c'] // Normal/Carrier
 
     return (
-      <div className="bg-surface-soft rounded-lg p-4 mt-3">
+      <div className="bg-surface-soft rounded-xl p-4 mt-3">
         <p className="text-sm font-medium text-body mb-3">
           {isSpanish ? 'Cuadro de Punnett - Herencia' : 'Punnett Square - Inheritance'}
         </p>
         <div className="grid grid-cols-3 gap-1 max-w-[200px] text-center text-sm">
-          <div className="bg-blue-100 p-2 rounded font-medium">&nbsp;</div>
-          <div className="bg-blue-100 p-2 rounded font-medium">{parent2[0]}</div>
-          <div className="bg-blue-100 p-2 rounded font-medium">{parent2[1]}</div>
+          <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded font-medium">&nbsp;</div>
+          <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded font-medium">{parent2[0]}</div>
+          <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded font-medium">{parent2[1]}</div>
 
-          <div className="bg-pink-100 p-2 rounded font-medium">{parent1[0]}</div>
-          <div className={`p-2 rounded ${isDominant || !isRecessive ? 'bg-red-100 text-red-800' : 'bg-green-100'}`}>
+          <div className="bg-pink-100 dark:bg-pink-900/30 p-2 rounded font-medium">{parent1[0]}</div>
+          <div className={`p-2 rounded ${isDominant || !isRecessive ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300' : 'bg-green-100 dark:bg-green-900/30'}`}>
             {parent1[0]}{parent2[0]}
           </div>
-          <div className={`p-2 rounded ${isDominant ? 'bg-red-100 text-red-800' : 'bg-yellow-100'}`}>
+          <div className={`p-2 rounded ${isDominant ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300' : 'bg-yellow-100 dark:bg-yellow-900/30'}`}>
             {parent1[0]}{parent2[1]}
           </div>
 
-          <div className="bg-pink-100 p-2 rounded font-medium">{parent1[1]}</div>
-          <div className={`p-2 rounded ${isDominant ? 'bg-green-100' : 'bg-yellow-100'}`}>
+          <div className="bg-pink-100 dark:bg-pink-900/30 p-2 rounded font-medium">{parent1[1]}</div>
+          <div className={`p-2 rounded ${isDominant ? 'bg-green-100 dark:bg-green-900/30' : 'bg-yellow-100 dark:bg-yellow-900/30'}`}>
             {parent1[1]}{parent2[0]}
           </div>
-          <div className={`p-2 rounded ${isRecessive ? 'bg-red-100 text-red-800' : 'bg-green-100'}`}>
+          <div className={`p-2 rounded ${isRecessive ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300' : 'bg-green-100 dark:bg-green-900/30'}`}>
             {parent1[1]}{parent2[1]}
           </div>
         </div>
         <div className="mt-3 space-y-1 text-xs text-body">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-red-100 rounded"></div>
+            <div className="w-3 h-3 bg-red-100 dark:bg-red-900/30 rounded"></div>
             <span>{isSpanish ? 'Afectado' : 'Affected'}</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-yellow-100 rounded"></div>
+            <div className="w-3 h-3 bg-yellow-100 dark:bg-yellow-900/30 rounded"></div>
             <span>{isSpanish ? 'Portador' : 'Carrier'}</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-green-100 rounded"></div>
+            <div className="w-3 h-3 bg-green-100 dark:bg-green-900/30 rounded"></div>
             <span>{isSpanish ? 'No afectado' : 'Unaffected'}</span>
           </div>
         </div>
@@ -352,9 +352,9 @@ export function FamilyRiskAssessment() {
   if (step === 'intro') {
     return (
       <div className="space-y-6">
-        <Card className="bg-gradient-to-br from-pink-50 to-purple-50">
+        <Card className="bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-950/30 dark:to-purple-950/30">
           <div className="flex items-start gap-4">
-            <div className="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center">
+            <div className="w-14 h-14 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center">
               <Users className="w-8 h-8 text-pink-600" />
             </div>
             <div className="flex-1">
@@ -368,7 +368,7 @@ export function FamilyRiskAssessment() {
 
         <Card>
           <div className="space-y-4">
-            <div className="flex items-center gap-3 text-purple-700">
+            <div className="flex items-center gap-3 text-purple-700 dark:text-purple-400">
               <Dna className="w-5 h-5" />
               <span className="font-semibold">
                 {isSpanish ? '¿Cómo funciona?' : 'How does it work?'}
@@ -398,7 +398,7 @@ export function FamilyRiskAssessment() {
                   desc: isSpanish ? 'Chequeos preventivos personalizados' : 'Personalized preventive screenings',
                 },
               ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-surface-soft rounded-lg">
+                <div key={idx} className="flex items-start gap-3 p-3 bg-surface-soft rounded-xl">
                   <item.icon className="w-5 h-5 text-purple-500 mt-0.5" />
                   <div>
                     <p className="font-medium text-title">{item.title}</p>
@@ -410,14 +410,14 @@ export function FamilyRiskAssessment() {
           </div>
         </Card>
 
-        <Card className="bg-amber-50 border border-amber-200">
+        <Card className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/40">
           <div className="flex items-start gap-3">
             <Info className="w-5 h-5 text-amber-600 mt-0.5" />
             <div>
-              <p className="font-medium text-amber-800">
+              <p className="font-medium text-amber-800 dark:text-amber-300">
                 {isSpanish ? 'Importante' : 'Important'}
               </p>
-              <p className="text-sm text-amber-700 mt-1">
+              <p className="text-sm text-amber-700 dark:text-amber-400 mt-1">
                 {isSpanish
                   ? 'Esta herramienta es educativa. No reemplaza el consejo genético profesional. Consulta a un genetista para evaluaciones reales.'
                   : 'This tool is educational. It does not replace professional genetic counseling. Consult a geneticist for real evaluations.'}
@@ -458,7 +458,7 @@ export function FamilyRiskAssessment() {
             {family.map(member => (
               <div
                 key={member.id}
-                className={`p-4 rounded-lg border-2 transition-colors cursor-pointer ${
+                className={`p-4 rounded-xl border-2 transition-colors cursor-pointer ${
                   selectedMember === member.id
                     ? 'border-pink-500 bg-pink-soft'
                     : 'border-adaptive hover:border-pink-300'
@@ -468,7 +468,7 @@ export function FamilyRiskAssessment() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      member.sex === 'female' ? 'bg-pink-100' : 'bg-blue-100'
+                      member.sex === 'female' ? 'bg-pink-100 dark:bg-pink-900/30' : 'bg-blue-100 dark:bg-blue-900/30'
                     }`}>
                       <UserCircle className={`w-6 h-6 ${
                         member.sex === 'female' ? 'text-pink-600' : 'text-info'
@@ -637,7 +637,7 @@ export function FamilyRiskAssessment() {
               return (
                 <div
                   key={condition.id}
-                  className={`p-4 rounded-lg border-2 transition-all cursor-pointer ${
+                  className={`p-4 rounded-xl border-2 transition-all cursor-pointer ${
                     isSelected
                       ? 'border-red-500 bg-danger-soft'
                       : familyHas
@@ -719,7 +719,7 @@ export function FamilyRiskAssessment() {
     return (
       <div className="space-y-6">
         <Card className="text-center py-12">
-          <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+          <div className="w-20 h-20 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
             <Dna className="w-10 h-10 text-accent" />
           </div>
           <Title>
@@ -765,7 +765,7 @@ export function FamilyRiskAssessment() {
 
     return (
       <div className="space-y-6">
-        <Card className="bg-gradient-to-br from-purple-50 to-pink-50">
+        <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30">
           <div className="flex items-center gap-3">
             <CheckCircle className="w-8 h-8 text-success" />
             <div>
@@ -885,14 +885,14 @@ export function FamilyRiskAssessment() {
                     )}
 
                     {/* Screening recommendations */}
-                    <div className="bg-info-soft rounded-lg p-4">
+                    <div className="bg-info-soft rounded-xl p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <Shield className="w-5 h-5 text-info" />
-                        <p className="font-medium text-blue-800">
+                        <p className="font-medium text-blue-800 dark:text-blue-300">
                           {isSpanish ? 'Recomendaciones de Screening' : 'Screening Recommendations'}
                         </p>
                       </div>
-                      <p className="text-sm text-blue-700 mb-2">
+                      <p className="text-sm text-blue-700 dark:text-blue-400 mb-2">
                         {isSpanish
                           ? `Comenzar a los ${condition.screeningAge} años:`
                           : `Start at age ${condition.screeningAge}:`}
@@ -915,11 +915,11 @@ export function FamilyRiskAssessment() {
         {/* Action buttons */}
         <Grid numItems={1} numItemsSm={2} className="gap-4">
           <Col>
-            <Card className="h-full bg-success-soft cursor-pointer hover:bg-green-100 transition-colors">
+            <Card className="h-full bg-success-soft cursor-pointer hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
               <div className="flex items-center gap-3">
                 <Baby className="w-8 h-8 text-success" />
                 <div>
-                  <p className="font-medium text-green-800">
+                  <p className="font-medium text-green-800 dark:text-green-300">
                     {isSpanish ? 'Planificación Familiar' : 'Family Planning'}
                   </p>
                   <p className="text-sm text-success">
@@ -930,11 +930,11 @@ export function FamilyRiskAssessment() {
             </Card>
           </Col>
           <Col>
-            <Card className="h-full bg-accent-soft cursor-pointer hover:bg-purple-100 transition-colors">
+            <Card className="h-full bg-accent-soft cursor-pointer hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors">
               <div className="flex items-center gap-3">
                 <Activity className="w-8 h-8 text-accent" />
                 <div>
-                  <p className="font-medium text-purple-800">
+                  <p className="font-medium text-purple-800 dark:text-purple-300">
                     {isSpanish ? 'Test Genético' : 'Genetic Testing'}
                   </p>
                   <p className="text-sm text-accent">
@@ -947,14 +947,14 @@ export function FamilyRiskAssessment() {
         </Grid>
 
         {/* Disclaimer */}
-        <Card className="bg-amber-50 border border-amber-200">
+        <Card className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/40">
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5" />
             <div>
-              <p className="font-medium text-amber-800">
+              <p className="font-medium text-amber-800 dark:text-amber-300">
                 {isSpanish ? 'Aviso Importante' : 'Important Notice'}
               </p>
-              <p className="text-sm text-amber-700 mt-1">
+              <p className="text-sm text-amber-700 dark:text-amber-400 mt-1">
                 {isSpanish
                   ? 'Estos cálculos son estimaciones educativas basadas en patrones generales de herencia. El riesgo real puede variar. Siempre consulta con un profesional de genética médica para asesoramiento personalizado.'
                   : 'These calculations are educational estimates based on general inheritance patterns. Actual risk may vary. Always consult with a medical genetics professional for personalized counseling.'}

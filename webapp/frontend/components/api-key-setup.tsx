@@ -55,16 +55,16 @@ export function ApiKeySetup() {
 
   return (
     <Card>
-      <div className="flex items-start space-x-4">
-        <div className="w-12 h-12 bg-info-soft rounded-lg flex items-center justify-center flex-shrink-0">
-          <Key className="w-6 h-6 text-info" />
+      <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-info-soft rounded-xl flex items-center justify-center flex-shrink-0">
+          <Key className="w-5 h-5 sm:w-6 sm:h-6 text-info" />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 min-w-0 w-full">
           <Title>{t('title')}</Title>
           <Text className="mt-1">{t('description')}</Text>
 
           {/* Steps Card */}
-          <div className="mt-4 p-4 bg-info-soft border border-info rounded-lg">
+          <div className="mt-4 p-3 sm:p-4 bg-info-soft border border-info rounded-xl overflow-hidden">
             <div className="flex items-center gap-2 mb-3">
               <ExternalLink className="w-5 h-5 text-info" />
               <span className="font-semibold text-info">{t('howToGet')}</span>
@@ -78,7 +78,7 @@ export function ApiKeySetup() {
                     href="https://deepmind.google.com/science/alphagenome"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-info hover:underline font-medium"
+                    className="text-info hover:underline font-medium break-all"
                   >
                     deepmind.google.com/science/alphagenome
                   </a>
@@ -103,7 +103,7 @@ export function ApiKeySetup() {
             <label className="block text-sm font-medium text-body mb-2">
               {t('enterKey')}
             </label>
-            <div className="flex space-x-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <div className="relative flex-1">
                 <TextInput
                   type={showKey ? 'text' : 'password'}
@@ -127,7 +127,7 @@ export function ApiKeySetup() {
           </div>
 
           {/* Privacy notice */}
-          <div className="mt-4 p-4 bg-surface-soft border border-adaptive rounded-lg">
+          <div className="mt-4 p-3 sm:p-4 bg-surface-soft border border-adaptive rounded-xl">
             <div className="flex items-center gap-2 mb-2">
               <Shield className="w-5 h-5 text-muted" />
               <span className="font-semibold text-body">{t('privacyTitle')}</span>

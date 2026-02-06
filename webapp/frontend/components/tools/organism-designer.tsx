@@ -294,7 +294,7 @@ export function OrganismDesigner() {
                           : 'bg-surface-soft border-2 border-transparent hover:border-emerald-200 dark:hover:border-emerald-800'
                       }`}
                     >
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
                         isSelected ? 'bg-emerald-100 dark:bg-emerald-900/30' : 'bg-surface-muted'
                       }`}>
                         <gene.icon className={`w-5 h-5 ${isSelected ? 'text-emerald-600 dark:text-emerald-400' : 'text-muted'}`} />

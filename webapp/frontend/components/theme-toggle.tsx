@@ -15,7 +15,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="flex items-center space-x-1.5 px-2 py-1 rounded-lg glass-button">
+      <div className="flex items-center space-x-1.5 px-2 py-1 rounded-xl glass-button">
         <Moon size={14} className="text-blue-400" />
         <span className="text-xs font-medium text-body">Dark</span>
       </div>
@@ -57,7 +57,7 @@ export function ThemeToggle() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg glass-button transition-all duration-200 hover:scale-105 active:scale-95 z-50 relative"
+        className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl glass-button transition-all duration-200 hover:scale-105 active:scale-95 z-50 relative"
         aria-label="Toggle theme"
       >
         {getIcon()}

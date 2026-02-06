@@ -311,7 +311,7 @@ export function RegulatoryNetworks() {
         {/* Graph */}
         <Card className="lg:col-span-3 p-2">
           <div
-            className="relative bg-gray-900 rounded-lg overflow-hidden"
+            className="relative bg-gray-900 rounded-xl overflow-hidden"
             style={{ height: '500px' }}
           >
             <svg
@@ -588,7 +588,7 @@ export function RegulatoryNetworks() {
             <div
               key={pathway.id}
               onClick={() => setActivePathway(activePathway === pathway.id ? null : pathway.id)}
-              className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
+              className={`p-3 rounded-xl border-2 cursor-pointer transition-all ${
                 activePathway === pathway.id
                   ? 'border-current shadow-lg'
                   : 'border-transparent hover:border-adaptive'

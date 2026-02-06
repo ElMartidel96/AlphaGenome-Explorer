@@ -84,51 +84,57 @@ export default function HomePage() {
   const [activeTool, setActiveTool] = useState<'dna' | 'superpowers' | 'diet' | 'crispr' | 'networks' | 'mindgenome' | 'aging' | 'capabilities' | 'familyrisk' | 'ancestors' | 'virtuallab' | 'evolution' | 'detective' | 'couple' | 'organism' | 'treeoflife' | 'batchanalyzer' | 'drugtargets' | 'genomecomp' | 'splicing' | 'agingcorrector' | 'beneficialvariants' | 'futuresim'>('dna')
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Header - Glass Morphism */}
-      <header className="glass-panel sticky top-0 z-50 mx-4 mt-4 rounded-2xl border-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
+      <header className="glass-panel sticky top-0 z-50 mx-2 sm:mx-4 mt-2 sm:mt-4 rounded-2xl border-0">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
               {/* Logo with Pulse Animation */}
-              <div className="w-12 h-12 glass-dna rounded-xl flex items-center justify-center pulse-glow overflow-hidden">
-                <Image src="/logo-dark-optimized.png" alt="AlphaGenome" width={40} height={40} className="hidden dark:block object-contain" priority />
-                <Image src="/logo-light-optimized.png" alt="AlphaGenome" width={40} height={40} className="block dark:hidden object-contain" priority />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 pulse-glow rounded-xl overflow-hidden flex-shrink-0">
+                <div className="hidden dark:block w-full h-full">
+                  <Image src="/logo-dark-optimized.png" alt="AlphaGenome" width={48} height={48} className="w-full h-full object-contain" priority />
+                </div>
+                <div className="block dark:hidden w-full h-full">
+                  <Image src="/logo-light-optimized.png" alt="AlphaGenome" width={48} height={48} className="w-full h-full object-contain" priority />
+                </div>
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-glass">{t('header.title')}</h1>
-                <p className="text-sm text-glass-secondary">{t('header.subtitle')}</p>
+              <div className="min-w-0">
+                <h1 className="text-base sm:text-xl font-bold text-glass truncate">{t('header.title')}</h1>
+                <p className="text-xs sm:text-sm text-glass-secondary truncate hidden sm:block">{t('header.subtitle')}</p>
               </div>
             </div>
 
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-1.5 sm:space-x-3 flex-shrink-0">
               <ThemeToggle />
               <LanguageToggle />
 
-              {isConfigured ? (
-                <Badge color="green" icon={CheckCircle}>
-                  {t('header.apiConfigured')}
-                </Badge>
-              ) : (
-                <Badge color="yellow" icon={AlertTriangle}>
-                  {t('header.apiRequired')}
-                </Badge>
-              )}
+              <div className="hidden md:flex items-center space-x-3">
+                {isConfigured ? (
+                  <Badge color="green" icon={CheckCircle}>
+                    {t('header.apiConfigured')}
+                  </Badge>
+                ) : (
+                  <Badge color="yellow" icon={AlertTriangle}>
+                    {t('header.apiRequired')}
+                  </Badge>
+                )}
 
-              <a
-                href="https://www.alphagenomedocs.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-glass-secondary hover:text-blue-500 dark:hover:text-blue-400 flex items-center gap-1 transition-colors"
-              >
-                {t('header.docs')} <ExternalLink className="w-3 h-3" />
-              </a>
+                <a
+                  href="https://www.alphagenomedocs.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-glass-secondary hover:text-blue-500 dark:hover:text-blue-400 flex items-center gap-1 transition-colors"
+                >
+                  {t('header.docs')} <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 overflow-x-hidden">
         {/* API Key Setup (if not configured) */}
         {!isConfigured && (
           <div className="mb-8">
@@ -137,7 +143,7 @@ export default function HomePage() {
         )}
 
         {/* Navigation Tabs - Ordenados por prioridad de uso */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex gap-2 mb-6 overflow-x-auto scrollbar-hide pb-1 nav-scroll">
           {/* 1. Mi ADN - Principal */}
           <Button
             variant={activeTab === 'myDna' ? 'primary' : 'secondary'}
@@ -203,7 +209,7 @@ export default function HomePage() {
         {activeTab === 'myDna' && (
           <div className="space-y-6">
             {/* Sub-navigation for My DNA tools */}
-            <div className="flex flex-wrap gap-2 p-2 bg-surface-muted rounded-lg">
+            <div className="flex gap-2 p-2 bg-surface-muted rounded-xl overflow-x-auto scrollbar-hide nav-scroll">
               <Button
                 variant={activeTool === 'dna' ? 'primary' : 'light'}
                 size="xs"
@@ -438,7 +444,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="bg-surface-soft border-t border-adaptive mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-muted">
               <p>{t('footer.poweredBy')}</p>
@@ -599,7 +605,7 @@ function RegionExplorer({ t }: { t: any }) {
                   setError(null)
                 }}
                 placeholder={t('regionExplorer.inputPlaceholder')}
-                className={`flex-1 px-3 py-2 border rounded-lg input-adaptive ${
+                className={`flex-1 px-3 py-2 border rounded-xl input-adaptive ${
                   error ? 'border-danger bg-danger-soft' : ''
                 }`}
                 aria-label={t('regionExplorer.inputLabel')}
@@ -690,13 +696,13 @@ function RegionExplorer({ t }: { t: any }) {
 
             <Grid numItems={1} numItemsSm={3} className="gap-4 mb-6">
               <Col>
-                <div className="p-3 bg-info-soft rounded-lg">
+                <div className="p-3 bg-info-soft rounded-xl">
                   <Text className="text-sm text-muted">Chromosome</Text>
                   <p className="text-xl font-bold text-info">{result.chromosome}</p>
                 </div>
               </Col>
               <Col>
-                <div className="p-3 bg-accent-soft rounded-lg">
+                <div className="p-3 bg-accent-soft rounded-xl">
                   <Text className="text-sm text-muted">{t('regionExplorer.length')}</Text>
                   <p className="text-xl font-bold text-accent">
                     {formatNumber(result.length)} <span className="text-sm font-normal">bp</span>
@@ -704,7 +710,7 @@ function RegionExplorer({ t }: { t: any }) {
                 </div>
               </Col>
               <Col>
-                <div className="p-3 bg-success-soft rounded-lg">
+                <div className="p-3 bg-success-soft rounded-xl">
                   <Text className="text-sm text-muted">{t('regionExplorer.genes')}</Text>
                   <p className="text-xl font-bold text-success">{result.genes.length}</p>
                 </div>
@@ -718,7 +724,7 @@ function RegionExplorer({ t }: { t: any }) {
                 if (!selectedTracks.includes(trackOption?.id || '')) return null
 
                 return (
-                  <div key={track.name} className="border border-adaptive rounded-lg p-3 bg-surface-soft">
+                  <div key={track.name} className="border border-adaptive rounded-xl p-3 bg-surface-soft">
                     <div className="flex items-center justify-between mb-2">
                       <Text className="font-medium text-sm text-body">{track.name}</Text>
                       <Badge color={trackOption?.color.replace('bg-', '').replace('-500', '') as 'blue' | 'green' | 'purple' | 'orange' | 'red' | 'gray'} size="xs">
@@ -986,7 +992,7 @@ function BatchAnalysis({ t }: { t: any }) {
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
-              className={`p-8 rounded-lg border-2 border-dashed transition-all cursor-pointer ${
+              className={`p-8 rounded-xl border-2 border-dashed transition-all cursor-pointer ${
                 isDragging
                   ? 'dropzone-active'
                   : error
@@ -1011,15 +1017,15 @@ function BatchAnalysis({ t }: { t: any }) {
 
             {/* Stats */}
             <div className="mt-4 grid grid-cols-3 gap-4 text-center">
-              <div className="p-3 bg-surface-soft rounded-lg">
+              <div className="p-3 bg-surface-soft rounded-xl">
                 <p className="text-2xl font-bold text-title">VCF</p>
                 <p className="text-xs text-muted">{t('batchAnalysis.stats.inputFormat')}</p>
               </div>
-              <div className="p-3 bg-surface-soft rounded-lg">
+              <div className="p-3 bg-surface-soft rounded-xl">
                 <p className="text-2xl font-bold text-title">10K</p>
                 <p className="text-xs text-muted">{t('batchAnalysis.stats.maxVariants')}</p>
               </div>
-              <div className="p-3 bg-surface-soft rounded-lg">
+              <div className="p-3 bg-surface-soft rounded-xl">
                 <p className="text-2xl font-bold text-title">CSV</p>
                 <p className="text-xs text-muted">{t('batchAnalysis.stats.exportFormat')}</p>
               </div>
@@ -1030,7 +1036,7 @@ function BatchAnalysis({ t }: { t: any }) {
         {/* Processing State */}
         {(status === 'parsing' || status === 'analyzing') && (
           <div className="mt-4 space-y-4">
-            <div className="p-6 bg-info-soft rounded-lg">
+            <div className="p-6 bg-info-soft rounded-xl">
               <div className="flex items-center space-x-4">
                 <Loader2 className="w-8 h-8 animate-spin text-info" />
                 <div className="flex-1">
@@ -1082,7 +1088,7 @@ function BatchAnalysis({ t }: { t: any }) {
             <Title>{t('batchAnalysis.results.summary')}</Title>
             <Grid numItems={2} numItemsSm={4} className="gap-4 mt-4">
               <Col>
-                <div className="p-4 bg-danger-soft rounded-lg border-l-4 border-red-500 dark:border-red-400">
+                <div className="p-4 bg-danger-soft rounded-xl border-l-4 border-red-500 dark:border-red-400">
                   <Text className="text-sm text-muted">{t('batchAnalysis.results.highImpact')}</Text>
                   <p className="text-2xl font-bold text-danger">{results.highImpact}</p>
                   <p className="text-xs text-subtle">
@@ -1091,7 +1097,7 @@ function BatchAnalysis({ t }: { t: any }) {
                 </div>
               </Col>
               <Col>
-                <div className="p-4 bg-warning-muted rounded-lg border-l-4 border-orange-500 dark:border-orange-400">
+                <div className="p-4 bg-warning-muted rounded-xl border-l-4 border-orange-500 dark:border-orange-400">
                   <Text className="text-sm text-muted">{t('batchAnalysis.results.moderateImpact')}</Text>
                   <p className="text-2xl font-bold text-warning">{results.moderateImpact}</p>
                   <p className="text-xs text-subtle">
@@ -1100,7 +1106,7 @@ function BatchAnalysis({ t }: { t: any }) {
                 </div>
               </Col>
               <Col>
-                <div className="p-4 bg-warning-soft rounded-lg border-l-4 border-yellow-500 dark:border-yellow-400">
+                <div className="p-4 bg-warning-soft rounded-xl border-l-4 border-yellow-500 dark:border-yellow-400">
                   <Text className="text-sm text-muted">{t('batchAnalysis.results.lowImpact')}</Text>
                   <p className="text-2xl font-bold text-warning">{results.lowImpact}</p>
                   <p className="text-xs text-subtle">
@@ -1109,7 +1115,7 @@ function BatchAnalysis({ t }: { t: any }) {
                 </div>
               </Col>
               <Col>
-                <div className="p-4 bg-surface-soft rounded-lg border-l-4 border-gray-400 dark:border-slate-500">
+                <div className="p-4 bg-surface-soft rounded-xl border-l-4 border-gray-400 dark:border-slate-500">
                   <Text className="text-sm text-muted">{t('batchAnalysis.results.modifier')}</Text>
                   <p className="text-2xl font-bold text-body">{results.modifier}</p>
                   <p className="text-xs text-subtle">
@@ -1128,7 +1134,7 @@ function BatchAnalysis({ t }: { t: any }) {
                     .filter(v => v.impact === 'HIGH')
                     .slice(0, 5)
                     .map((variant) => (
-                      <div key={variant.id} className="flex items-center justify-between p-3 bg-danger-soft rounded-lg">
+                      <div key={variant.id} className="flex items-center justify-between p-3 bg-danger-soft rounded-xl">
                         <div className="flex items-center gap-4">
                           <Badge color="red" size="sm">{variant.impact}</Badge>
                           <div>
@@ -1228,7 +1234,7 @@ function LearnSection({ t }: { t: any }) {
       <Card className="gradient-accent">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-blue-600 dark:bg-blue-500 rounded-xl flex items-center justify-center">
               <GraduationCap className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -1258,7 +1264,7 @@ function LearnSection({ t }: { t: any }) {
                 tabIndex={0}
                 onClick={() => handleLessonClick(lesson.id)}
                 onKeyDown={(e) => e.key === 'Enter' && handleLessonClick(lesson.id)}
-                className={`p-4 rounded-lg border-2 ${lesson.borderColor} ${lesson.bgColor} ${lesson.hoverColor} hover:shadow-md transition-all cursor-pointer ${isActive ? 'ring-2 ring-offset-2 ring-blue-500 dark:ring-offset-slate-900' : ''}`}
+                className={`p-4 rounded-xl border-2 ${lesson.borderColor} ${lesson.bgColor} ${lesson.hoverColor} hover:shadow-md transition-all cursor-pointer ${isActive ? 'ring-2 ring-offset-2 ring-blue-500 dark:ring-offset-slate-900' : ''}`}
               >
                 <div className="flex items-start justify-between">
                   <lesson.icon className={`w-8 h-8 ${lesson.textColor} mb-2`} />
@@ -1442,7 +1448,7 @@ function UseCasesSection({ t }: { t: any }) {
 
 function UseCaseItem({ icon: Icon, title, desc }: { icon: any; title: string; desc: string }) {
   return (
-    <div className="p-3 bg-surface-soft rounded-lg hover-surface transition-colors cursor-pointer">
+    <div className="p-3 bg-surface-soft rounded-xl hover-surface transition-colors cursor-pointer">
       <div className="flex items-start gap-2">
         <Icon className="w-4 h-4 text-muted mt-0.5 flex-shrink-0" />
         <div>
@@ -1713,7 +1719,7 @@ function ToolsSection({ t, onToolSelect }: { t: any; onToolSelect: (toolId: stri
                 onClick={() => onToolSelect(tool.id)}
               >
                 <div className="flex items-start gap-3">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
                     ({
                       blue: 'bg-blue-100 dark:bg-blue-900/30',
                       purple: 'bg-purple-100 dark:bg-purple-900/30',

@@ -299,9 +299,9 @@ export function GeneticDetective() {
   if (!activeCase) {
     return (
       <div className="space-y-6">
-        <Card className="bg-gradient-to-br from-orange-50 to-red-50">
+        <Card className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30">
           <div className="flex items-start gap-4">
-            <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center">
+            <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center">
               <Search className="w-8 h-8 text-orange-600" />
             </div>
             <div className="flex-1">
@@ -348,7 +348,7 @@ export function GeneticDetective() {
               },
             ].map(item => (
               <div key={item.step} className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center flex-shrink-0">
                   <span className="text-sm font-bold text-accent">{item.step}</span>
                 </div>
                 <div>
@@ -445,7 +445,7 @@ export function GeneticDetective() {
   return (
     <div className="space-y-6">
       {/* Case Header */}
-      <Card className="bg-gradient-to-br from-orange-50 to-red-50">
+      <Card className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30">
         <div className="flex items-center justify-between">
           <div>
             <Badge color={activeCase.difficulty === 'easy' ? 'green' : activeCase.difficulty === 'medium' ? 'yellow' : 'red'} className="mb-2">
@@ -529,7 +529,7 @@ export function GeneticDetective() {
             </div>
 
             {showEvidence && (
-              <div className="bg-surface-soft rounded-lg p-4 overflow-x-auto">
+              <div className="bg-surface-soft rounded-xl p-4 overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b">
@@ -572,7 +572,7 @@ export function GeneticDetective() {
                 return (
                   <div
                     key={suspect.id}
-                    className={`p-4 rounded-lg border-2 transition-all ${
+                    className={`p-4 rounded-xl border-2 transition-all ${
                       isSelected
                         ? 'border-blue-500 bg-info-soft'
                         : 'border-adaptive hover:border-adaptive'
@@ -583,7 +583,7 @@ export function GeneticDetective() {
                       onClick={() => setSelectedSuspect(isSelected ? null : suspect.id)}
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-gray-200 dark:bg-slate-700 rounded-full flex items-center justify-center">
                           <UserCircle className="w-6 h-6 text-muted" />
                         </div>
                         <div>
@@ -632,7 +632,7 @@ export function GeneticDetective() {
                         </div>
 
                         {isExpanded && (
-                          <div className="bg-white rounded-lg p-3 overflow-x-auto">
+                          <div className="bg-white dark:bg-slate-800 rounded-xl p-3 overflow-x-auto">
                             <table className="w-full text-sm">
                               <thead>
                                 <tr className="border-b">
@@ -690,7 +690,7 @@ export function GeneticDetective() {
               <Info className="w-5 h-5 text-info mt-0.5" />
               <div className="flex-1">
                 <button
-                  className="font-medium text-blue-800 hover:underline"
+                  className="font-medium text-blue-800 dark:text-blue-300 hover:underline"
                   onClick={() => setShowHint(!showHint)}
                 >
                   {showHint
@@ -699,7 +699,7 @@ export function GeneticDetective() {
                   }
                 </button>
                 {showHint && (
-                  <p className="text-sm text-blue-700 mt-2">
+                  <p className="text-sm text-blue-700 dark:text-blue-400 mt-2">
                     {isSpanish ? activeCase.hintEs : activeCase.hint}
                   </p>
                 )}

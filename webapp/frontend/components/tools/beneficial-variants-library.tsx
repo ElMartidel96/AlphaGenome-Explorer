@@ -345,7 +345,7 @@ export function BeneficialVariantsLibrary() {
                 onClick={() => setSelectedVariant(variant)}
               >
                 <div className="flex items-start gap-4">
-                  <div className={`w-10 h-10 bg-${catConfig.color}-100 dark:bg-${catConfig.color}-900/30 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                  <div className={`w-10 h-10 bg-${catConfig.color}-100 dark:bg-${catConfig.color}-900/30 rounded-xl flex items-center justify-center flex-shrink-0`}>
                     <Dna className={`w-5 h-5 text-${catConfig.color}-500`} />
                   </div>
                   <div className="flex-1">
@@ -384,15 +384,15 @@ export function BeneficialVariantsLibrary() {
               <Card>
                 <Title className="text-title text-sm mb-3">Detalles</Title>
                 <div className="space-y-3">
-                  <div className="p-3 bg-surface-soft rounded-lg">
+                  <div className="p-3 bg-surface-soft rounded-xl">
                     <span className="text-xs text-muted">Frecuencia</span>
                     <p className="text-sm font-medium text-title">{selectedVariant.frequency}</p>
                   </div>
-                  <div className="p-3 bg-surface-soft rounded-lg">
+                  <div className="p-3 bg-surface-soft rounded-xl">
                     <span className="text-xs text-muted">Poblaciones</span>
                     <p className="text-sm text-body">{selectedVariant.populationsEs}</p>
                   </div>
-                  <div className="p-3 bg-surface-soft rounded-lg">
+                  <div className="p-3 bg-surface-soft rounded-xl">
                     <span className="text-xs text-muted">Nivel de Evidencia</span>
                     <div className="mt-1">
                       <Badge color={EVIDENCE_CONFIG[selectedVariant.evidence].color as any}>
@@ -400,11 +400,11 @@ export function BeneficialVariantsLibrary() {
                       </Badge>
                     </div>
                   </div>
-                  <div className="p-3 bg-surface-soft rounded-lg">
+                  <div className="p-3 bg-surface-soft rounded-xl">
                     <span className="text-xs text-muted">Estudio Clave</span>
                     <p className="text-xs text-body mt-1">{selectedVariant.keyStudyEs}</p>
                   </div>
-                  <div className="p-3 bg-surface-soft rounded-lg">
+                  <div className="p-3 bg-surface-soft rounded-xl">
                     <span className="text-xs text-muted">Publicaciones</span>
                     <p className="text-sm font-bold text-title">{selectedVariant.publications.toLocaleString()}</p>
                   </div>

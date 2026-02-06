@@ -273,13 +273,13 @@ export function TreeOfLife() {
               // Compare mode
               <div className="space-y-4">
                 <Text className="text-sm text-muted">Selecciona dos especies para comparar:</Text>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <Text className="text-xs text-muted mb-2">Especie 1</Text>
                     <select
                       value={selectedSpecies?.id || ''}
                       onChange={(e) => setSelectedSpecies(SPECIES_DATA.find((s) => s.id === e.target.value) || null)}
-                      className="w-full p-2 bg-surface-soft border border-adaptive rounded-lg text-body text-sm"
+                      className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
                     >
                       <option value="">Seleccionar...</option>
                       {SPECIES_DATA.map((s) => (
@@ -292,7 +292,7 @@ export function TreeOfLife() {
                     <select
                       value={compareSpecies?.id || ''}
                       onChange={(e) => setCompareSpecies(SPECIES_DATA.find((s) => s.id === e.target.value) || null)}
-                      className="w-full p-2 bg-surface-soft border border-adaptive rounded-lg text-body text-sm"
+                      className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
                     >
                       <option value="">Seleccionar...</option>
                       {SPECIES_DATA.map((s) => (

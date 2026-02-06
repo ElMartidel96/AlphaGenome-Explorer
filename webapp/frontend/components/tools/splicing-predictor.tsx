@@ -357,7 +357,7 @@ export function SplicingPredictor() {
                             />
                           ))}
                         </div>
-                        <div className="mt-3 p-2 bg-surface-soft rounded-lg">
+                        <div className="mt-3 p-2 bg-surface-soft rounded-xl">
                           <p className="text-xs text-body">
                             <strong>Impacto:</strong> {isoform.functionalImpactEs}
                           </p>

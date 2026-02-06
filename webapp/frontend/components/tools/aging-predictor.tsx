@@ -296,7 +296,7 @@ export function AgingPredictor() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <Card className="bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
+      <Card className="bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-orange-950/30 dark:via-amber-950/30 dark:to-yellow-950/30">
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center shadow-lg">
             <Clock className="w-7 h-7 text-white" />
@@ -385,10 +385,10 @@ export function AgingPredictor() {
             <button
               key={scenario.id}
               onClick={() => applyScenario(scenario.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                 activeScenario === scenario.id
                   ? 'bg-accent-soft0 text-white'
-                  : 'bg-surface-muted text-body hover:bg-gray-200'
+                  : 'bg-surface-muted text-body hover:bg-gray-200 dark:hover:bg-slate-700'
               }`}
             >
               {scenario.name}
@@ -420,9 +420,9 @@ export function AgingPredictor() {
                   onClick={() => setExpandedFactor(isExpanded ? null : factor.id)}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                      factor.value >= 80 ? 'bg-green-100' :
-                      factor.value >= 60 ? 'bg-yellow-100' : 'bg-red-100'
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                      factor.value >= 80 ? 'bg-green-100 dark:bg-green-900/30' :
+                      factor.value >= 60 ? 'bg-yellow-100 dark:bg-yellow-900/30' : 'bg-red-100 dark:bg-red-900/30'
                     }`}>
                       <Icon className={`w-5 h-5 ${
                         factor.value >= 80 ? 'text-success' :
@@ -449,12 +449,12 @@ export function AgingPredictor() {
                   max={100}
                   value={factor.value}
                   onChange={(e) => updateLifestyleFactor(factor.id, parseInt(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-500"
+                  className="w-full h-2 bg-gray-200 dark:bg-slate-700 rounded-xl appearance-none cursor-pointer accent-purple-500"
                 />
 
                 {/* Expanded content */}
                 {isExpanded && (
-                  <div className="mt-3 p-4 bg-surface-soft rounded-lg space-y-3">
+                  <div className="mt-3 p-4 bg-surface-soft rounded-xl space-y-3">
                     <p className="text-sm text-body">{factor.description}</p>
                     <div>
                       <p className="text-xs font-medium text-muted uppercase mb-2">Recommendations</p>
@@ -500,8 +500,8 @@ export function AgingPredictor() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg ${
-                      gene.effect === 'protective' ? 'bg-green-100 text-green-700' :
-                      gene.effect === 'risk' ? 'bg-red-100 text-red-700' :
+                      gene.effect === 'protective' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' :
+                      gene.effect === 'risk' ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400' :
                       'bg-surface-muted text-body'
                     }`}>
                       {gene.symbol.slice(0, 3)}
@@ -537,8 +537,8 @@ export function AgingPredictor() {
                     <p className="text-sm text-body">{gene.description}</p>
 
                     {gene.interventions && (
-                      <div className="p-3 bg-accent-soft rounded-lg">
-                        <p className="text-xs font-medium text-purple-700 uppercase mb-2">
+                      <div className="p-3 bg-accent-soft rounded-xl">
+                        <p className="text-xs font-medium text-purple-700 dark:text-purple-400 uppercase mb-2">
                           <Zap className="w-3 h-3 inline mr-1" />
                           Ways to Optimize
                         </p>
