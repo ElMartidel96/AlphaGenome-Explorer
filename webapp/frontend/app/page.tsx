@@ -771,7 +771,7 @@ function ToolsSection({ t, onToolSelect }: { t: any; onToolSelect: (toolId: stri
                 featureDescription={tool.description}
                 featureIcon={<tool.icon className="w-6 h-6" />}
                 estimatedPhase={(tool as { phase?: string }).phase || 'Coming Soon'}
-                color={tool.color}
+                color={tool.color as 'blue' | 'purple' | 'green' | 'orange' | 'pink'}
               />
             )}
           </Col>
