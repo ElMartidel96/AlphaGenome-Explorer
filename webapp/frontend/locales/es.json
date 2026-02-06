@@ -597,6 +597,112 @@
       "highRisk": "Riesgo Alto",
       "moderateRisk": "Riesgo Moderado",
       "lowRisk": "Riesgo Bajo"
+    },
+    "coupleCompatibility": {
+      "title": "Compatibilidad de Pareja",
+      "description": "Compara perfiles geneticos de forma anonima para explorar complementariedad",
+      "anonymousMode": "Modo Anonimo",
+      "personA": "Persona A",
+      "personB": "Persona B",
+      "analyzeCompatibility": "Analizar Compatibilidad",
+      "positiveHighlights": "Lo Positivo Primero",
+      "carrierConditions": "Condiciones Portadoras",
+      "geneticCounselor": "Consulta con un Consejero Genetico",
+      "deleteData": "Borrar todos mis datos",
+      "tryDemo": "Probar con datos demo"
+    },
+    "organismDesigner": {
+      "title": "Disena un Organismo",
+      "description": "Selecciona genes reales de distintas especies para crear un organismo hibrido",
+      "viability": "Viabilidad del Organismo",
+      "selectedGenes": "Genes Seleccionados",
+      "incompatibilities": "Incompatibilidades",
+      "saveDesign": "Guardar Diseno",
+      "reset": "Reiniciar"
+    },
+    "treeOfLife": {
+      "title": "Arbol de la Vida",
+      "description": "Explora cuanto ADN compartes con otras especies del arbol evolutivo",
+      "searchSpecies": "Buscar especie...",
+      "sharedDna": "ADN compartido",
+      "divergence": "Divergencia",
+      "notableGenes": "Genes Notables Compartidos",
+      "funFact": "Dato Curioso",
+      "compare": "Comparar 2"
+    },
+    "batchAnalyzer": {
+      "title": "Analizador Masivo",
+      "description": "Sube un archivo VCF y analiza miles de variantes con filtros inteligentes",
+      "uploadVcf": "Arrastra tu archivo VCF aqui",
+      "advancedFilters": "Filtros Avanzados",
+      "chromosome": "Cromosoma",
+      "impact": "Impacto",
+      "minScore": "Score minimo",
+      "exportCsv": "Exportar CSV",
+      "analyzeAnother": "Analizar otro archivo"
+    },
+    "drugTargetFinder": {
+      "title": "Descubridor de Targets",
+      "description": "Explora genes druggable con scores de tractabilidad y pipeline farmaceutico",
+      "searchTarget": "Buscar por gen, nombre o indicacion...",
+      "tractability": "Tractabilidad",
+      "compounds": "Compuestos en Desarrollo",
+      "allCategories": "Todas las categorias",
+      "kinases": "Quinasas",
+      "receptors": "Receptores",
+      "enzymes": "Enzimas"
+    },
+    "genomeComparator": {
+      "title": "Comparador de Genomas",
+      "description": "Compara diversidad genetica entre super-poblaciones humanas",
+      "diversity": "Diversidad",
+      "fstDistance": "Distancia Fst",
+      "summary": "Resumen",
+      "heterozygosity": "Heterocigosidad",
+      "privateSNPs": "SNPs Privados",
+      "sampleSize": "Tamano de muestra"
+    },
+    "splicingPredictor": {
+      "title": "Predictor de Splicing",
+      "description": "Visualiza isoformas de ARN y el impacto de variantes en el splicing alternativo",
+      "selectGene": "Selecciona un Gen",
+      "geneStructure": "Estructura del Gen",
+      "isoforms": "Isoformas de ARN",
+      "simulateVariant": "Simular variante",
+      "variantEffect": "Efecto de la Variante"
+    },
+    "agingErrorCorrector": {
+      "title": "Corrector del Envejecimiento",
+      "description": "Explora los bugs biologicos del envejecimiento y el estado de la investigacion",
+      "correctability": "Corregibilidad",
+      "activeTrials": "Ensayos Activos",
+      "whatYouCanDo": "Que Puedes Hacer Hoy",
+      "keyGenes": "Genes Clave",
+      "researchStatus": "Estado de Investigacion"
+    },
+    "beneficialVariants": {
+      "title": "Variantes Beneficiosas",
+      "description": "Descubre variantes geneticas que confieren beneficios verificados cientificamente",
+      "searchVariant": "Buscar por gen, nombre o efecto...",
+      "evidenceLevel": "Nivel de Evidencia",
+      "frequency": "Frecuencia",
+      "keyStudy": "Estudio Clave",
+      "publications": "Publicaciones",
+      "verified": "Verificada",
+      "strong": "Evidencia Fuerte",
+      "moderate": "Moderada"
+    },
+    "futureSimulator": {
+      "title": "Simulador del Futuro",
+      "description": "Proyecta como cambiarian las frecuencias geneticas a traves de generaciones",
+      "scenario": "Escenario",
+      "naturalEvolution": "Evolucion Natural",
+      "positiveSelection": "Seleccion Positiva",
+      "crisprIntervention": "Intervencion CRISPR",
+      "generations": "Generaciones",
+      "simulateFuture": "Simular Futuro",
+      "ethicalConsiderations": "Consideraciones Eticas",
+      "newSimulation": "Nueva simulacion"
     }
   }
 }

@@ -597,6 +597,112 @@
       "highRisk": "High Risk",
       "moderateRisk": "Moderate Risk",
       "lowRisk": "Low Risk"
+    },
+    "coupleCompatibility": {
+      "title": "Couple Compatibility",
+      "description": "Compare genetic profiles anonymously to explore complementarity",
+      "anonymousMode": "Anonymous Mode",
+      "personA": "Person A",
+      "personB": "Person B",
+      "analyzeCompatibility": "Analyze Compatibility",
+      "positiveHighlights": "Positive Highlights First",
+      "carrierConditions": "Carrier Conditions",
+      "geneticCounselor": "Consult a Genetic Counselor",
+      "deleteData": "Delete all my data",
+      "tryDemo": "Try with demo data"
+    },
+    "organismDesigner": {
+      "title": "Design an Organism",
+      "description": "Select real genes from different species to create a hybrid organism",
+      "viability": "Organism Viability",
+      "selectedGenes": "Selected Genes",
+      "incompatibilities": "Incompatibilities",
+      "saveDesign": "Save Design",
+      "reset": "Reset"
+    },
+    "treeOfLife": {
+      "title": "Tree of Life",
+      "description": "Explore how much DNA you share with other species on the evolutionary tree",
+      "searchSpecies": "Search species...",
+      "sharedDna": "Shared DNA",
+      "divergence": "Divergence",
+      "notableGenes": "Notable Shared Genes",
+      "funFact": "Fun Fact",
+      "compare": "Compare 2"
+    },
+    "batchAnalyzer": {
+      "title": "Batch Analyzer",
+      "description": "Upload a VCF file and analyze thousands of variants with smart filters",
+      "uploadVcf": "Drop your VCF file here",
+      "advancedFilters": "Advanced Filters",
+      "chromosome": "Chromosome",
+      "impact": "Impact",
+      "minScore": "Minimum Score",
+      "exportCsv": "Export CSV",
+      "analyzeAnother": "Analyze another file"
+    },
+    "drugTargetFinder": {
+      "title": "Drug Target Finder",
+      "description": "Explore druggable genes with tractability scores and pharma pipeline status",
+      "searchTarget": "Search by gene, name or indication...",
+      "tractability": "Tractability",
+      "compounds": "Compounds in Development",
+      "allCategories": "All categories",
+      "kinases": "Kinases",
+      "receptors": "Receptors",
+      "enzymes": "Enzymes"
+    },
+    "genomeComparator": {
+      "title": "Genome Comparator",
+      "description": "Compare genetic diversity across human super-populations",
+      "diversity": "Diversity",
+      "fstDistance": "Fst Distance",
+      "summary": "Summary",
+      "heterozygosity": "Heterozygosity",
+      "privateSNPs": "Private SNPs",
+      "sampleSize": "Sample Size"
+    },
+    "splicingPredictor": {
+      "title": "Splicing Predictor",
+      "description": "Visualize RNA isoforms and the impact of variants on alternative splicing",
+      "selectGene": "Select a Gene",
+      "geneStructure": "Gene Structure",
+      "isoforms": "RNA Isoforms",
+      "simulateVariant": "Simulate variant",
+      "variantEffect": "Variant Effect"
+    },
+    "agingErrorCorrector": {
+      "title": "Aging Error Corrector",
+      "description": "Explore the biological bugs of aging and current research status",
+      "correctability": "Correctability",
+      "activeTrials": "Active Trials",
+      "whatYouCanDo": "What You Can Do Today",
+      "keyGenes": "Key Genes",
+      "researchStatus": "Research Status"
+    },
+    "beneficialVariants": {
+      "title": "Beneficial Variants",
+      "description": "Discover genetically verified variants that confer health benefits",
+      "searchVariant": "Search by gene, name or effect...",
+      "evidenceLevel": "Evidence Level",
+      "frequency": "Frequency",
+      "keyStudy": "Key Study",
+      "publications": "Publications",
+      "verified": "Verified",
+      "strong": "Strong Evidence",
+      "moderate": "Moderate"
+    },
+    "futureSimulator": {
+      "title": "Future Simulator",
+      "description": "Project how genetic frequencies would change across generations",
+      "scenario": "Scenario",
+      "naturalEvolution": "Natural Evolution",
+      "positiveSelection": "Positive Selection",
+      "crisprIntervention": "CRISPR Intervention",
+      "generations": "Generations",
+      "simulateFuture": "Simulate Future",
+      "ethicalConsiderations": "Ethical Considerations",
+      "newSimulation": "New simulation"
     }
   }
 }

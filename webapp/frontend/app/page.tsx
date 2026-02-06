@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Image from 'next/image'
 import {
   Card,
   Title,
@@ -37,6 +38,13 @@ import {
   Loader2,
   FileUp,
   Download,
+  Pill,
+  Bug,
+  TreePine,
+  Scissors,
+  BookOpen,
+  Clock,
+  BarChart3,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useApiKeyStore } from '@/lib/store'
@@ -57,13 +65,23 @@ import { AncestryExplorer } from '@/components/tools/ancestry-explorer'
 import { VirtualLab } from '@/components/tools/virtual-lab'
 import { EvolutionSimulator } from '@/components/tools/evolution-simulator'
 import { GeneticDetective } from '@/components/tools/genetic-detective'
+import { CoupleCompatibility } from '@/components/tools/couple-compatibility'
+import { OrganismDesigner } from '@/components/tools/organism-designer'
+import { TreeOfLife } from '@/components/tools/tree-of-life'
+import { BatchAnalyzer } from '@/components/tools/batch-analyzer'
+import { DrugTargetFinder } from '@/components/tools/drug-target-finder'
+import { GenomeComparator } from '@/components/tools/genome-comparator'
+import { SplicingPredictor } from '@/components/tools/splicing-predictor'
+import { AgingErrorCorrector } from '@/components/tools/aging-error-corrector'
+import { BeneficialVariantsLibrary } from '@/components/tools/beneficial-variants-library'
+import { FutureSimulator } from '@/components/tools/future-simulator'
 import { FeatureRequestPlaceholder } from '@/components/feature-request-placeholder'
 
 export default function HomePage() {
   const t = useTranslations()
   const { isConfigured } = useApiKeyStore()
   const [activeTab, setActiveTab] = useState<'analyze' | 'explore' | 'batch' | 'myDna' | 'tools' | 'learn'>('myDna')
-  const [activeTool, setActiveTool] = useState<'dna' | 'superpowers' | 'diet' | 'crispr' | 'networks' | 'mindgenome' | 'aging' | 'capabilities' | 'familyrisk' | 'ancestors' | 'virtuallab' | 'evolution' | 'detective'>('dna')
+  const [activeTool, setActiveTool] = useState<'dna' | 'superpowers' | 'diet' | 'crispr' | 'networks' | 'mindgenome' | 'aging' | 'capabilities' | 'familyrisk' | 'ancestors' | 'virtuallab' | 'evolution' | 'detective' | 'couple' | 'organism' | 'treeoflife' | 'batchanalyzer' | 'drugtargets' | 'genomecomp' | 'splicing' | 'agingcorrector' | 'beneficialvariants' | 'futuresim'>('dna')
 
   return (
     <div className="min-h-screen">
@@ -72,9 +90,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              {/* DNA Logo with Pulse Animation */}
-              <div className="w-12 h-12 glass-dna rounded-xl flex items-center justify-center pulse-glow">
-                <Dna className="w-7 h-7 text-blue-500 dark:text-blue-400" />
+              {/* Logo with Pulse Animation */}
+              <div className="w-12 h-12 glass-dna rounded-xl flex items-center justify-center pulse-glow overflow-hidden">
+                <Image src="/logo-optimized.png" alt="AlphaGenome" width={40} height={40} className="object-contain" priority />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-glass">{t('header.title')}</h1>
@@ -289,6 +307,86 @@ export default function HomePage() {
               >
                 {t('tools.detective.title')}
               </Button>
+              <Button
+                variant={activeTool === 'couple' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('couple')}
+                icon={Heart}
+              >
+                {t('tools.coupleCompatibility.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'organism' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('organism')}
+                icon={Bug}
+              >
+                {t('tools.organismDesigner.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'treeoflife' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('treeoflife')}
+                icon={TreePine}
+              >
+                {t('tools.treeOfLife.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'batchanalyzer' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('batchanalyzer')}
+                icon={BarChart3}
+              >
+                {t('tools.batchAnalyzer.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'drugtargets' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('drugtargets')}
+                icon={Pill}
+              >
+                {t('tools.drugTargetFinder.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'genomecomp' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('genomecomp')}
+                icon={Globe2}
+              >
+                {t('tools.genomeComparator.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'splicing' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('splicing')}
+                icon={Scissors}
+              >
+                {t('tools.splicingPredictor.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'agingcorrector' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('agingcorrector')}
+                icon={Bug}
+              >
+                {t('tools.agingErrorCorrector.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'beneficialvariants' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('beneficialvariants')}
+                icon={BookOpen}
+              >
+                {t('tools.beneficialVariants.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'futuresim' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('futuresim')}
+                icon={Clock}
+              >
+                {t('tools.futureSimulator.title')}
+              </Button>
             </div>
 
             {/* Tool content */}
@@ -305,6 +403,16 @@ export default function HomePage() {
             {activeTool === 'virtuallab' && <VirtualLab />}
             {activeTool === 'evolution' && <EvolutionSimulator />}
             {activeTool === 'detective' && <GeneticDetective />}
+            {activeTool === 'couple' && <CoupleCompatibility />}
+            {activeTool === 'organism' && <OrganismDesigner />}
+            {activeTool === 'treeoflife' && <TreeOfLife />}
+            {activeTool === 'batchanalyzer' && <BatchAnalyzer />}
+            {activeTool === 'drugtargets' && <DrugTargetFinder />}
+            {activeTool === 'genomecomp' && <GenomeComparator />}
+            {activeTool === 'splicing' && <SplicingPredictor />}
+            {activeTool === 'agingcorrector' && <AgingErrorCorrector />}
+            {activeTool === 'beneficialvariants' && <BeneficialVariantsLibrary />}
+            {activeTool === 'futuresim' && <FutureSimulator />}
           </div>
         )}
 
@@ -1499,6 +1607,86 @@ function ToolsSection({ t, onToolSelect }: { t: any; onToolSelect: (toolId: stri
       description: t('tools.detective.description'),
       icon: Search,
       color: 'orange' as const,
+      implemented: true,
+    },
+    {
+      id: 'couple',
+      name: t('tools.coupleCompatibility.title'),
+      description: t('tools.coupleCompatibility.description'),
+      icon: Heart,
+      color: 'pink' as const,
+      implemented: true,
+    },
+    {
+      id: 'organism',
+      name: t('tools.organismDesigner.title'),
+      description: t('tools.organismDesigner.description'),
+      icon: Bug,
+      color: 'green' as const,
+      implemented: true,
+    },
+    {
+      id: 'treeoflife',
+      name: t('tools.treeOfLife.title'),
+      description: t('tools.treeOfLife.description'),
+      icon: TreePine,
+      color: 'green' as const,
+      implemented: true,
+    },
+    {
+      id: 'batchanalyzer',
+      name: t('tools.batchAnalyzer.title'),
+      description: t('tools.batchAnalyzer.description'),
+      icon: BarChart3,
+      color: 'blue' as const,
+      implemented: true,
+    },
+    {
+      id: 'drugtargets',
+      name: t('tools.drugTargetFinder.title'),
+      description: t('tools.drugTargetFinder.description'),
+      icon: Pill,
+      color: 'purple' as const,
+      implemented: true,
+    },
+    {
+      id: 'genomecomp',
+      name: t('tools.genomeComparator.title'),
+      description: t('tools.genomeComparator.description'),
+      icon: Globe2,
+      color: 'blue' as const,
+      implemented: true,
+    },
+    {
+      id: 'splicing',
+      name: t('tools.splicingPredictor.title'),
+      description: t('tools.splicingPredictor.description'),
+      icon: Scissors,
+      color: 'blue' as const,
+      implemented: true,
+    },
+    {
+      id: 'agingcorrector',
+      name: t('tools.agingErrorCorrector.title'),
+      description: t('tools.agingErrorCorrector.description'),
+      icon: Bug,
+      color: 'orange' as const,
+      implemented: true,
+    },
+    {
+      id: 'beneficialvariants',
+      name: t('tools.beneficialVariants.title'),
+      description: t('tools.beneficialVariants.description'),
+      icon: BookOpen,
+      color: 'orange' as const,
+      implemented: true,
+    },
+    {
+      id: 'futuresim',
+      name: t('tools.futureSimulator.title'),
+      description: t('tools.futureSimulator.description'),
+      icon: Clock,
+      color: 'purple' as const,
       implemented: true,
     },
   ]
