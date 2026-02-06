@@ -2,20 +2,578 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ====================================================
+   🧬 ALPHAGENOME - GLASS MORPHISM DESIGN SYSTEM
+   Inspired by CryptoGift DAO Glass Effects
+   ==================================================== */
+
+/* CSS Variables for Theme-Aware Design */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 249, 250, 251;
-  --background-end-rgb: 255, 255, 255;
+  /* Light Theme - Genomic Clean & Professional */
+  --bg-primary: 255 255 255;          /* Pure white */
+  --bg-secondary: 249 250 251;        /* Very light gray */
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --accent-dna: 59 130 246;           /* Blue - DNA color */
+  --accent-gene: 16 185 129;          /* Emerald - Gene expression */
+  --accent-variant: 139 92 246;       /* Purple - Variants */
+  --text-primary: 17 24 39;           /* Soft black */
+  --text-secondary: 107 114 128;      /* Medium gray */
+  --border-glass: rgba(226, 232, 240, 0.5);
+  --shadow-glass: rgba(0, 0, 0, 0.08);
+
+  /* Background colors */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --border: 214.3 31.8% 91.4%;
+
+  /* Glass Effects - Light */
+  --blur-subtle: blur(8px) saturate(120%);
+  --blur-medium: blur(16px) saturate(150%) contrast(110%);
+  --blur-strong: blur(24px) saturate(180%) contrast(120%) brightness(110%);
+  --blur-ultra: blur(32px) saturate(200%) contrast(130%) brightness(115%);
+}
+
+.dark {
+  /* Dark Theme - Scientific Lab Grade */
+  --bg-primary: 10 14 21;             /* Deep dark */
+  --bg-secondary: 17 24 39;           /* Slightly lighter */
+  --bg-glass: rgba(15, 23, 42, 0.88);
+  --bg-card: rgba(26, 32, 44, 0.92);
+  --accent-dna: 96 165 250;           /* Lighter blue */
+  --accent-gene: 52 211 153;          /* Lighter emerald */
+  --accent-variant: 167 139 250;      /* Lighter purple */
+  --text-primary: 255 255 255;        /* Pure white */
+  --text-secondary: 148 163 184;      /* Silver gray */
+  --border-glass: rgba(148, 163, 184, 0.2);
+  --shadow-glass: rgba(0, 0, 0, 0.4);
+
+  /* Background colors - Dark */
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --border: 217.2 32.6% 17.5%;
+
+  /* Glass Effects - Dark */
+  --blur-subtle: blur(8px) saturate(120%);
+  --blur-medium: blur(16px) saturate(150%) contrast(110%);
+  --blur-strong: blur(24px) saturate(180%) contrast(120%) brightness(110%);
+  --blur-ultra: blur(32px) saturate(200%) contrast(130%) brightness(115%);
+}
+
+/* ====================================================
+   🔮 GLASS MORPHISM BASE COMPONENTS
+   ==================================================== */
+
+/* Glass Panel - Main container */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-medium);
+  -webkit-backdrop-filter: var(--blur-medium);
+  border: 1px solid var(--border-glass);
+  border-radius: 1rem;
+  box-shadow:
+    0 8px 32px var(--shadow-glass),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  backdrop-filter: var(--blur-strong);
+  -webkit-backdrop-filter: var(--blur-strong);
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 40px var(--shadow-glass),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Glass Card - For smaller components */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: var(--blur-medium);
+  -webkit-backdrop-filter: var(--blur-medium);
+  border: 1px solid var(--border-glass);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 4px 24px var(--shadow-glass),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  backdrop-filter: var(--blur-strong);
+  -webkit-backdrop-filter: var(--blur-strong);
+  transform: translateY(-1px);
+  box-shadow:
+    0 8px 32px var(--shadow-glass),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Glass Button */
+.glass-button {
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-medium);
+  -webkit-backdrop-filter: var(--blur-medium);
+  border: 1px solid var(--border-glass);
+  border-radius: 0.5rem;
+  color: rgb(var(--text-primary));
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.glass-button:hover {
+  backdrop-filter: var(--blur-strong);
+  -webkit-backdrop-filter: var(--blur-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px var(--shadow-glass);
+}
+
+.glass-button:hover::before {
+  left: 100%;
+}
+
+.glass-button:active {
+  transform: translateY(0);
+}
+
+/* Glass Input */
+.glass-input {
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-medium);
+  -webkit-backdrop-filter: var(--blur-medium);
+  border: 1px solid var(--border-glass);
+  border-radius: 0.5rem;
+  color: rgb(var(--text-primary));
+  padding: 0.75rem 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-input:focus {
+  outline: none;
+  backdrop-filter: var(--blur-strong);
+  -webkit-backdrop-filter: var(--blur-strong);
+  border-color: rgb(var(--accent-dna) / 0.5);
+  box-shadow: 0 0 0 3px rgb(var(--accent-dna) / 0.1);
+}
+
+.glass-input::placeholder {
+  color: rgb(var(--text-secondary) / 0.7);
+}
+
+/* ====================================================
+   💎 GLASS CRYSTAL - Universal Light/Dark Effect
+   ==================================================== */
+
+.glass-crystal {
+  background: rgba(100, 130, 200, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(100, 130, 200, 0.15);
+  box-shadow:
+    0 4px 16px rgba(100, 130, 200, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-crystal:hover {
+  background: rgba(100, 130, 200, 0.12);
+  box-shadow:
+    0 8px 24px rgba(100, 130, 200, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.dark .glass-crystal {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-crystal:hover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Glass Crystal Enhanced */
+.glass-crystal-enhanced {
+  background: rgba(100, 130, 200, 0.12);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(100, 130, 200, 0.2);
+  box-shadow:
+    0 6px 20px rgba(100, 130, 200, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.dark .glass-crystal-enhanced {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ====================================================
+   🧬 DNA-THEMED GLASS EFFECTS
+   ==================================================== */
+
+/* DNA Helix Glow */
+.glass-dna {
+  background: linear-gradient(135deg,
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(139, 92, 246, 0.1) 50%,
+    rgba(16, 185, 129, 0.1) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow:
+    0 4px 24px rgba(59, 130, 246, 0.15),
+    0 0 60px rgba(139, 92, 246, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-dna {
+  background: linear-gradient(135deg,
+    rgba(96, 165, 250, 0.12) 0%,
+    rgba(167, 139, 250, 0.12) 50%,
+    rgba(52, 211, 153, 0.12) 100%
+  );
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  box-shadow:
+    0 4px 24px rgba(96, 165, 250, 0.2),
+    0 0 80px rgba(167, 139, 250, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ====================================================
+   🎭 ANIMATIONS & TRANSITIONS
+   ==================================================== */
+
+/* Spring Animation */
+@keyframes spring-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.spring-in {
+  animation: spring-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Float Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Glow */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow:
+      0 8px 32px var(--shadow-glass),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 12px 48px rgb(var(--accent-dna) / 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* DNA Helix Rotation */
+@keyframes dna-rotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.dna-rotate {
+  animation: dna-rotate 10s linear infinite;
+}
+
+/* Holographic Effect */
+@keyframes holographic {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Holographic text */
+.text-holographic {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981, #f59e0b, #3b82f6);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holographic 4s ease infinite;
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* ====================================================
+   🌈 THEME-AWARE BACKGROUNDS
+   ==================================================== */
+
+/* Light theme gradient */
+.theme-gradient-bg {
+  background: linear-gradient(135deg,
+    rgb(248 250 252) 0%,           /* slate-50 */
+    rgb(239 246 255) 25%,          /* blue-50 */
+    rgb(245 243 255) 50%,          /* violet-50 */
+    rgb(236 253 245) 75%,          /* emerald-50 */
+    rgb(248 250 252) 100%          /* slate-50 */
+  );
+}
+
+/* Dark theme gradient */
+.dark .theme-gradient-bg {
+  background: linear-gradient(135deg,
+    rgb(15 23 42) 0%,              /* slate-900 */
+    rgb(30 27 75) 25%,             /* indigo-950 */
+    rgb(46 16 101) 50%,            /* purple-950 */
+    rgb(6 78 59) 75%,              /* emerald-950 */
+    rgb(15 23 42) 100%             /* slate-900 */
+  );
+}
+
+/* ====================================================
+   🌓 DARK MODE SPECIFIC ENHANCEMENTS
+   ==================================================== */
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.dark .glass-panel:hover {
+  background: rgba(15, 23, 42, 0.85);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.dark .glass-card {
+  background: rgba(26, 32, 44, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.dark .glass-card:hover {
+  background: rgba(26, 32, 44, 0.92);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.dark .glass-button {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: rgb(255 255 255);
+}
+
+.dark .glass-button:hover {
+  background: rgba(51, 65, 85, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ====================================================
+   📝 TEXT UTILITIES
+   ==================================================== */
+
+.text-adaptive {
+  color: rgb(var(--text-primary));
+}
+
+.text-adaptive-secondary {
+  color: rgb(var(--text-secondary));
+}
+
+.text-glass {
+  color: rgb(17 24 39);
+}
+
+.dark .text-glass {
+  color: rgb(255 255 255);
+}
+
+.text-glass-secondary {
+  color: rgb(107 114 128);
+}
+
+.dark .text-glass-secondary {
+  color: rgb(148 163 184);
+}
+
+/* ====================================================
+   📱 RESPONSIVE & ACCESSIBILITY
+   ==================================================== */
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .glass-panel,
+  .glass-card {
+    backdrop-filter: var(--blur-subtle);
+    -webkit-backdrop-filter: var(--blur-subtle);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glass-panel,
+  .glass-card,
+  .glass-button {
+    transition: none;
+  }
+
+  .spring-in,
+  .float,
+  .pulse-glow,
+  .dna-rotate,
+  .shimmer::after {
+    animation: none;
+  }
+}
+
+/* ====================================================
+   🎨 UTILITY CLASSES
+   ==================================================== */
+
+/* Background utilities */
+.bg-glass { background: var(--bg-glass); }
+.bg-glass-card { background: var(--bg-card); }
+.border-glass { border-color: var(--border-glass); }
+
+/* Blur utilities */
+.backdrop-blur-subtle { backdrop-filter: var(--blur-subtle); -webkit-backdrop-filter: var(--blur-subtle); }
+.backdrop-blur-medium { backdrop-filter: var(--blur-medium); -webkit-backdrop-filter: var(--blur-medium); }
+.backdrop-blur-strong { backdrop-filter: var(--blur-strong); -webkit-backdrop-filter: var(--blur-strong); }
+.backdrop-blur-ultra { backdrop-filter: var(--blur-ultra); -webkit-backdrop-filter: var(--blur-ultra); }
+
+/* Scrollbar hide utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ====================================================
+   🌓 SMOOTH THEME TRANSITIONS
+   ==================================================== */
+
+*, *::before, *::after {
+  transition: background-color 0.3s ease,
+              border-color 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Disable transitions on page load */
+.no-transitions * {
+  transition: none !important;
+}
+
+/* ====================================================
+   📜 BASE STYLES
+   ==================================================== */
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--bg-primary));
+  color: rgb(var(--text-primary));
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Custom scrollbar */
@@ -25,17 +583,29 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: rgba(var(--bg-secondary), 0.5);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: rgba(var(--text-secondary), 0.3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: rgba(var(--text-secondary), 0.5);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
 }
 
 /* Loading spinner */
@@ -44,12 +614,8 @@ body {
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Code blocks */

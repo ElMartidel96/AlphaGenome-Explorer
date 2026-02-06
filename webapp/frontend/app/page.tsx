@@ -43,6 +43,7 @@ import { useApiKeyStore } from '@/lib/store'
 import { VariantAnalyzer } from '@/components/variant-analyzer'
 import { ApiKeySetup } from '@/components/api-key-setup'
 import { LanguageToggle } from '@/components/language-toggle'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { MyDnaPersonal } from '@/components/tools/my-dna-personal'
 import { GeneticSuperpowers } from '@/components/tools/genetic-superpowers'
 import { GeneticDiet } from '@/components/tools/genetic-diet'
@@ -65,22 +66,24 @@ export default function HomePage() {
   const [activeTool, setActiveTool] = useState<'dna' | 'superpowers' | 'diet' | 'crispr' | 'networks' | 'mindgenome' | 'aging' | 'capabilities' | 'familyrisk' | 'ancestors' | 'virtuallab' | 'evolution' | 'detective'>('dna')
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div className="min-h-screen">
+      {/* Header - Glass Morphism */}
+      <header className="glass-panel sticky top-0 z-50 mx-4 mt-4 rounded-2xl border-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Dna className="w-6 h-6 text-white" />
+              {/* DNA Logo with Pulse Animation */}
+              <div className="w-12 h-12 glass-dna rounded-xl flex items-center justify-center pulse-glow">
+                <Dna className="w-7 h-7 text-blue-500 dark:text-blue-400" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">{t('header.title')}</h1>
-                <p className="text-sm text-gray-500">{t('header.subtitle')}</p>
+                <h1 className="text-xl font-bold text-glass">{t('header.title')}</h1>
+                <p className="text-sm text-glass-secondary">{t('header.subtitle')}</p>
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
+              <ThemeToggle />
               <LanguageToggle />
 
               {isConfigured ? (
@@ -97,7 +100,7 @@ export default function HomePage() {
                 href="https://www.alphagenomedocs.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-gray-600 hover:text-blue-600 flex items-center gap-1"
+                className="text-sm text-glass-secondary hover:text-blue-500 dark:hover:text-blue-400 flex items-center gap-1 transition-colors"
               >
                 {t('header.docs')} <ExternalLink className="w-3 h-3" />
               </a>
