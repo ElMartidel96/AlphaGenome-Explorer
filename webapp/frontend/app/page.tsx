@@ -770,7 +770,7 @@ function ToolsSection({ t, onToolSelect }: { t: any; onToolSelect: (toolId: stri
                 featureName={tool.name}
                 featureDescription={tool.description}
                 featureIcon={<tool.icon className="w-6 h-6" />}
-                estimatedPhase={tool.phase}
+                estimatedPhase={'phase' in tool ? tool.phase : 'Coming Soon'}
                 color={tool.color}
               />
             )}
