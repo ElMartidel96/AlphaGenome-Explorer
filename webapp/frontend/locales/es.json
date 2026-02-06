@@ -50,6 +50,113 @@
     "learn": "Aprender",
     "tools": "Herramientas"
   },
+  "regionExplorer": {
+    "title": "Explorador de Regiones",
+    "description": "Navega cualquier region genomica y explora predicciones en diferentes tipos celulares.",
+    "inputLabel": "Region Genomica",
+    "inputPlaceholder": "chr22:36000000-36500000",
+    "inputHelp": "Formato: cromosoma:inicio-fin (ej: chr22:36000000-36500000)",
+    "exploreButton": "Explorar Region",
+    "exploring": "Explorando region...",
+    "invalidFormat": "Formato de region invalido. Usa: chr22:36000000-36500000",
+    "enterRegion": "Por favor ingresa una region genomica",
+    "browserTitle": "Navegador Genomico Interactivo",
+    "browserDesc": "Visualiza predicciones de RNA-seq, ATAC-seq, splicing y mas",
+    "selectTracks": "Selecciona Tracks a Mostrar",
+    "tracks": {
+      "rnaSeq": "Expresion RNA-seq",
+      "atacSeq": "Accesibilidad ATAC-seq",
+      "dnaseSeq": "Accesibilidad DNase-seq",
+      "splicing": "Sitios de Splicing",
+      "histones": "Modificaciones de Histonas",
+      "conservation": "Puntaje de Conservacion"
+    },
+    "noDataYet": "Ingresa una region y haz clic en Explorar para visualizar datos genomicos",
+    "regionInfo": "Informacion de la Region",
+    "length": "Longitud",
+    "basePairs": "pares de bases",
+    "genes": "Genes en la Region",
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar",
+    "resetView": "Restablecer Vista"
+  },
+  "batchAnalysis": {
+    "title": "Analisis por Lote",
+    "description": "Sube un archivo VCF para analizar multiples variantes a la vez.",
+    "dropzone": "Arrastra tu archivo VCF aqui",
+    "orBrowse": "o haz clic para explorar",
+    "maxVariants": "Maximo 10,000 variantes por archivo",
+    "supportedFormats": "Soportados: .vcf, .vcf.gz",
+    "processing": "Procesando tu archivo...",
+    "parsing": "Parseando variantes...",
+    "analyzing": "Analizando variantes ({current}/{total})...",
+    "complete": "Analisis completado!",
+    "variantsProcessed": "{count} variantes procesadas",
+    "downloadResults": "Descargar Resultados",
+    "stats": {
+      "inputFormat": "Formato de Entrada",
+      "maxVariants": "Max Variantes",
+      "exportFormat": "Formato de Exportacion"
+    },
+    "results": {
+      "summary": "Resumen del Analisis",
+      "highImpact": "Alto Impacto",
+      "moderateImpact": "Impacto Moderado",
+      "lowImpact": "Bajo Impacto",
+      "modifier": "Modificador",
+      "viewDetails": "Ver Detalles",
+      "exportAll": "Exportar Todos los Resultados"
+    },
+    "errors": {
+      "invalidFile": "Formato de archivo invalido. Por favor sube un archivo VCF.",
+      "tooManyVariants": "El archivo contiene mas de 10,000 variantes. Por favor divide tu archivo.",
+      "parseError": "Error al parsear el archivo VCF. Por favor verifica el formato.",
+      "analysisError": "Error durante el analisis. Por favor intenta de nuevo."
+    }
+  },
+  "learn": {
+    "title": "Academia de Genetica",
+    "description": "Aprende los conceptos basicos de genetica y genomica en lecciones simples e interactivas.",
+    "progress": "Tu Progreso",
+    "completedLessons": "{completed} de {total} lecciones completadas",
+    "startLearning": "Empezar a Aprender",
+    "continueLearning": "Continuar Aprendiendo",
+    "lessons": {
+      "dna": {
+        "title": "Que es el ADN?",
+        "description": "Los bloques basicos de la vida",
+        "content": "El ADN (Acido Desoxirribonucleico) es la molecula que lleva las instrucciones geneticas para todos los organismos vivos. Tiene forma de escalera retorcida llamada doble helice."
+      },
+      "variants": {
+        "title": "Variantes Geneticas",
+        "description": "Como los cambios de una letra afectan tu cuerpo",
+        "content": "Una variante genetica es un cambio en la secuencia de ADN. Pueden ser tan pequenas como un solo nucleotido (SNP) o tan grandes como cambios en cromosomas enteros."
+      },
+      "expression": {
+        "title": "Expresion Genica",
+        "description": "Como los genes se convierten en proteinas",
+        "content": "La expresion genica es el proceso por el cual la informacion de un gen se usa para crear un producto funcional, usualmente una proteina. Esto involucra transcripcion y traduccion."
+      },
+      "disease": {
+        "title": "Enfermedades y Genetica",
+        "description": "Entendiendo los factores de riesgo genetico",
+        "content": "Muchas enfermedades tienen un componente genetico. Entender tus variantes geneticas puede ayudar a evaluar tu riesgo para ciertas condiciones y guiar medidas preventivas."
+      }
+    },
+    "quiz": {
+      "title": "Quiz Rapido",
+      "checkAnswer": "Verificar Respuesta",
+      "correct": "Correcto!",
+      "incorrect": "No exactamente. Intenta de nuevo!",
+      "nextQuestion": "Siguiente Pregunta"
+    },
+    "achievements": {
+      "firstLesson": "Primeros Pasos",
+      "firstLessonDesc": "Completaste tu primera leccion",
+      "allBasics": "Graduado en Genetica",
+      "allBasicsDesc": "Completaste todas las lecciones basicas"
+    }
+  },
   "variant": {
     "title": "Analizar Variante Genetica",
     "description": "Ingresa una variante para predecir su efecto en la expresion genica, splicing y mas.",

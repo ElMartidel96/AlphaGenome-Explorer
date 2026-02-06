@@ -50,6 +50,113 @@
     "learn": "Learn",
     "tools": "Tools"
   },
+  "regionExplorer": {
+    "title": "Region Explorer",
+    "description": "Browse any genomic region and explore predictions across different cell types.",
+    "inputLabel": "Genomic Region",
+    "inputPlaceholder": "chr22:36000000-36500000",
+    "inputHelp": "Format: chromosome:start-end (e.g., chr22:36000000-36500000)",
+    "exploreButton": "Explore Region",
+    "exploring": "Exploring region...",
+    "invalidFormat": "Invalid region format. Use: chr22:36000000-36500000",
+    "enterRegion": "Please enter a genomic region",
+    "browserTitle": "Interactive Genome Browser",
+    "browserDesc": "Visualize predictions for RNA-seq, ATAC-seq, splicing, and more",
+    "selectTracks": "Select Tracks to Display",
+    "tracks": {
+      "rnaSeq": "RNA-seq Expression",
+      "atacSeq": "ATAC-seq Accessibility",
+      "dnaseSeq": "DNase-seq Accessibility",
+      "splicing": "Splice Sites",
+      "histones": "Histone Modifications",
+      "conservation": "Conservation Score"
+    },
+    "noDataYet": "Enter a region and click Explore to visualize genomic data",
+    "regionInfo": "Region Information",
+    "length": "Length",
+    "basePairs": "base pairs",
+    "genes": "Genes in Region",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "resetView": "Reset View"
+  },
+  "batchAnalysis": {
+    "title": "Batch Analysis",
+    "description": "Upload a VCF file to analyze multiple variants at once.",
+    "dropzone": "Drop your VCF file here",
+    "orBrowse": "or click to browse",
+    "maxVariants": "Maximum 10,000 variants per file",
+    "supportedFormats": "Supported: .vcf, .vcf.gz",
+    "processing": "Processing your file...",
+    "parsing": "Parsing variants...",
+    "analyzing": "Analyzing variants ({current}/{total})...",
+    "complete": "Analysis complete!",
+    "variantsProcessed": "{count} variants processed",
+    "downloadResults": "Download Results",
+    "stats": {
+      "inputFormat": "Input Format",
+      "maxVariants": "Max Variants",
+      "exportFormat": "Export Format"
+    },
+    "results": {
+      "summary": "Analysis Summary",
+      "highImpact": "High Impact",
+      "moderateImpact": "Moderate Impact",
+      "lowImpact": "Low Impact",
+      "modifier": "Modifier",
+      "viewDetails": "View Details",
+      "exportAll": "Export All Results"
+    },
+    "errors": {
+      "invalidFile": "Invalid file format. Please upload a VCF file.",
+      "tooManyVariants": "File contains more than 10,000 variants. Please split your file.",
+      "parseError": "Error parsing VCF file. Please check the format.",
+      "analysisError": "Error during analysis. Please try again."
+    }
+  },
+  "learn": {
+    "title": "Genetics Academy",
+    "description": "Learn the basics of genetics and genomics in simple, interactive lessons.",
+    "progress": "Your Progress",
+    "completedLessons": "{completed} of {total} lessons completed",
+    "startLearning": "Start Learning",
+    "continueLearning": "Continue Learning",
+    "lessons": {
+      "dna": {
+        "title": "What is DNA?",
+        "description": "The basic building blocks of life",
+        "content": "DNA (Deoxyribonucleic Acid) is the molecule that carries genetic instructions for all living organisms. It's shaped like a twisted ladder called a double helix."
+      },
+      "variants": {
+        "title": "Genetic Variants",
+        "description": "How single letter changes affect your body",
+        "content": "A genetic variant is a change in the DNA sequence. These can be as small as a single nucleotide (SNP) or as large as entire chromosome changes."
+      },
+      "expression": {
+        "title": "Gene Expression",
+        "description": "How genes become proteins",
+        "content": "Gene expression is the process by which information from a gene is used to create a functional product, usually a protein. This involves transcription and translation."
+      },
+      "disease": {
+        "title": "Disease & Genetics",
+        "description": "Understanding genetic risk factors",
+        "content": "Many diseases have a genetic component. Understanding your genetic variants can help assess your risk for certain conditions and guide preventive measures."
+      }
+    },
+    "quiz": {
+      "title": "Quick Quiz",
+      "checkAnswer": "Check Answer",
+      "correct": "Correct!",
+      "incorrect": "Not quite. Try again!",
+      "nextQuestion": "Next Question"
+    },
+    "achievements": {
+      "firstLesson": "First Steps",
+      "firstLessonDesc": "Completed your first lesson",
+      "allBasics": "Genetics Graduate",
+      "allBasicsDesc": "Completed all basic lessons"
+    }
+  },
   "variant": {
     "title": "Analyze Genetic Variant",
     "description": "Enter a variant to predict its effect on gene expression, splicing, and more.",
