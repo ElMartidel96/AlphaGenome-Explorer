@@ -92,7 +92,8 @@ export default function HomePage() {
             <div className="flex items-center space-x-3">
               {/* Logo with Pulse Animation */}
               <div className="w-12 h-12 glass-dna rounded-xl flex items-center justify-center pulse-glow overflow-hidden">
-                <Image src="/logo-optimized.png" alt="AlphaGenome" width={40} height={40} className="object-contain" priority />
+                <Image src="/logo-dark-optimized.png" alt="AlphaGenome" width={40} height={40} className="hidden dark:block object-contain" priority />
+                <Image src="/logo-light-optimized.png" alt="AlphaGenome" width={40} height={40} className="block dark:hidden object-contain" priority />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-glass">{t('header.title')}</h1>
@@ -466,7 +467,7 @@ function WelcomeCard({ t }: { t: any }) {
   return (
     <Card>
       <div className="text-center py-12">
-        <Key className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+        <Key className="w-12 h-12 text-muted mx-auto mb-4" />
         <Title>{t('apiKey.title')}</Title>
         <Text className="mt-2 max-w-md mx-auto">
           {t('apiKey.description')}
@@ -1712,8 +1713,28 @@ function ToolsSection({ t, onToolSelect }: { t: any; onToolSelect: (toolId: stri
                 onClick={() => onToolSelect(tool.id)}
               >
                 <div className="flex items-start gap-3">
-                  <div className={`w-10 h-10 bg-${tool.color}-100 dark:bg-${tool.color}-900/30 rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    <tool.icon className={`w-5 h-5 text-${tool.color}-600 dark:text-${tool.color}-400`} />
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                    ({
+                      blue: 'bg-blue-100 dark:bg-blue-900/30',
+                      purple: 'bg-purple-100 dark:bg-purple-900/30',
+                      green: 'bg-green-100 dark:bg-green-900/30',
+                      orange: 'bg-orange-100 dark:bg-orange-900/30',
+                      pink: 'bg-pink-100 dark:bg-pink-900/30',
+                      cyan: 'bg-cyan-100 dark:bg-cyan-900/30',
+                      red: 'bg-red-100 dark:bg-red-900/30',
+                    } as Record<string, string>)[tool.color] || 'bg-blue-100 dark:bg-blue-900/30'
+                  }`}>
+                    <tool.icon className={`w-5 h-5 ${
+                      ({
+                        blue: 'text-blue-600 dark:text-blue-400',
+                        purple: 'text-purple-600 dark:text-purple-400',
+                        green: 'text-green-600 dark:text-green-400',
+                        orange: 'text-orange-600 dark:text-orange-400',
+                        pink: 'text-pink-600 dark:text-pink-400',
+                        cyan: 'text-cyan-600 dark:text-cyan-400',
+                        red: 'text-red-600 dark:text-red-400',
+                      } as Record<string, string>)[tool.color] || 'text-blue-600 dark:text-blue-400'
+                    }`} />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">

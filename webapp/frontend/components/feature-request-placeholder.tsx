@@ -83,19 +83,19 @@ export function FeatureRequestPlaceholder({
   }
 
   const colorClasses = {
-    blue: 'from-blue-50 to-indigo-50 border-blue-200',
-    purple: 'from-purple-50 to-pink-50 border-purple-200',
-    green: 'from-green-50 to-teal-50 border-success',
-    orange: 'from-orange-50 to-amber-50 border-orange-200',
-    pink: 'from-pink-50 to-rose-50 border-pink-200',
+    blue: 'from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border-blue-200 dark:border-blue-800',
+    purple: 'from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-purple-200 dark:border-purple-800',
+    green: 'from-green-50 to-teal-50 dark:from-green-950/30 dark:to-teal-950/30 border-success',
+    orange: 'from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 border-orange-200 dark:border-orange-800',
+    pink: 'from-pink-50 to-rose-50 dark:from-pink-950/30 dark:to-rose-950/30 border-pink-200 dark:border-pink-800',
   }
 
   const iconColorClasses = {
-    blue: 'text-blue-500 bg-blue-100',
-    purple: 'text-purple-500 bg-purple-100',
-    green: 'text-green-500 bg-green-100',
-    orange: 'text-orange-500 bg-orange-100',
-    pink: 'text-pink-500 bg-pink-100',
+    blue: 'text-blue-500 bg-blue-100 dark:bg-blue-900/30',
+    purple: 'text-purple-500 bg-purple-100 dark:bg-purple-900/30',
+    green: 'text-green-500 bg-green-100 dark:bg-green-900/30',
+    orange: 'text-orange-500 bg-orange-100 dark:bg-orange-900/30',
+    pink: 'text-pink-500 bg-pink-100 dark:bg-pink-900/30',
   }
 
   return (
@@ -115,13 +115,13 @@ export function FeatureRequestPlaceholder({
         {/* Status Badge */}
         <div className="flex items-center justify-center gap-2 mt-4">
           <Clock className="w-4 h-4 text-amber-500" />
-          <span className="text-sm font-medium text-amber-700 bg-amber-100 px-3 py-1 rounded-full">
+          <span className="text-sm font-medium text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-900/30 px-3 py-1 rounded-full">
             En desarrollo - {estimatedPhase}
           </span>
         </div>
 
         {/* Message */}
-        <div className="mt-6 p-4 bg-white/70 rounded-xl max-w-lg mx-auto">
+        <div className="mt-6 p-4 bg-white/70 dark:bg-slate-800/70 rounded-xl max-w-lg mx-auto">
           <div className="flex items-start gap-3">
             <Heart className="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5" />
             <div className="text-left">
@@ -168,11 +168,11 @@ export function FeatureRequestPlaceholder({
           </form>
         ) : (
           <div className="mt-6 p-4 bg-success-soft border border-success rounded-xl max-w-md mx-auto">
-            <div className="flex items-center gap-3 text-green-700">
+            <div className="flex items-center gap-3 text-green-700 dark:text-green-300">
               <CheckCircle className="w-6 h-6" />
               <div className="text-left">
                 <p className="font-medium">Solicitud registrada!</p>
-                <p className="text-sm text-green-600">
+                <p className="text-sm text-green-600 dark:text-green-400">
                   Te enviaremos un email cuando esta funcionalidad este lista.
                 </p>
               </div>
@@ -192,7 +192,7 @@ export function FeatureRequestPlaceholder({
           </button>
 
           {showCommunity && (
-            <div className="mt-4 p-4 bg-white/80 rounded-xl max-w-lg mx-auto animate-in fade-in slide-in-from-top-2 duration-300">
+            <div className="mt-4 p-4 bg-white/80 dark:bg-slate-800/80 rounded-xl max-w-lg mx-auto animate-in fade-in slide-in-from-top-2 duration-300">
               <div className="flex items-start gap-3">
                 <Code className="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" />
                 <div className="text-left">

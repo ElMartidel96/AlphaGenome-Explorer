@@ -16,8 +16,8 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <div className="flex items-center space-x-1.5 px-2 py-1 rounded-lg glass-button">
-        <Sun size={14} className="text-amber-500" />
-        <span className="text-xs font-medium text-gray-600 dark:text-gray-300">Light</span>
+        <Moon size={14} className="text-blue-400" />
+        <span className="text-xs font-medium text-body">Dark</span>
       </div>
     )
   }
@@ -61,7 +61,7 @@ export function ThemeToggle() {
         aria-label="Toggle theme"
       >
         {getIcon()}
-        <span className="text-xs font-medium text-gray-700 dark:text-gray-200">{getLabel()}</span>
+        <span className="text-xs font-medium text-body">{getLabel()}</span>
       </button>
 
       {/* Dropdown Menu */}
