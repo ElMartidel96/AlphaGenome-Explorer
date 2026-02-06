@@ -342,7 +342,7 @@ export function CapabilitiesOptimizer() {
           <Card key={category} className="p-3">
             <div className="flex items-center gap-2 mb-2">
               <Icon className={`w-4 h-4 text-${color}-500`} />
-              <span className="text-xs font-medium text-gray-600">{label}</span>
+              <span className="text-xs font-medium text-body">{label}</span>
             </div>
             <p className={`text-2xl font-bold text-${color}-600`}>{score}</p>
             <ProgressBar value={score} color={color as any} className="mt-2" />
@@ -351,7 +351,7 @@ export function CapabilitiesOptimizer() {
       </div>
 
       {/* Navigation */}
-      <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
+      <div className="flex gap-2 p-1 bg-surface-muted rounded-lg">
         {[
           { id: 'profile', label: 'Cognitive Profile', icon: Brain },
           { id: 'program', label: 'Weekly Program', icon: BookOpen },
@@ -364,7 +364,7 @@ export function CapabilitiesOptimizer() {
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center ${
               activeTab === tab.id
                 ? 'bg-white shadow text-blue-700'
-                : 'text-gray-600 hover:text-gray-800'
+                : 'text-body hover:text-title'
             }`}
           >
             <tab.icon className="w-4 h-4" />
@@ -404,26 +404,26 @@ export function CapabilitiesOptimizer() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-gray-800">{gene.symbol}</p>
+                        <p className="font-semibold text-title">{gene.symbol}</p>
                         <Badge color={gene.strength ? 'green' : 'yellow'} size="xs">
                           {gene.strength ? 'Strength' : 'Opportunity'}
                         </Badge>
                       </div>
-                      <p className="text-sm text-gray-500">{gene.trait}</p>
+                      <p className="text-sm text-muted">{gene.trait}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4">
                     <div className="text-right">
-                      <p className="text-2xl font-bold text-gray-800">{gene.score}</p>
+                      <p className="text-2xl font-bold text-title">{gene.score}</p>
                     </div>
-                    {isExpanded ? <ChevronDown className="w-5 h-5 text-gray-400" /> : <ChevronRight className="w-5 h-5 text-gray-400" />}
+                    {isExpanded ? <ChevronDown className="w-5 h-5 text-subtle" /> : <ChevronRight className="w-5 h-5 text-subtle" />}
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <p className="text-sm text-gray-600">{gene.description}</p>
+                  <div className="mt-4 pt-4 border-t border-adaptive">
+                    <p className="text-sm text-body">{gene.description}</p>
                   </div>
                 )}
               </Card>
@@ -431,7 +431,7 @@ export function CapabilitiesOptimizer() {
           })}
 
           {/* Disclaimer */}
-          <Card className="bg-blue-50 border-blue-200">
+          <Card className="bg-info-soft border-info">
             <div className="flex items-start gap-3">
               <Info className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
               <div>
@@ -467,11 +467,11 @@ export function CapabilitiesOptimizer() {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-gray-600" />
+                    <div className="w-12 h-12 bg-surface-muted rounded-xl flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-body" />
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-800">{intervention.name}</p>
+                      <p className="font-semibold text-title">{intervention.name}</p>
                       <div className="flex items-center gap-2 mt-1">
                         <Badge color="gray" size="xs">{intervention.duration}</Badge>
                         <Badge color="gray" size="xs">{intervention.frequency}</Badge>
@@ -484,18 +484,18 @@ export function CapabilitiesOptimizer() {
                       </div>
                     </div>
                   </div>
-                  {isSelected ? <ChevronDown className="w-5 h-5 text-gray-400" /> : <ChevronRight className="w-5 h-5 text-gray-400" />}
+                  {isSelected ? <ChevronDown className="w-5 h-5 text-subtle" /> : <ChevronRight className="w-5 h-5 text-subtle" />}
                 </div>
 
                 {isSelected && (
-                  <div className="mt-4 pt-4 border-t border-gray-200 space-y-3">
-                    <div className="p-3 bg-green-50 rounded-lg">
+                  <div className="mt-4 pt-4 border-t border-adaptive space-y-3">
+                    <div className="p-3 bg-success-soft rounded-lg">
                       <p className="text-xs font-medium text-green-700 uppercase mb-1">Expected Impact</p>
-                      <p className="text-sm text-gray-700">{intervention.impact}</p>
+                      <p className="text-sm text-body">{intervention.impact}</p>
                     </div>
 
                     <div>
-                      <p className="text-xs font-medium text-gray-500 uppercase mb-2">Related Genes</p>
+                      <p className="text-xs font-medium text-muted uppercase mb-2">Related Genes</p>
                       <div className="flex gap-2">
                         {intervention.relatedGenes.map(gene => (
                           <Badge key={gene} color="purple" size="xs">{gene}</Badge>
@@ -531,13 +531,13 @@ export function CapabilitiesOptimizer() {
                       test.type === 'focus' ? 'bg-blue-100' :
                       test.type === 'memory' ? 'bg-purple-100' : 'bg-orange-100'
                     }`}>
-                      {test.type === 'focus' && <Target className="w-6 h-6 text-blue-600" />}
-                      {test.type === 'memory' && <Brain className="w-6 h-6 text-purple-600" />}
+                      {test.type === 'focus' && <Target className="w-6 h-6 text-info" />}
+                      {test.type === 'memory' && <Brain className="w-6 h-6 text-accent" />}
                       {test.type === 'processing' && <Zap className="w-6 h-6 text-orange-600" />}
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-800">{test.name}</p>
-                      <p className="text-sm text-gray-500">{test.description}</p>
+                      <p className="font-semibold text-title">{test.name}</p>
+                      <p className="text-sm text-muted">{test.description}</p>
                       <Badge color="gray" size="xs" className="mt-1">
                         <Clock className="w-3 h-3 inline mr-1" />{test.duration}
                       </Badge>
@@ -547,8 +547,8 @@ export function CapabilitiesOptimizer() {
                   <div className="flex items-center gap-3">
                     {testScore && testInProgress === null && (
                       <div className="text-right">
-                        <p className="text-xl font-bold text-gray-800">{testScore}</p>
-                        <p className="text-xs text-gray-500">Last score</p>
+                        <p className="text-xl font-bold text-title">{testScore}</p>
+                        <p className="text-xs text-muted">Last score</p>
                       </div>
                     )}
                     <Button
@@ -595,7 +595,7 @@ export function CapabilitiesOptimizer() {
                       title={`Energy: ${day.energy}`}
                     />
                   </div>
-                  <span className="text-xs text-gray-500">{day.day}</span>
+                  <span className="text-xs text-muted">{day.day}</span>
                 </div>
               ))}
             </div>
@@ -604,15 +604,15 @@ export function CapabilitiesOptimizer() {
             <div className="flex justify-center gap-4 mt-4">
               <div className="flex items-center gap-1">
                 <div className="w-3 h-3 bg-blue-200 rounded" />
-                <span className="text-xs text-gray-500">Focus</span>
+                <span className="text-xs text-muted">Focus</span>
               </div>
               <div className="flex items-center gap-1">
                 <div className="w-3 h-3 bg-purple-200 rounded" />
-                <span className="text-xs text-gray-500">Memory</span>
+                <span className="text-xs text-muted">Memory</span>
               </div>
               <div className="flex items-center gap-1">
                 <div className="w-3 h-3 bg-green-200 rounded" />
-                <span className="text-xs text-gray-500">Energy</span>
+                <span className="text-xs text-muted">Energy</span>
               </div>
             </div>
           </Card>
@@ -629,25 +629,25 @@ export function CapabilitiesOptimizer() {
                     key={achievement.id}
                     className={`p-4 rounded-xl border-2 ${
                       achievement.unlocked
-                        ? 'border-yellow-300 bg-yellow-50'
-                        : 'border-gray-200 bg-gray-50 opacity-60'
+                        ? 'border-yellow-300 bg-warning-soft'
+                        : 'border-adaptive bg-surface-soft opacity-60'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                        achievement.unlocked ? 'bg-yellow-400 text-white' : 'bg-gray-300 text-gray-500'
+                        achievement.unlocked ? 'bg-yellow-400 text-white' : 'bg-gray-300 text-muted'
                       }`}>
                         <Icon className="w-5 h-5" />
                       </div>
                       <div>
-                        <p className="font-medium text-gray-800">{achievement.name}</p>
-                        <p className="text-xs text-gray-500">{achievement.description}</p>
+                        <p className="font-medium text-title">{achievement.name}</p>
+                        <p className="text-xs text-muted">{achievement.description}</p>
                       </div>
                     </div>
                     {!achievement.unlocked && (
                       <div className="mt-3">
                         <ProgressBar value={(achievement.progress / achievement.target) * 100} color="gray" />
-                        <p className="text-xs text-gray-500 mt-1">{achievement.progress}/{achievement.target}</p>
+                        <p className="text-xs text-muted mt-1">{achievement.progress}/{achievement.target}</p>
                       </div>
                     )}
                   </div>

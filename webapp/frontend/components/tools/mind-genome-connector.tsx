@@ -315,8 +315,8 @@ export function MindGenomeConnector() {
   }) => (
     <div className="space-y-2">
       <div className="flex items-center gap-2">
-        <Icon className="w-4 h-4 text-gray-500" />
-        <span className="text-sm font-medium text-gray-700">{label}</span>
+        <Icon className="w-4 h-4 text-muted" />
+        <span className="text-sm font-medium text-body">{label}</span>
       </div>
       <div className="flex gap-2">
         {[1, 2, 3, 4, 5].map(n => (
@@ -325,8 +325,8 @@ export function MindGenomeConnector() {
             onClick={() => onChange(n)}
             className={`w-10 h-10 rounded-lg font-medium transition-all ${
               value === n
-                ? 'bg-purple-500 text-white scale-110'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-accent-soft0 text-white scale-110'
+                : 'bg-surface-muted text-body hover:bg-gray-200'
             }`}
           >
             {n}
@@ -361,7 +361,7 @@ export function MindGenomeConnector() {
       </Card>
 
       {/* Navigation */}
-      <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
+      <div className="flex gap-2 p-1 bg-surface-muted rounded-lg">
         {[
           { id: 'checkin', label: 'Daily Check-in', icon: CheckCircle },
           { id: 'profile', label: 'Neurogenic Profile', icon: Brain },
@@ -374,7 +374,7 @@ export function MindGenomeConnector() {
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center ${
               activeSection === tab.id
                 ? 'bg-white shadow text-purple-700'
-                : 'text-gray-600 hover:text-gray-800'
+                : 'text-body hover:text-title'
             }`}
           >
             <tab.icon className="w-4 h-4" />
@@ -468,18 +468,18 @@ export function MindGenomeConnector() {
                   <div className="flex items-center gap-4">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                       gene.status === 'strength' ? 'bg-green-100' :
-                      gene.status === 'opportunity' ? 'bg-amber-100' : 'bg-gray-100'
+                      gene.status === 'opportunity' ? 'bg-amber-100' : 'bg-surface-muted'
                     }`}>
                       <span className={`text-lg font-bold ${
-                        gene.status === 'strength' ? 'text-green-600' :
-                        gene.status === 'opportunity' ? 'text-amber-600' : 'text-gray-600'
+                        gene.status === 'strength' ? 'text-success' :
+                        gene.status === 'opportunity' ? 'text-amber-600' : 'text-body'
                       }`}>
                         {gene.symbol.slice(0, 2)}
                       </span>
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-gray-800">{gene.symbol}</p>
+                        <p className="font-semibold text-title">{gene.symbol}</p>
                         <Badge
                           color={gene.status === 'strength' ? 'green' : gene.status === 'opportunity' ? 'yellow' : 'gray'}
                           size="xs"
@@ -487,29 +487,29 @@ export function MindGenomeConnector() {
                           {gene.status}
                         </Badge>
                       </div>
-                      <p className="text-sm text-gray-500">{gene.trait}</p>
+                      <p className="text-sm text-muted">{gene.trait}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4">
                     <div className="text-right">
-                      <p className="text-2xl font-bold text-gray-800">{gene.score}</p>
-                      <p className="text-xs text-gray-500">score</p>
+                      <p className="text-2xl font-bold text-title">{gene.score}</p>
+                      <p className="text-xs text-muted">score</p>
                     </div>
-                    {isExpanded ? <ChevronDown className="w-5 h-5 text-gray-400" /> : <ChevronRight className="w-5 h-5 text-gray-400" />}
+                    {isExpanded ? <ChevronDown className="w-5 h-5 text-subtle" /> : <ChevronRight className="w-5 h-5 text-subtle" />}
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className="mt-4 pt-4 border-t border-gray-200 space-y-4">
-                    <p className="text-sm text-gray-600">{gene.description}</p>
+                  <div className="mt-4 pt-4 border-t border-adaptive space-y-4">
+                    <p className="text-sm text-body">{gene.description}</p>
 
-                    <div className="p-3 bg-purple-50 rounded-lg">
+                    <div className="p-3 bg-accent-soft rounded-lg">
                       <div className="flex items-center gap-2 mb-2">
                         <Info className="w-4 h-4 text-purple-500" />
                         <p className="text-xs font-medium text-purple-700 uppercase">The Science</p>
                       </div>
-                      <p className="text-sm text-gray-600">{gene.science}</p>
+                      <p className="text-sm text-body">{gene.science}</p>
                     </div>
                   </div>
                 )}
@@ -532,13 +532,13 @@ export function MindGenomeConnector() {
             const CategoryIcon = category.icon
 
             return (
-              <Card key={habit.id} className={habit.completed ? 'bg-green-50 border-green-200' : ''}>
+              <Card key={habit.id} className={habit.completed ? 'bg-success-soft border-success' : ''}>
                 <div className="flex items-center gap-4">
                   <button
                     onClick={() => toggleHabit(habit.id)}
                     className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
                       habit.completed
-                        ? 'bg-green-500 text-white'
+                        ? 'bg-success-soft0 text-white'
                         : `bg-${category.color}-100 text-${category.color}-600 hover:scale-110`
                     }`}
                   >
@@ -551,12 +551,12 @@ export function MindGenomeConnector() {
 
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <p className={`font-medium ${habit.completed ? 'text-green-800 line-through' : 'text-gray-800'}`}>
+                      <p className={`font-medium ${habit.completed ? 'text-green-800 line-through' : 'text-title'}`}>
                         {habit.name}
                       </p>
                       <Badge color="gray" size="xs">{habit.duration}</Badge>
                     </div>
-                    <p className="text-sm text-gray-500">{habit.benefit}</p>
+                    <p className="text-sm text-muted">{habit.benefit}</p>
                     <div className="flex items-center gap-2 mt-1">
                       <Badge color="purple" size="xs">{habit.relatedGene}</Badge>
                       {habit.streak > 0 && (
@@ -602,7 +602,7 @@ export function MindGenomeConnector() {
                         title={`Energy: ${day.energy}`}
                       />
                     </div>
-                    <span className="text-xs text-gray-500">{day.day}</span>
+                    <span className="text-xs text-muted">{day.day}</span>
                   </div>
                 ))}
               </div>
@@ -611,15 +611,15 @@ export function MindGenomeConnector() {
               <div className="flex justify-center gap-4">
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 bg-purple-200 rounded" />
-                  <span className="text-xs text-gray-500">Focus</span>
+                  <span className="text-xs text-muted">Focus</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 bg-blue-200 rounded" />
-                  <span className="text-xs text-gray-500">Sleep</span>
+                  <span className="text-xs text-muted">Sleep</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 bg-green-200 rounded" />
-                  <span className="text-xs text-gray-500">Energy</span>
+                  <span className="text-xs text-muted">Energy</span>
                 </div>
               </div>
             </div>
@@ -637,25 +637,25 @@ export function MindGenomeConnector() {
                     key={achievement.id}
                     className={`p-4 rounded-xl border-2 ${
                       achievement.unlocked
-                        ? 'border-yellow-300 bg-yellow-50'
-                        : 'border-gray-200 bg-gray-50 opacity-60'
+                        ? 'border-yellow-300 bg-warning-soft'
+                        : 'border-adaptive bg-surface-soft opacity-60'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                        achievement.unlocked ? 'bg-yellow-400 text-white' : 'bg-gray-300 text-gray-500'
+                        achievement.unlocked ? 'bg-yellow-400 text-white' : 'bg-gray-300 text-muted'
                       }`}>
                         <Icon className="w-5 h-5" />
                       </div>
                       <div>
-                        <p className="font-medium text-gray-800">{achievement.name}</p>
-                        <p className="text-xs text-gray-500">{achievement.description}</p>
+                        <p className="font-medium text-title">{achievement.name}</p>
+                        <p className="text-xs text-muted">{achievement.description}</p>
                       </div>
                     </div>
                     {!achievement.unlocked && (
                       <div className="mt-3">
                         <ProgressBar value={(achievement.progress / achievement.target) * 100} color="gray" />
-                        <p className="text-xs text-gray-500 mt-1">{achievement.progress}/{achievement.target}</p>
+                        <p className="text-xs text-muted mt-1">{achievement.progress}/{achievement.target}</p>
                       </div>
                     )}
                   </div>

@@ -356,7 +356,7 @@ export function AncestryExplorer() {
                     <text x="80" y="90" textAnchor="middle" fontSize="8" fill="#666">Americas</text>
                   </svg>
                 </div>
-                <p className="text-xs text-gray-500 mt-2 text-center">
+                <p className="text-xs text-muted mt-2 text-center">
                   {isSpanish
                     ? 'Visualizacion simplificada - Haz clic para ver migraciones'
                     : 'Simplified visualization - Click to show migrations'}
@@ -374,7 +374,7 @@ export function AncestryExplorer() {
               {DEMO_ANCESTRY.map(region => (
                 <div key={region.id} className="space-y-2">
                   <div
-                    className="flex items-center justify-between cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
+                    className="flex items-center justify-between cursor-pointer hover:bg-surface-soft p-2 rounded-lg transition-colors"
                     onClick={() => setExpandedRegion(expandedRegion === region.id ? null : region.id)}
                   >
                     <div className="flex items-center gap-3">
@@ -382,16 +382,16 @@ export function AncestryExplorer() {
                         className="w-4 h-4 rounded-full"
                         style={{ backgroundColor: region.color }}
                       />
-                      <span className="font-medium text-gray-800">
+                      <span className="font-medium text-title">
                         {isSpanish ? region.nameEs : region.name}
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="font-bold text-gray-800">{region.percentage}%</span>
+                      <span className="font-bold text-title">{region.percentage}%</span>
                       {expandedRegion === region.id ? (
-                        <ChevronUp className="w-4 h-4 text-gray-400" />
+                        <ChevronUp className="w-4 h-4 text-subtle" />
                       ) : (
-                        <ChevronDown className="w-4 h-4 text-gray-400" />
+                        <ChevronDown className="w-4 h-4 text-subtle" />
                       )}
                     </div>
                   </div>
@@ -404,22 +404,22 @@ export function AncestryExplorer() {
                       <div className="space-y-2">
                         {region.subregions.map((sub, idx) => (
                           <div key={idx} className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600">
+                            <span className="text-body">
                               {isSpanish ? sub.nameEs : sub.name}
                             </span>
-                            <span className="text-gray-800 font-medium">{sub.percentage}%</span>
+                            <span className="text-title font-medium">{sub.percentage}%</span>
                           </div>
                         ))}
                       </div>
 
                       {/* Description */}
-                      <p className="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
+                      <p className="text-sm text-body bg-surface-soft p-3 rounded-lg">
                         {isSpanish ? region.descriptionEs : region.description}
                       </p>
 
                       {/* Traits */}
                       <div>
-                        <p className="text-sm font-medium text-gray-700 mb-2">
+                        <p className="text-sm font-medium text-body mb-2">
                           {isSpanish ? 'Rasgos Asociados:' : 'Associated Traits:'}
                         </p>
                         <div className="flex flex-wrap gap-2">
@@ -462,14 +462,14 @@ export function AncestryExplorer() {
                     <div className="flex items-center gap-2 mb-2">
                       <Badge color="blue">{migration.years}</Badge>
                     </div>
-                    <div className="flex items-center gap-2 text-lg font-semibold text-gray-800 mb-2">
+                    <div className="flex items-center gap-2 text-lg font-semibold text-title mb-2">
                       <MapPin className="w-5 h-5 text-blue-500" />
                       <span>{migration.from}</span>
-                      <ChevronRight className="w-5 h-5 text-gray-400" />
+                      <ChevronRight className="w-5 h-5 text-subtle" />
                       <MapPin className="w-5 h-5 text-green-500" />
                       <span>{migration.to}</span>
                     </div>
-                    <p className="text-gray-600">
+                    <p className="text-body">
                       {isSpanish ? migration.descriptionEs : migration.description}
                     </p>
                   </div>
@@ -483,9 +483,9 @@ export function AncestryExplorer() {
       {/* Haplogroups Tab */}
       {activeTab === 'haplogroups' && (
         <div className="space-y-6">
-          <Card className="bg-blue-50">
+          <Card className="bg-info-soft">
             <div className="flex items-start gap-3">
-              <Info className="w-5 h-5 text-blue-600 mt-0.5" />
+              <Info className="w-5 h-5 text-info mt-0.5" />
               <div>
                 <p className="font-medium text-blue-800">
                   {isSpanish ? '¿Que son los haplogrupos?' : 'What are haplogroups?'}
@@ -502,12 +502,12 @@ export function AncestryExplorer() {
           <Grid numItems={1} numItemsSm={2} className="gap-6">
             {DEMO_HAPLOGROUPS.map((haplo, idx) => (
               <Col key={idx}>
-                <Card className={`h-full ${haplo.type === 'maternal' ? 'bg-pink-50' : 'bg-blue-50'}`}>
+                <Card className={`h-full ${haplo.type === 'maternal' ? 'bg-pink-soft' : 'bg-info-soft'}`}>
                   <div className="flex items-center gap-3 mb-4">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
                       haplo.type === 'maternal' ? 'bg-pink-200' : 'bg-blue-200'
                     }`}>
-                      <Dna className={`w-6 h-6 ${haplo.type === 'maternal' ? 'text-pink-600' : 'text-blue-600'}`} />
+                      <Dna className={`w-6 h-6 ${haplo.type === 'maternal' ? 'text-pink-600' : 'text-info'}`} />
                     </div>
                     <div>
                       <Badge color={haplo.type === 'maternal' ? 'pink' : 'blue'}>
@@ -516,36 +516,36 @@ export function AncestryExplorer() {
                           : (isSpanish ? 'Linea Paterna' : 'Paternal Line')
                         }
                       </Badge>
-                      <p className="text-2xl font-bold text-gray-800 mt-1">{haplo.name}</p>
+                      <p className="text-2xl font-bold text-title mt-1">{haplo.name}</p>
                     </div>
                   </div>
 
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 text-sm">
-                      <MapPin className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-600">
+                      <MapPin className="w-4 h-4 text-subtle" />
+                      <span className="text-body">
                         {isSpanish ? 'Origen:' : 'Origin:'}{' '}
-                        <span className="font-medium text-gray-800">
+                        <span className="font-medium text-title">
                           {isSpanish ? haplo.originEs : haplo.origin}
                         </span>
                       </span>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <Clock className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-600">
+                      <Clock className="w-4 h-4 text-subtle" />
+                      <span className="text-body">
                         {isSpanish ? 'Edad:' : 'Age:'}{' '}
-                        <span className="font-medium text-gray-800">{haplo.age}</span>
+                        <span className="font-medium text-title">{haplo.age}</span>
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-sm text-gray-600 mt-4 p-3 bg-white/50 rounded-lg">
+                  <p className="text-sm text-body mt-4 p-3 bg-white/50 rounded-lg">
                     {isSpanish ? haplo.descriptionEs : haplo.description}
                   </p>
 
                   {haplo.famousMembers && (
                     <div className="mt-4">
-                      <p className="text-sm font-medium text-gray-700 mb-2">
+                      <p className="text-sm font-medium text-body mb-2">
                         {isSpanish ? 'Miembros Famosos:' : 'Famous Members:'}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -590,7 +590,7 @@ export function AncestryExplorer() {
               <Card className="h-full">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-muted">
                       {isSpanish ? 'ADN Neandertal' : 'Neanderthal DNA'}
                     </p>
                     <p className="text-4xl font-bold text-amber-600">{ANCIENT_DNA.neanderthal}%</p>
@@ -600,7 +600,7 @@ export function AncestryExplorer() {
                   </div>
                 </div>
                 <ProgressBar value={ANCIENT_DNA.neanderthal * 20} color="amber" />
-                <p className="text-sm text-gray-600 mt-4">
+                <p className="text-sm text-body mt-4">
                   {isSpanish
                     ? 'Los Neandertales vivieron en Europa y Asia occidental hace 400,000-40,000 anos. Tu ADN Neandertal puede influir en tu sistema inmune, piel y cabello.'
                     : 'Neanderthals lived in Europe and western Asia from 400,000-40,000 years ago. Your Neanderthal DNA may influence your immune system, skin, and hair.'}
@@ -629,23 +629,23 @@ export function AncestryExplorer() {
               <Card className="h-full">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-muted">
                       {isSpanish ? 'ADN Denisovano' : 'Denisovan DNA'}
                     </p>
-                    <p className="text-4xl font-bold text-purple-600">{ANCIENT_DNA.denisovan}%</p>
+                    <p className="text-4xl font-bold text-accent">{ANCIENT_DNA.denisovan}%</p>
                   </div>
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Users className="w-8 h-8 text-purple-600" />
+                    <Users className="w-8 h-8 text-accent" />
                   </div>
                 </div>
                 <ProgressBar value={ANCIENT_DNA.denisovan * 200} color="purple" />
-                <p className="text-sm text-gray-600 mt-4">
+                <p className="text-sm text-body mt-4">
                   {isSpanish
                     ? 'Los Denisovanos son primos misteriosos de los Neandertales, conocidos principalmente por ADN encontrado en una cueva en Siberia. Dejaron mas huella genetica en poblaciones asiaticas y oceanicas.'
                     : 'Denisovans are mysterious cousins of Neanderthals, known mainly from DNA found in a Siberian cave. They left more genetic imprint in Asian and Oceanian populations.'}
                 </p>
 
-                <div className="mt-4 p-3 bg-purple-50 rounded-lg">
+                <div className="mt-4 p-3 bg-accent-soft rounded-lg">
                   <p className="text-sm font-medium text-purple-800 mb-2">
                     {isSpanish ? 'Posibles rasgos heredados:' : 'Possible inherited traits:'}
                   </p>
@@ -671,7 +671,7 @@ export function AncestryExplorer() {
             <div className="space-y-4">
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-body">
                     {isSpanish ? 'Promedio europeo' : 'European average'}
                   </span>
                   <span className="text-sm font-medium">2.0% Neanderthal</span>
@@ -680,14 +680,14 @@ export function AncestryExplorer() {
               </div>
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-body">
                     {isSpanish ? 'Tu resultado' : 'Your result'}
                   </span>
                   <span className="text-sm font-medium text-amber-600">{ANCIENT_DNA.neanderthal}% Neanderthal</span>
                 </div>
                 <ProgressBar value={46} color="amber" className="h-2" />
               </div>
-              <p className="text-sm text-gray-500 text-center mt-4">
+              <p className="text-sm text-muted text-center mt-4">
                 {isSpanish
                   ? `Tu ADN Neandertal esta ${ANCIENT_DNA.neanderthal > 2.0 ? 'por encima' : 'cerca'} del promedio europeo`
                   : `Your Neanderthal DNA is ${ANCIENT_DNA.neanderthal > 2.0 ? 'above' : 'near'} the European average`}
@@ -698,14 +698,14 @@ export function AncestryExplorer() {
       )}
 
       {/* Disclaimer */}
-      <Card className="bg-gray-50 border border-gray-200">
+      <Card className="bg-surface-soft border border-adaptive">
         <div className="flex items-start gap-3">
-          <Info className="w-5 h-5 text-gray-500 mt-0.5" />
+          <Info className="w-5 h-5 text-muted mt-0.5" />
           <div>
-            <p className="font-medium text-gray-700">
+            <p className="font-medium text-body">
               {isSpanish ? 'Nota Educativa' : 'Educational Note'}
             </p>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-body mt-1">
               {isSpanish
                 ? 'Estos datos son una demostracion educativa. Los resultados de ascendencia reales requieren pruebas de ADN profesionales y pueden variar segun la base de datos de referencia utilizada.'
                 : 'This data is an educational demonstration. Real ancestry results require professional DNA testing and may vary based on the reference database used.'}

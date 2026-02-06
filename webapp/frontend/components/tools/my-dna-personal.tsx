@@ -309,8 +309,8 @@ export function MyDnaPersonal() {
     return (
       <Card>
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-            <Dna className="w-5 h-5 text-blue-600" />
+          <div className="w-10 h-10 bg-info-soft rounded-lg flex items-center justify-center">
+            <Dna className="w-5 h-5 text-info" />
           </div>
           <div>
             <Title>{t('title')}</Title>
@@ -327,10 +327,10 @@ export function MyDnaPersonal() {
           className={`
             mt-6 p-8 rounded-xl border-2 border-dashed cursor-pointer transition-all duration-300
             ${state === 'dragging'
-              ? 'border-blue-500 bg-blue-50 scale-[1.02]'
+              ? 'dropzone-active scale-[1.02]'
               : state === 'error'
-                ? 'border-red-300 bg-red-50'
-                : 'border-gray-300 bg-gray-50 hover:border-blue-400 hover:bg-blue-50/50'
+                ? 'dropzone-error'
+                : 'dropzone-adaptive'
             }
           `}
         >
@@ -346,30 +346,30 @@ export function MyDnaPersonal() {
           <div className="text-center">
             {state === 'dragging' ? (
               <>
-                <div className="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center animate-pulse">
-                  <Upload className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 mx-auto mb-4 bg-info-muted rounded-full flex items-center justify-center animate-pulse">
+                  <Upload className="w-8 h-8 text-info" />
                 </div>
-                <p className="text-lg font-medium text-blue-700">Drop your file here!</p>
+                <p className="text-lg font-medium text-info">Drop your file here!</p>
               </>
             ) : state === 'error' ? (
               <>
-                <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
-                  <AlertCircle className="w-8 h-8 text-red-600" />
+                <div className="w-16 h-16 mx-auto mb-4 bg-danger-muted rounded-full flex items-center justify-center">
+                  <AlertCircle className="w-8 h-8 text-danger" />
                 </div>
-                <p className="text-lg font-medium text-red-700">Upload failed</p>
-                <p className="text-sm text-red-600 mt-1">{errorMessage}</p>
+                <p className="text-lg font-medium text-danger">Upload failed</p>
+                <p className="text-sm text-danger mt-1">{errorMessage}</p>
                 <Button variant="secondary" className="mt-4" onClick={(e) => { e.stopPropagation(); resetAnalysis(); }}>
                   Try again
                 </Button>
               </>
             ) : (
               <>
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
-                  <Dna className="w-8 h-8 text-blue-600 animate-spin-slow" />
+                <div className="w-16 h-16 mx-auto mb-4 gradient-accent rounded-full flex items-center justify-center">
+                  <Dna className="w-8 h-8 text-info animate-spin-slow" />
                 </div>
-                <p className="text-lg font-medium text-gray-700">{t('dragDrop')}</p>
-                <p className="text-sm text-gray-500 mt-1">{t('orBrowse')}</p>
-                <p className="text-xs text-gray-400 mt-3">{t('supportedFormats')}</p>
+                <p className="text-lg font-medium text-body">{t('dragDrop')}</p>
+                <p className="text-sm text-muted mt-1">{t('orBrowse')}</p>
+                <p className="text-xs text-subtle mt-3">{t('supportedFormats')}</p>
               </>
             )}
           </div>
@@ -377,10 +377,10 @@ export function MyDnaPersonal() {
 
         {/* Demo button */}
         <div className="mt-6 text-center">
-          <div className="inline-flex items-center gap-2 text-sm text-gray-500 mb-3">
-            <span className="w-16 h-px bg-gray-300"></span>
+          <div className="inline-flex items-center gap-2 text-sm text-muted mb-3">
+            <span className="w-16 h-px bg-surface-muted"></span>
             <span>or</span>
-            <span className="w-16 h-px bg-gray-300"></span>
+            <span className="w-16 h-px bg-surface-muted"></span>
           </div>
           <div>
             <Button variant="secondary" onClick={handleDemo} icon={Sparkles}>
@@ -398,22 +398,22 @@ export function MyDnaPersonal() {
       <Card>
         <div className="text-center py-8">
           <div className="w-20 h-20 mx-auto mb-6 relative">
-            <div className="absolute inset-0 border-4 border-blue-200 rounded-full"></div>
+            <div className="absolute inset-0 border-4 border-info opacity-30 rounded-full"></div>
             <div
-              className="absolute inset-0 border-4 border-blue-600 rounded-full border-t-transparent animate-spin"
+              className="absolute inset-0 border-4 border-info rounded-full border-t-transparent animate-spin"
               style={{ animationDuration: '1.5s' }}
             ></div>
-            <Dna className="absolute inset-0 m-auto w-8 h-8 text-blue-600" />
+            <Dna className="absolute inset-0 m-auto w-8 h-8 text-info" />
           </div>
 
           <Title>{t('analyzing')}</Title>
-          <Text className="mt-2">
+          <Text className="mt-2 text-body">
             {state === 'uploading' ? 'Reading file...' : 'Analyzing variants...'}
           </Text>
 
           <div className="mt-6 max-w-md mx-auto">
             <ProgressBar value={progress} color="blue" />
-            <p className="text-sm text-gray-500 mt-2">{progress}% complete</p>
+            <p className="text-sm text-muted mt-2">{progress}% complete</p>
           </div>
 
           <div className="mt-6 flex justify-center gap-2">
@@ -429,15 +429,15 @@ export function MyDnaPersonal() {
     return (
       <div className="space-y-6">
         {/* Summary Card */}
-        <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+        <Card className="gradient-success border-success">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center">
-                <CheckCircle className="w-7 h-7 text-green-600" />
+              <div className="w-14 h-14 bg-success-muted rounded-xl flex items-center justify-center">
+                <CheckCircle className="w-7 h-7 text-success" />
               </div>
               <div>
-                <Title className="text-green-800">Analysis Complete!</Title>
-                <Text className="text-green-700">
+                <Title className="text-success">Analysis Complete!</Title>
+                <Text className="text-body">
                   {result.totalVariants.toLocaleString()} {t('variantsFound')}
                 </Text>
               </div>
@@ -455,19 +455,19 @@ export function MyDnaPersonal() {
           <Col>
             <Card decoration="left" decorationColor="green">
               <Text>Beneficial</Text>
-              <p className="text-2xl font-bold text-green-600">{result.categories.beneficial.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-success">{result.categories.beneficial.toLocaleString()}</p>
             </Card>
           </Col>
           <Col>
             <Card decoration="left" decorationColor="gray">
               <Text>Neutral</Text>
-              <p className="text-2xl font-bold text-gray-600">{result.categories.neutral.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-body">{result.categories.neutral.toLocaleString()}</p>
             </Card>
           </Col>
           <Col>
             <Card decoration="left" decorationColor="red">
               <Text>Risk Factors</Text>
-              <p className="text-2xl font-bold text-red-600">{result.categories.risk.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-danger">{result.categories.risk.toLocaleString()}</p>
             </Card>
           </Col>
           <Col>
@@ -493,21 +493,21 @@ export function MyDnaPersonal() {
                 className={`
                   p-4 rounded-lg border cursor-pointer transition-all
                   ${selectedVariant?.rsid === variant.rsid
-                    ? 'border-blue-300 bg-blue-50'
-                    : 'border-gray-200 bg-gray-50 hover:border-gray-300'
+                    ? 'border-info bg-info-soft'
+                    : 'border-adaptive bg-surface-soft hover:border-adaptive-subtle'
                   }
                 `}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                      <span className="text-sm font-mono font-bold text-gray-600">
+                    <div className="w-10 h-10 bg-surface-elevated rounded-lg flex items-center justify-center shadow-sm border border-adaptive">
+                      <span className="text-sm font-mono font-bold text-body">
                         {variant.gene || variant.rsid.slice(0, 4)}
                       </span>
                     </div>
                     <div>
-                      <p className="font-medium text-gray-800">{variant.rsid}</p>
-                      <p className="text-sm text-gray-500">
+                      <p className="font-medium text-title">{variant.rsid}</p>
+                      <p className="text-sm text-muted">
                         Chr{variant.chromosome}:{variant.position.toLocaleString()} • {variant.genotype}
                       </p>
                     </div>
@@ -516,15 +516,15 @@ export function MyDnaPersonal() {
                     <Badge color={getSignificanceColor(variant.significance)}>
                       {getSignificanceLabel(variant.significance)}
                     </Badge>
-                    <ChevronRight className={`w-4 h-4 text-gray-400 transition-transform ${selectedVariant?.rsid === variant.rsid ? 'rotate-90' : ''}`} />
+                    <ChevronRight className={`w-4 h-4 text-subtle transition-transform ${selectedVariant?.rsid === variant.rsid ? 'rotate-90' : ''}`} />
                   </div>
                 </div>
 
                 {selectedVariant?.rsid === variant.rsid && variant.description && (
-                  <div className="mt-3 pt-3 border-t border-gray-200">
+                  <div className="mt-3 pt-3 border-t border-adaptive">
                     <div className="flex items-start gap-2">
-                      <Info className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-gray-600">{variant.description}</p>
+                      <Info className="w-4 h-4 text-info mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-body">{variant.description}</p>
                     </div>
                   </div>
                 )}

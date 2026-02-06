@@ -330,7 +330,7 @@ export function VirtualLab() {
         <Card className="bg-gradient-to-br from-purple-50 to-blue-50">
           <div className="flex items-start gap-4">
             <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center">
-              <FlaskConical className="w-8 h-8 text-purple-600" />
+              <FlaskConical className="w-8 h-8 text-accent" />
             </div>
             <div className="flex-1">
               <Title>{t('tools.virtualLab.title')}</Title>
@@ -381,14 +381,14 @@ export function VirtualLab() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-gray-800">
+                        <p className="font-semibold text-title">
                           {isSpanish ? exp.nameEs : exp.name}
                         </p>
                         {isCompleted && (
                           <CheckCircle className="w-5 h-5 text-green-500" />
                         )}
                       </div>
-                      <p className="text-sm text-gray-500 mt-1">
+                      <p className="text-sm text-muted mt-1">
                         {isSpanish ? exp.descriptionEs : exp.description}
                       </p>
                       <div className="flex items-center gap-2 mt-3">
@@ -467,7 +467,7 @@ export function VirtualLab() {
       {/* Results View */}
       {showResults ? (
         <div className="space-y-6">
-          <Card className="bg-green-50 text-center py-8">
+          <Card className="bg-success-soft text-center py-8">
             <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
             <Title>{isSpanish ? 'Experimento Completado!' : 'Experiment Complete!'}</Title>
             <Text className="mt-2">
@@ -481,10 +481,10 @@ export function VirtualLab() {
             <div className="flex items-start gap-3">
               <Info className="w-5 h-5 text-blue-500 mt-0.5" />
               <div>
-                <p className="font-medium text-gray-800">
+                <p className="font-medium text-title">
                   {isSpanish ? 'Dato Curioso' : 'Fun Fact'}
                 </p>
-                <p className="text-gray-600 mt-1">
+                <p className="text-body mt-1">
                   {isSpanish ? experiment?.funFactEs : experiment?.funFact}
                 </p>
               </div>
@@ -527,9 +527,9 @@ export function VirtualLab() {
                   <div
                     className={`h-2 rounded-full ${
                       idx < currentStep
-                        ? 'bg-green-500'
+                        ? 'bg-success-soft0'
                         : idx === currentStep
-                          ? 'bg-blue-500'
+                          ? 'bg-info-soft0'
                           : 'bg-gray-200'
                     }`}
                   >
@@ -546,27 +546,27 @@ export function VirtualLab() {
 
             {/* Current Step Details */}
             {experiment && (
-              <div className="bg-gray-50 rounded-lg p-6">
+              <div className="bg-surface-soft rounded-lg p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                     isRunning ? 'bg-blue-100 animate-pulse' : 'bg-gray-200'
                   }`}>
-                    <span className="text-lg font-bold text-gray-700">{currentStep + 1}</span>
+                    <span className="text-lg font-bold text-body">{currentStep + 1}</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800">
+                    <p className="font-semibold text-title">
                       {isSpanish
                         ? experiment.steps[currentStep].nameEs
                         : experiment.steps[currentStep].name}
                     </p>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <div className="flex items-center gap-2 text-sm text-muted">
                       <Clock className="w-4 h-4" />
                       <span>~{experiment.steps[currentStep].duration}s</span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-gray-600 mb-4">
+                <p className="text-body mb-4">
                   {isSpanish
                     ? experiment.steps[currentStep].descriptionEs
                     : experiment.steps[currentStep].description}
@@ -577,7 +577,7 @@ export function VirtualLab() {
                 )}
 
                 {/* Visualization Area */}
-                <div className="mt-6 h-40 bg-white rounded-lg border-2 border-dashed border-gray-200 flex items-center justify-center">
+                <div className="mt-6 h-40 bg-white rounded-lg border-2 border-dashed border-adaptive flex items-center justify-center">
                   {isRunning ? (
                     <div className="text-center">
                       {/* Simple animations based on step */}
@@ -586,7 +586,7 @@ export function VirtualLab() {
                           <div className="w-2 h-2 bg-white border border-gray-400 rounded-full mx-auto animate-bounce" style={{ animationDelay: '0ms' }} />
                           <div className="w-2 h-2 bg-white border border-gray-400 rounded-full mx-auto animate-bounce" style={{ animationDelay: '100ms' }} />
                           <div className="w-2 h-2 bg-white border border-gray-400 rounded-full mx-auto animate-bounce" style={{ animationDelay: '200ms' }} />
-                          <p className="text-sm text-gray-500 mt-2">
+                          <p className="text-sm text-muted mt-2">
                             {isSpanish ? 'ADN precipitando...' : 'DNA precipitating...'}
                           </p>
                         </div>
@@ -595,7 +595,7 @@ export function VirtualLab() {
                         <div className="text-center">
                           <Thermometer className="w-12 h-12 text-red-500 mx-auto animate-pulse" />
                           <p className="text-2xl font-bold text-red-500 mt-2">95°C</p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-muted">
                             {isSpanish ? 'Calentando...' : 'Heating...'}
                           </p>
                         </div>
@@ -604,7 +604,7 @@ export function VirtualLab() {
                         <div className="text-center">
                           <Thermometer className="w-12 h-12 text-blue-500 mx-auto animate-pulse" />
                           <p className="text-2xl font-bold text-blue-500 mt-2">55°C</p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-muted">
                             {isSpanish ? 'Enfriando...' : 'Cooling...'}
                           </p>
                         </div>
@@ -612,11 +612,11 @@ export function VirtualLab() {
                       {experiment.steps[currentStep].animation === 'electrophoresis' && (
                         <div className="w-full max-w-xs mx-auto">
                           <div className="h-20 bg-gradient-to-b from-gray-100 to-blue-100 rounded relative overflow-hidden">
-                            <div className="absolute top-2 left-4 w-2 h-2 bg-blue-500 rounded animate-bounce" style={{ animationDuration: '2s' }} />
-                            <div className="absolute top-2 left-8 w-2 h-3 bg-blue-500 rounded animate-bounce" style={{ animationDuration: '2.5s' }} />
-                            <div className="absolute top-2 left-12 w-2 h-1 bg-blue-500 rounded animate-bounce" style={{ animationDuration: '1.5s' }} />
+                            <div className="absolute top-2 left-4 w-2 h-2 bg-info-soft0 rounded animate-bounce" style={{ animationDuration: '2s' }} />
+                            <div className="absolute top-2 left-8 w-2 h-3 bg-info-soft0 rounded animate-bounce" style={{ animationDuration: '2.5s' }} />
+                            <div className="absolute top-2 left-12 w-2 h-1 bg-info-soft0 rounded animate-bounce" style={{ animationDuration: '1.5s' }} />
                           </div>
-                          <div className="flex justify-between text-xs text-gray-500 mt-1">
+                          <div className="flex justify-between text-xs text-muted mt-1">
                             <span>- {isSpanish ? 'Negativo' : 'Negative'}</span>
                             <span>+ {isSpanish ? 'Positivo' : 'Positive'}</span>
                           </div>
@@ -631,7 +631,7 @@ export function VirtualLab() {
                               <div className="w-16 h-1 bg-green-400" />
                             </div>
                           </div>
-                          <p className="text-sm text-purple-600 mt-2">
+                          <p className="text-sm text-accent mt-2">
                             {isSpanish ? 'Luz UV revelando bandas' : 'UV light revealing bands'}
                           </p>
                         </div>
@@ -639,22 +639,22 @@ export function VirtualLab() {
                       {experiment.steps[currentStep].animation === 'cut' && (
                         <div className="text-center">
                           <Scissors className="w-12 h-12 text-purple-500 mx-auto animate-pulse" />
-                          <p className="text-sm text-gray-500 mt-2">
+                          <p className="text-sm text-muted mt-2">
                             {isSpanish ? 'Cortando en GAATTC...' : 'Cutting at GAATTC...'}
                           </p>
                         </div>
                       )}
                       {!experiment.steps[currentStep].animation && (
                         <div className="text-center">
-                          <Microscope className="w-12 h-12 text-gray-400 mx-auto animate-pulse" />
-                          <p className="text-sm text-gray-500 mt-2">
+                          <Microscope className="w-12 h-12 text-subtle mx-auto animate-pulse" />
+                          <p className="text-sm text-muted mt-2">
                             {isSpanish ? 'Procesando...' : 'Processing...'}
                           </p>
                         </div>
                       )}
                     </div>
                   ) : (
-                    <div className="text-center text-gray-400">
+                    <div className="text-center text-subtle">
                       <Microscope className="w-12 h-12 mx-auto mb-2" />
                       <p className="text-sm">
                         {isSpanish
@@ -708,18 +708,18 @@ export function VirtualLab() {
                   key={step.id}
                   className={`flex items-center gap-3 p-3 rounded-lg ${
                     idx < currentStep
-                      ? 'bg-green-50'
+                      ? 'bg-success-soft'
                       : idx === currentStep
-                        ? 'bg-blue-50 ring-2 ring-blue-500'
-                        : 'bg-gray-50'
+                        ? 'bg-info-soft ring-2 ring-blue-500'
+                        : 'bg-surface-soft'
                   }`}
                 >
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                     idx < currentStep
-                      ? 'bg-green-500 text-white'
+                      ? 'bg-success-soft0 text-white'
                       : idx === currentStep
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-300 text-gray-600'
+                        ? 'bg-info-soft0 text-white'
+                        : 'bg-gray-300 text-body'
                   }`}>
                     {idx < currentStep ? (
                       <CheckCircle className="w-5 h-5" />
@@ -729,12 +729,12 @@ export function VirtualLab() {
                   </div>
                   <div className="flex-1">
                     <p className={`font-medium ${
-                      idx <= currentStep ? 'text-gray-800' : 'text-gray-400'
+                      idx <= currentStep ? 'text-title' : 'text-subtle'
                     }`}>
                       {isSpanish ? step.nameEs : step.name}
                     </p>
                   </div>
-                  <div className="flex items-center gap-1 text-sm text-gray-500">
+                  <div className="flex items-center gap-1 text-sm text-muted">
                     <Clock className="w-4 h-4" />
                     <span>{step.duration}s</span>
                   </div>

@@ -194,7 +194,7 @@ export function GeneticSuperpowers() {
           <div className="w-20 h-20 mx-auto mb-6 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full animate-spin opacity-20"></div>
             <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center">
-              <Zap className="w-8 h-8 text-purple-600 animate-pulse" />
+              <Zap className="w-8 h-8 text-accent animate-pulse" />
             </div>
           </div>
           <Title>Scanning your genetic superpowers...</Title>
@@ -294,7 +294,7 @@ export function GeneticSuperpowers() {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-orange-500/20 animate-pulse z-10 pointer-events-none">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="bg-white/90 px-6 py-3 rounded-full shadow-lg flex items-center gap-2">
-                      <Sparkles className="w-5 h-5 text-purple-600 animate-spin" />
+                      <Sparkles className="w-5 h-5 text-accent animate-spin" />
                       <span className="font-bold text-purple-700">{t('unlocked')}</span>
                     </div>
                   </div>
@@ -313,14 +313,14 @@ export function GeneticSuperpowers() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-gray-800">{superpower.name}</p>
+                        <p className="font-semibold text-title">{superpower.name}</p>
                         {isUnlocked && (
                           <Badge color={superpower.color as any} size="xs">
                             {superpower.gene}
                           </Badge>
                         )}
                       </div>
-                      <p className="text-sm text-gray-500">{superpower.variant}</p>
+                      <p className="text-sm text-muted">{superpower.variant}</p>
                     </div>
                   </div>
 
@@ -330,14 +330,14 @@ export function GeneticSuperpowers() {
                         <div className="text-right">
                           <div className="flex items-center gap-1">
                             <Star className="w-4 h-4 text-yellow-500" />
-                            <span className="font-bold text-gray-800">{superpower.score}</span>
+                            <span className="font-bold text-title">{superpower.score}</span>
                           </div>
-                          <p className="text-xs text-gray-500">Top {superpower.rarity}%</p>
+                          <p className="text-xs text-muted">Top {superpower.rarity}%</p>
                         </div>
                         {isExpanded ? (
-                          <ChevronUp className="w-5 h-5 text-gray-400" />
+                          <ChevronUp className="w-5 h-5 text-subtle" />
                         ) : (
-                          <ChevronDown className="w-5 h-5 text-gray-400" />
+                          <ChevronDown className="w-5 h-5 text-subtle" />
                         )}
                       </>
                     )}
@@ -346,26 +346,26 @@ export function GeneticSuperpowers() {
 
                 {/* Description */}
                 {isUnlocked && (
-                  <p className="mt-3 text-sm text-gray-600">{superpower.description}</p>
+                  <p className="mt-3 text-sm text-body">{superpower.description}</p>
                 )}
               </div>
 
               {/* Expanded content */}
               {isExpanded && isUnlocked && (
-                <div className="mt-4 pt-4 border-t border-gray-200 space-y-4">
+                <div className="mt-4 pt-4 border-t border-adaptive space-y-4">
                   {/* Science section */}
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <p className="text-xs font-medium text-gray-500 uppercase mb-1">{t('seeScience')}</p>
-                    <p className="text-sm text-gray-600">{superpower.science}</p>
+                  <div className="p-3 bg-surface-soft rounded-lg">
+                    <p className="text-xs font-medium text-muted uppercase mb-1">{t('seeScience')}</p>
+                    <p className="text-sm text-body">{superpower.science}</p>
                   </div>
 
                   {/* Enhancement tips */}
-                  <div className="p-3 bg-green-50 rounded-lg">
-                    <p className="text-xs font-medium text-green-600 uppercase mb-2">{t('howToEnhance')}</p>
+                  <div className="p-3 bg-success-soft rounded-lg">
+                    <p className="text-xs font-medium text-success uppercase mb-2">{t('howToEnhance')}</p>
                     <ul className="space-y-1">
                       {superpower.enhancement.map((tip, i) => (
-                        <li key={i} className="text-sm text-gray-600 flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                        <li key={i} className="text-sm text-body flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 bg-success-soft0 rounded-full"></span>
                           {tip}
                         </li>
                       ))}

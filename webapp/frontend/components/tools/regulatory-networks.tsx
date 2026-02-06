@@ -275,7 +275,7 @@ export function RegulatoryNetworks() {
 
           {/* Pathway filter */}
           <div className="flex items-center gap-2">
-            <Filter className="w-4 h-4 text-gray-500" />
+            <Filter className="w-4 h-4 text-muted" />
             <div className="flex gap-1">
               {PATHWAYS.map(pathway => (
                 <button
@@ -284,7 +284,7 @@ export function RegulatoryNetworks() {
                   className={`px-2 py-1 text-xs rounded-full transition-all ${
                     activePathway === pathway.id
                       ? 'text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      : 'bg-surface-muted text-body hover:bg-gray-200'
                   }`}
                   style={{
                     backgroundColor: activePathway === pathway.id ? pathway.color : undefined
@@ -299,7 +299,7 @@ export function RegulatoryNetworks() {
           {/* Zoom controls */}
           <div className="flex items-center gap-1 border-l pl-4">
             <Button variant="secondary" size="xs" icon={ZoomOut} onClick={handleZoomOut} />
-            <span className="text-sm text-gray-500 w-12 text-center">{Math.round(zoom * 100)}%</span>
+            <span className="text-sm text-muted w-12 text-center">{Math.round(zoom * 100)}%</span>
             <Button variant="secondary" size="xs" icon={ZoomIn} onClick={handleZoomIn} />
             <Button variant="secondary" size="xs" icon={Maximize2} onClick={handleResetView} />
           </div>
@@ -504,17 +504,17 @@ export function RegulatoryNetworks() {
               </div>
 
               <div>
-                <p className="font-medium text-gray-800">{selectedNode.name}</p>
-                <p className="text-sm text-gray-500 mt-1">{selectedNode.description}</p>
+                <p className="font-medium text-title">{selectedNode.name}</p>
+                <p className="text-sm text-muted mt-1">{selectedNode.description}</p>
               </div>
 
               <div>
-                <p className="text-xs font-medium text-gray-500 uppercase mb-2">Type</p>
+                <p className="text-xs font-medium text-muted uppercase mb-2">Type</p>
                 <Badge color="gray">{selectedNode.type.replace('_', ' ')}</Badge>
               </div>
 
               <div>
-                <p className="text-xs font-medium text-gray-500 uppercase mb-2">Pathways</p>
+                <p className="text-xs font-medium text-muted uppercase mb-2">Pathways</p>
                 <div className="flex flex-wrap gap-1">
                   {selectedNode.pathway.map(p => {
                     const pathway = PATHWAYS.find(pw => pw.id === p)
@@ -532,7 +532,7 @@ export function RegulatoryNetworks() {
               </div>
 
               <div>
-                <p className="text-xs font-medium text-gray-500 uppercase mb-2">Connections ({selectedNode.connections})</p>
+                <p className="text-xs font-medium text-muted uppercase mb-2">Connections ({selectedNode.connections})</p>
                 <div className="space-y-1 max-h-32 overflow-y-auto">
                   {edges
                     .filter(e => e.source === selectedNode.id || e.target === selectedNode.id)
@@ -543,17 +543,17 @@ export function RegulatoryNetworks() {
                       return (
                         <div
                           key={idx}
-                          className="flex items-center gap-2 text-xs p-2 bg-gray-50 rounded cursor-pointer hover:bg-gray-100"
+                          className="flex items-center gap-2 text-xs p-2 bg-surface-soft rounded cursor-pointer hover:bg-surface-muted"
                           onClick={() => setSelectedNode(other || null)}
                         >
                           <span className={`w-2 h-2 rounded-full ${
-                            edge.type === 'activates' ? 'bg-green-500' :
-                            edge.type === 'represses' ? 'bg-red-500' : 'bg-blue-500'
+                            edge.type === 'activates' ? 'bg-success-soft0' :
+                            edge.type === 'represses' ? 'bg-danger-soft0' : 'bg-info-soft0'
                           }`} />
-                          <span className="text-gray-600">
+                          <span className="text-body">
                             {isSource ? edge.type : `${edge.type} by`}
                           </span>
-                          <span className="font-medium text-gray-800">{other?.symbol}</span>
+                          <span className="font-medium text-title">{other?.symbol}</span>
                         </div>
                       )
                     })}
@@ -572,7 +572,7 @@ export function RegulatoryNetworks() {
               </div>
             </div>
           ) : (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-muted">
               <Network className="w-12 h-12 mx-auto mb-3 text-gray-300" />
               <p className="text-sm">Click on a gene node to see details</p>
             </div>
@@ -591,7 +591,7 @@ export function RegulatoryNetworks() {
               className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
                 activePathway === pathway.id
                   ? 'border-current shadow-lg'
-                  : 'border-transparent hover:border-gray-200'
+                  : 'border-transparent hover:border-adaptive'
               }`}
               style={{ borderColor: activePathway === pathway.id ? pathway.color : undefined }}
             >
@@ -600,14 +600,14 @@ export function RegulatoryNetworks() {
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: pathway.color }}
                 />
-                <p className="font-medium text-sm text-gray-800">{pathway.name}</p>
+                <p className="font-medium text-sm text-title">{pathway.name}</p>
               </div>
               <div className="flex flex-wrap gap-1">
                 {pathway.genes.slice(0, 3).map(gene => (
-                  <span key={gene} className="text-xs text-gray-500">{gene}</span>
+                  <span key={gene} className="text-xs text-muted">{gene}</span>
                 ))}
                 {pathway.genes.length > 3 && (
-                  <span className="text-xs text-gray-400">+{pathway.genes.length - 3}</span>
+                  <span className="text-xs text-subtle">+{pathway.genes.length - 3}</span>
                 )}
               </div>
             </div>

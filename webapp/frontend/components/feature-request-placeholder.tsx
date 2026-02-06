@@ -85,7 +85,7 @@ export function FeatureRequestPlaceholder({
   const colorClasses = {
     blue: 'from-blue-50 to-indigo-50 border-blue-200',
     purple: 'from-purple-50 to-pink-50 border-purple-200',
-    green: 'from-green-50 to-teal-50 border-green-200',
+    green: 'from-green-50 to-teal-50 border-success',
     orange: 'from-orange-50 to-amber-50 border-orange-200',
     pink: 'from-pink-50 to-rose-50 border-pink-200',
   }
@@ -107,8 +107,8 @@ export function FeatureRequestPlaceholder({
         </div>
 
         {/* Title & Description */}
-        <Title className="text-gray-800">{featureName}</Title>
-        <Text className="mt-2 max-w-md mx-auto text-gray-600">
+        <Title className="text-title">{featureName}</Title>
+        <Text className="mt-2 max-w-md mx-auto text-body">
           {featureDescription}
         </Text>
 
@@ -125,11 +125,11 @@ export function FeatureRequestPlaceholder({
           <div className="flex items-start gap-3">
             <Heart className="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5" />
             <div className="text-left">
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-body">
                 <strong>Somos un equipo pequeno con grandes suenos.</strong> Esta funcionalidad
                 esta en nuestra lista, pero aun no hemos podido priorizarla.
               </p>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-body mt-2">
                 Si la necesitas, dejanos tu email y la <strong>priorizaremos para ti</strong>.
                 Recibiras un correo cuando este lista.
               </p>
@@ -167,7 +167,7 @@ export function FeatureRequestPlaceholder({
             )}
           </form>
         ) : (
-          <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-xl max-w-md mx-auto">
+          <div className="mt-6 p-4 bg-success-soft border border-success rounded-xl max-w-md mx-auto">
             <div className="flex items-center gap-3 text-green-700">
               <CheckCircle className="w-6 h-6" />
               <div className="text-left">
@@ -181,10 +181,10 @@ export function FeatureRequestPlaceholder({
         )}
 
         {/* Community Invitation (collapsible) */}
-        <div className="mt-6 pt-6 border-t border-gray-200/50">
+        <div className="mt-6 pt-6 border-t border-adaptive/50">
           <button
             onClick={() => setShowCommunity(!showCommunity)}
-            className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-2 mx-auto transition-colors"
+            className="text-sm text-muted hover:text-body flex items-center gap-2 mx-auto transition-colors"
           >
             <Users className="w-4 h-4" />
             <span>Quieres ayudar a construir esto?</span>
@@ -196,10 +196,10 @@ export function FeatureRequestPlaceholder({
               <div className="flex items-start gap-3">
                 <Code className="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" />
                 <div className="text-left">
-                  <p className="text-sm font-medium text-gray-800">
+                  <p className="text-sm font-medium text-title">
                     Unete a nuestra comunidad de desarrollo
                   </p>
-                  <p className="text-xs text-gray-600 mt-1">
+                  <p className="text-xs text-body mt-1">
                     No necesitas saber programar. Con las herramientas que te ensenamos
                     en un par de horas y nuestros sistemas de trabajo, podras contribuir
                     a hacer realidad funcionalidades como esta.

@@ -308,7 +308,7 @@ export function GeneticDiet() {
           <div className="w-20 h-20 mx-auto mb-6 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 rounded-full animate-spin opacity-20"></div>
             <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center">
-              <Utensils className="w-8 h-8 text-green-600 animate-pulse" />
+              <Utensils className="w-8 h-8 text-success animate-pulse" />
             </div>
           </div>
           <Title>Analyzing your nutritional genetics...</Title>
@@ -336,7 +336,7 @@ export function GeneticDiet() {
       {/* Ideal Plate Visualization */}
       <Card>
         <div className="flex items-center gap-2 mb-4">
-          <Sparkles className="w-5 h-5 text-green-600" />
+          <Sparkles className="w-5 h-5 text-success" />
           <Title className="text-green-700">{t('idealPlate')}</Title>
         </div>
 
@@ -383,7 +383,7 @@ export function GeneticDiet() {
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <Utensils className="w-8 h-8 text-gray-400 mx-auto" />
+                <Utensils className="w-8 h-8 text-subtle mx-auto" />
               </div>
             </div>
           </div>
@@ -391,31 +391,31 @@ export function GeneticDiet() {
           {/* Legend */}
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <div className="w-4 h-4 rounded bg-red-500"></div>
+              <div className="w-4 h-4 rounded bg-danger-soft0"></div>
               <div>
-                <p className="font-medium text-gray-700">Protein</p>
-                <p className="text-sm text-gray-500">{IDEAL_PLATE.protein}% - Fish, poultry, legumes</p>
+                <p className="font-medium text-body">Protein</p>
+                <p className="text-sm text-muted">{IDEAL_PLATE.protein}% - Fish, poultry, legumes</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-4 h-4 rounded bg-amber-500"></div>
               <div>
-                <p className="font-medium text-gray-700">Complex Carbs</p>
-                <p className="text-sm text-gray-500">{IDEAL_PLATE.carbs}% - Whole grains, vegetables</p>
+                <p className="font-medium text-body">Complex Carbs</p>
+                <p className="text-sm text-muted">{IDEAL_PLATE.carbs}% - Whole grains, vegetables</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-4 h-4 rounded bg-blue-500"></div>
+              <div className="w-4 h-4 rounded bg-info-soft0"></div>
               <div>
-                <p className="font-medium text-gray-700">Healthy Fats</p>
-                <p className="text-sm text-gray-500">{IDEAL_PLATE.fat}% - Olive oil, nuts, avocado</p>
+                <p className="font-medium text-body">Healthy Fats</p>
+                <p className="text-sm text-muted">{IDEAL_PLATE.fat}% - Olive oil, nuts, avocado</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-4 h-4 rounded bg-green-500"></div>
+              <div className="w-4 h-4 rounded bg-success-soft0"></div>
               <div>
-                <p className="font-medium text-gray-700">Fiber</p>
-                <p className="text-sm text-gray-500">{IDEAL_PLATE.fiber}% - Leafy greens, berries</p>
+                <p className="font-medium text-body">Fiber</p>
+                <p className="text-sm text-muted">{IDEAL_PLATE.fiber}% - Leafy greens, berries</p>
               </div>
             </div>
           </div>
@@ -446,20 +446,20 @@ export function GeneticDiet() {
                       <Icon className="w-5 h-5 text-amber-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-gray-800">{trait.name}</p>
-                      <p className="text-xs text-gray-500">{trait.gene} - {trait.variant}</p>
+                      <p className="font-medium text-title">{trait.name}</p>
+                      <p className="text-xs text-muted">{trait.gene} - {trait.variant}</p>
                     </div>
                   </div>
                   {isExpanded ? (
-                    <ChevronUp className="w-5 h-5 text-gray-400" />
+                    <ChevronUp className="w-5 h-5 text-subtle" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                    <ChevronDown className="w-5 h-5 text-subtle" />
                   )}
                 </div>
 
                 {isExpanded && (
                   <div className="mt-3 pt-3 border-t border-amber-200">
-                    <p className="text-sm text-gray-600">{trait.impact}</p>
+                    <p className="text-sm text-body">{trait.impact}</p>
                   </div>
                 )}
               </div>
@@ -471,7 +471,7 @@ export function GeneticDiet() {
       {/* Superfoods For You */}
       <Card>
         <div className="flex items-center gap-2 mb-4">
-          <Leaf className="w-5 h-5 text-green-600" />
+          <Leaf className="w-5 h-5 text-success" />
           <Title className="text-green-700">{t('superfoods')}</Title>
         </div>
 
@@ -481,14 +481,14 @@ export function GeneticDiet() {
             return (
               <div
                 key={food.id}
-                className="p-3 bg-green-50 rounded-lg border border-green-200 flex items-start gap-3"
+                className="p-3 bg-success-soft rounded-lg border border-success flex items-start gap-3"
               >
                 <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-5 h-5 text-green-600" />
+                  <Icon className="w-5 h-5 text-success" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">{food.name}</p>
-                  <p className="text-xs text-gray-500">{food.reason}</p>
+                  <p className="font-medium text-title">{food.name}</p>
+                  <p className="text-xs text-muted">{food.reason}</p>
                   <Badge color="green" size="xs" className="mt-1">{food.relatedGene}</Badge>
                 </div>
               </div>
@@ -500,7 +500,7 @@ export function GeneticDiet() {
       {/* Foods to Moderate */}
       <Card>
         <div className="flex items-center gap-2 mb-4">
-          <Info className="w-5 h-5 text-blue-600" />
+          <Info className="w-5 h-5 text-info" />
           <Title className="text-blue-700">{t('moderate')}</Title>
         </div>
 
@@ -510,14 +510,14 @@ export function GeneticDiet() {
             return (
               <div
                 key={food.id}
-                className="p-3 bg-blue-50 rounded-lg border border-blue-200 flex items-start gap-3"
+                className="p-3 bg-info-soft rounded-lg border border-info flex items-start gap-3"
               >
                 <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-5 h-5 text-blue-600" />
+                  <Icon className="w-5 h-5 text-info" />
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">{food.name}</p>
-                  <p className="text-xs text-gray-500">{food.reason}</p>
+                  <p className="font-medium text-title">{food.name}</p>
+                  <p className="text-xs text-muted">{food.reason}</p>
                   <Badge color="blue" size="xs" className="mt-1">{food.relatedGene}</Badge>
                 </div>
               </div>
@@ -529,7 +529,7 @@ export function GeneticDiet() {
       {/* Restaurant Mode */}
       <Card>
         <div className="flex items-center gap-2 mb-4">
-          <ChefHat className="w-5 h-5 text-purple-600" />
+          <ChefHat className="w-5 h-5 text-accent" />
           <Title className="text-purple-700">{t('restaurantMode')}</Title>
         </div>
 
@@ -551,15 +551,15 @@ export function GeneticDiet() {
         {selectedCuisine && CUISINE_RECOMMENDATIONS[selectedCuisine] && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Recommend */}
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+            <div className="p-4 bg-success-soft rounded-lg border border-success">
               <div className="flex items-center gap-2 mb-3">
-                <ThumbsUp className="w-5 h-5 text-green-600" />
+                <ThumbsUp className="w-5 h-5 text-success" />
                 <p className="font-semibold text-green-700">{t('recommend')}</p>
               </div>
               <ul className="space-y-2">
                 {CUISINE_RECOMMENDATIONS[selectedCuisine].recommend.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
-                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                  <li key={i} className="flex items-center gap-2 text-sm text-body">
+                    <span className="w-1.5 h-1.5 bg-success-soft0 rounded-full"></span>
                     {item}
                   </li>
                 ))}
@@ -567,15 +567,15 @@ export function GeneticDiet() {
             </div>
 
             {/* Avoid */}
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+            <div className="p-4 bg-danger-soft rounded-lg border border-danger">
               <div className="flex items-center gap-2 mb-3">
-                <ThumbsDown className="w-5 h-5 text-red-600" />
+                <ThumbsDown className="w-5 h-5 text-danger" />
                 <p className="font-semibold text-red-700">{t('avoid')}</p>
               </div>
               <ul className="space-y-2">
                 {CUISINE_RECOMMENDATIONS[selectedCuisine].avoid.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
-                    <span className="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                  <li key={i} className="flex items-center gap-2 text-sm text-body">
+                    <span className="w-1.5 h-1.5 bg-danger-soft0 rounded-full"></span>
                     {item}
                   </li>
                 ))}

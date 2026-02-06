@@ -111,10 +111,10 @@ const GENES: Gene[] = [
 
 // Base colors for DNA visualization
 const BASE_COLORS: Record<string, string> = {
-  A: 'bg-green-500 text-white',
-  T: 'bg-red-500 text-white',
-  G: 'bg-yellow-500 text-black',
-  C: 'bg-blue-500 text-white',
+  A: 'bg-success-soft0 text-white',
+  T: 'bg-danger-soft0 text-white',
+  G: 'bg-warning-soft0 text-black',
+  C: 'bg-info-soft0 text-white',
 }
 
 const COMPLEMENTARY: Record<string, string> = {
@@ -418,7 +418,7 @@ export function CrisprSimulator() {
         <Card>
           <button
             onClick={() => setShowEducation(!showEducation)}
-            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 w-full"
+            className="flex items-center gap-2 text-info hover:text-blue-700 w-full"
           >
             <BookOpen className="w-5 h-5" />
             <span className="font-medium">What is CRISPR?</span>
@@ -426,26 +426,26 @@ export function CrisprSimulator() {
           </button>
 
           {showEducation && (
-            <div className="mt-4 p-4 bg-blue-50 rounded-lg space-y-3">
-              <p className="text-sm text-gray-700">
+            <div className="mt-4 p-4 bg-info-soft rounded-lg space-y-3">
+              <p className="text-sm text-body">
                 <strong>CRISPR-Cas9</strong> is a revolutionary gene-editing tool that works like molecular scissors.
                 It uses a guide RNA to find a specific DNA sequence, then the Cas9 protein cuts the DNA at that location.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div className="p-3 bg-white rounded-lg">
                   <Target className="w-5 h-5 text-purple-500 mb-2" />
-                  <p className="text-xs font-medium text-gray-800">1. Target</p>
-                  <p className="text-xs text-gray-600">Guide RNA finds the DNA sequence</p>
+                  <p className="text-xs font-medium text-title">1. Target</p>
+                  <p className="text-xs text-body">Guide RNA finds the DNA sequence</p>
                 </div>
                 <div className="p-3 bg-white rounded-lg">
                   <Scissors className="w-5 h-5 text-red-500 mb-2" />
-                  <p className="text-xs font-medium text-gray-800">2. Cut</p>
-                  <p className="text-xs text-gray-600">Cas9 protein cuts the DNA</p>
+                  <p className="text-xs font-medium text-title">2. Cut</p>
+                  <p className="text-xs text-body">Cas9 protein cuts the DNA</p>
                 </div>
                 <div className="p-3 bg-white rounded-lg">
                   <Sparkles className="w-5 h-5 text-green-500 mb-2" />
-                  <p className="text-xs font-medium text-gray-800">3. Repair</p>
-                  <p className="text-xs text-gray-600">Cell repairs the break (with edits)</p>
+                  <p className="text-xs font-medium text-title">3. Repair</p>
+                  <p className="text-xs text-body">Cell repairs the break (with edits)</p>
                 </div>
               </div>
             </div>
@@ -460,14 +460,14 @@ export function CrisprSimulator() {
               <div
                 key={gene.id}
                 onClick={() => handleSelectGene(gene.id)}
-                className="p-4 border-2 border-gray-200 rounded-xl hover:border-purple-400 hover:bg-purple-50 cursor-pointer transition-all"
+                className="p-4 border-2 border-adaptive rounded-xl hover:border-purple-400 hover:bg-accent-soft cursor-pointer transition-all"
               >
                 <div className="flex items-center justify-between mb-2">
                   <Badge color="purple">{gene.symbol}</Badge>
                   <Badge color="gray" size="xs">Chr {gene.chromosome}</Badge>
                 </div>
-                <p className="font-medium text-gray-800 text-sm">{gene.name}</p>
-                <p className="text-xs text-gray-500 mt-1">{gene.description}</p>
+                <p className="font-medium text-title text-sm">{gene.name}</p>
+                <p className="text-xs text-muted mt-1">{gene.description}</p>
                 {gene.diseaseAssociation && (
                   <div className="mt-2 flex items-center gap-1 text-xs text-amber-600">
                     <AlertTriangle className="w-3 h-3" />
@@ -506,8 +506,8 @@ export function CrisprSimulator() {
             <div className="flex items-center gap-3">
               <Badge color="purple" size="lg">{selectedGene.symbol}</Badge>
               <div>
-                <p className="font-medium text-gray-800">{selectedGene.name}</p>
-                <p className="text-xs text-gray-500">Chromosome {selectedGene.chromosome}</p>
+                <p className="font-medium text-title">{selectedGene.name}</p>
+                <p className="text-xs text-muted">Chromosome {selectedGene.chromosome}</p>
               </div>
             </div>
             <Button variant="secondary" size="xs" icon={RotateCcw} onClick={handleReset}>
@@ -523,13 +523,13 @@ export function CrisprSimulator() {
 
           {/* Sequence display */}
           <div className="p-4 bg-gray-900 rounded-lg overflow-x-auto">
-            <p className="text-xs text-gray-400 mb-2">5' →</p>
+            <p className="text-xs text-subtle mb-2">5' →</p>
             {renderSequence(selectedGene.sequence, Math.max(0, targetPosition - 20), targetPosition, targetPosition + 23)}
-            <p className="text-xs text-gray-400 mt-2">→ 3'</p>
+            <p className="text-xs text-subtle mt-2">→ 3'</p>
 
             {/* Complementary strand */}
             <div className="mt-2 pt-2 border-t border-gray-700">
-              <p className="text-xs text-gray-400 mb-2">3' ←</p>
+              <p className="text-xs text-subtle mb-2">3' ←</p>
               <div className="font-mono text-xs flex flex-wrap gap-0.5">
                 {selectedGene.sequence.slice(Math.max(0, targetPosition - 20), Math.max(0, targetPosition - 20) + 60).split('').map((base, idx) => (
                   <span
@@ -545,7 +545,7 @@ export function CrisprSimulator() {
 
           {/* Target position slider */}
           <div className="mt-4">
-            <label className="text-sm font-medium text-gray-700">Target Position: {targetPosition}</label>
+            <label className="text-sm font-medium text-body">Target Position: {targetPosition}</label>
             <input
               type="range"
               min={0}
@@ -560,20 +560,20 @@ export function CrisprSimulator() {
         {/* Guide RNA */}
         <Card>
           <div className="flex items-center gap-2 mb-4">
-            <Target className="w-5 h-5 text-purple-600" />
+            <Target className="w-5 h-5 text-accent" />
             <Title>Guide RNA (sgRNA)</Title>
           </div>
 
-          <div className="p-4 bg-purple-50 rounded-lg">
-            <p className="text-xs text-gray-500 mb-2">20bp guide sequence:</p>
+          <div className="p-4 bg-accent-soft rounded-lg">
+            <p className="text-xs text-muted mb-2">20bp guide sequence:</p>
             <div className="font-mono text-lg tracking-wider text-purple-700 font-bold">
               {guideRNA}
             </div>
-            <p className="text-xs text-gray-500 mt-2">+ PAM sequence: <span className="font-mono font-bold">NGG</span></p>
+            <p className="text-xs text-muted mt-2">+ PAM sequence: <span className="font-mono font-bold">NGG</span></p>
           </div>
 
-          <div className="mt-4 p-3 bg-gray-50 rounded-lg">
-            <p className="text-xs text-gray-600">
+          <div className="mt-4 p-3 bg-surface-soft rounded-lg">
+            <p className="text-xs text-body">
               <Info className="w-3 h-3 inline mr-1" />
               The guide RNA directs Cas9 to cut 3 base pairs upstream of the PAM sequence (NGG).
             </p>
@@ -587,22 +587,22 @@ export function CrisprSimulator() {
             <div
               onClick={() => setEditType('knockout')}
               className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                editType === 'knockout' ? 'border-red-400 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                editType === 'knockout' ? 'border-red-400 bg-danger-soft' : 'border-adaptive hover:border-adaptive'
               }`}
             >
               <Scissors className="w-6 h-6 text-red-500 mb-2" />
-              <p className="font-medium text-gray-800">Gene Knockout</p>
-              <p className="text-xs text-gray-500 mt-1">Disrupt gene function via NHEJ repair</p>
+              <p className="font-medium text-title">Gene Knockout</p>
+              <p className="text-xs text-muted mt-1">Disrupt gene function via NHEJ repair</p>
             </div>
             <div
               onClick={() => setEditType('correction')}
               className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                editType === 'correction' ? 'border-green-400 bg-green-50' : 'border-gray-200 hover:border-gray-300'
+                editType === 'correction' ? 'border-green-400 bg-success-soft' : 'border-adaptive hover:border-adaptive'
               }`}
             >
               <Sparkles className="w-6 h-6 text-green-500 mb-2" />
-              <p className="font-medium text-gray-800">Gene Correction</p>
-              <p className="text-xs text-gray-500 mt-1">Fix mutation via HDR repair template</p>
+              <p className="font-medium text-title">Gene Correction</p>
+              <p className="text-xs text-muted mt-1">Fix mutation via HDR repair template</p>
             </div>
           </div>
         </Card>
@@ -631,7 +631,7 @@ export function CrisprSimulator() {
               {/* Cas9 scissors */}
               {state === 'targeting' && (
                 <div className="absolute inset-0 flex items-center justify-center animate-bounce">
-                  <div className="bg-purple-500 text-white p-3 rounded-full shadow-lg">
+                  <div className="bg-accent-soft0 text-white p-3 rounded-full shadow-lg">
                     <Target className="w-8 h-8" />
                   </div>
                 </div>
@@ -639,7 +639,7 @@ export function CrisprSimulator() {
 
               {state === 'cutting' && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className={`bg-red-500 text-white p-3 rounded-full shadow-lg ${animationStep >= 3 ? 'animate-ping' : 'animate-pulse'}`}>
+                  <div className={`bg-danger-soft0 text-white p-3 rounded-full shadow-lg ${animationStep >= 3 ? 'animate-ping' : 'animate-pulse'}`}>
                     <Scissors className="w-8 h-8" />
                   </div>
                 </div>
@@ -647,7 +647,7 @@ export function CrisprSimulator() {
 
               {state === 'repairing' && (
                 <div className="absolute inset-0 flex items-center justify-center animate-pulse">
-                  <div className="bg-green-500 text-white p-3 rounded-full shadow-lg">
+                  <div className="bg-success-soft0 text-white p-3 rounded-full shadow-lg">
                     <Sparkles className="w-8 h-8" />
                   </div>
                 </div>
@@ -670,8 +670,8 @@ export function CrisprSimulator() {
                     (state === 'targeting' && idx === 0) ||
                     (state === 'cutting' && idx <= animationStep) ||
                     (state === 'repairing' && idx <= 5)
-                      ? 'bg-purple-500 text-white'
-                      : 'bg-gray-200 text-gray-500'
+                      ? 'bg-accent-soft0 text-white'
+                      : 'bg-gray-200 text-muted'
                   }`}
                 >
                   {step}
@@ -716,7 +716,7 @@ export function CrisprSimulator() {
         {/* Success Header */}
         <Card className={`bg-gradient-to-r ${editType === 'knockout' ? 'from-red-50 to-orange-50' : 'from-green-50 to-teal-50'}`}>
           <div className="flex items-center gap-4">
-            <div className={`w-14 h-14 ${editType === 'knockout' ? 'bg-red-500' : 'bg-green-500'} rounded-xl flex items-center justify-center shadow-lg`}>
+            <div className={`w-14 h-14 ${editType === 'knockout' ? 'bg-danger-soft0' : 'bg-success-soft0'} rounded-xl flex items-center justify-center shadow-lg`}>
               <CheckCircle className="w-7 h-7 text-white" />
             </div>
             <div>
@@ -734,36 +734,36 @@ export function CrisprSimulator() {
 
           <div className="space-y-4">
             {/* Protein Level */}
-            <div className="p-4 bg-blue-50 rounded-lg">
+            <div className="p-4 bg-info-soft rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-info-soft0 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">P</span>
                 </div>
                 <p className="font-medium text-blue-800">Protein Level</p>
               </div>
-              <p className="text-sm text-gray-700">{result.proteinEffect}</p>
+              <p className="text-sm text-body">{result.proteinEffect}</p>
             </div>
 
             {/* Cellular Level */}
-            <div className="p-4 bg-purple-50 rounded-lg">
+            <div className="p-4 bg-accent-soft rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-accent-soft0 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">C</span>
                 </div>
                 <p className="font-medium text-purple-800">Cellular Level</p>
               </div>
-              <p className="text-sm text-gray-700">{result.cellularEffect}</p>
+              <p className="text-sm text-body">{result.cellularEffect}</p>
             </div>
 
             {/* Organism Level */}
-            <div className="p-4 bg-green-50 rounded-lg">
+            <div className="p-4 bg-success-soft rounded-lg">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-success-soft0 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">O</span>
                 </div>
                 <p className="font-medium text-green-800">Organism Level</p>
               </div>
-              <p className="text-sm text-gray-700">{result.organismEffect}</p>
+              <p className="text-sm text-body">{result.organismEffect}</p>
             </div>
           </div>
         </Card>
@@ -781,13 +781,13 @@ export function CrisprSimulator() {
           <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
             <div
               className={`h-full ${
-                result.offTargetRisk === 'low' ? 'bg-green-500 w-1/4' :
-                result.offTargetRisk === 'medium' ? 'bg-yellow-500 w-2/4' :
-                'bg-red-500 w-3/4'
+                result.offTargetRisk === 'low' ? 'bg-success-soft0 w-1/4' :
+                result.offTargetRisk === 'medium' ? 'bg-warning-soft0 w-2/4' :
+                'bg-danger-soft0 w-3/4'
               }`}
             />
           </div>
-          <p className="text-xs text-gray-500 mt-2">
+          <p className="text-xs text-muted mt-2">
             Off-target effects occur when CRISPR cuts unintended sites in the genome.
             Guide RNA design and delivery method affect this risk.
           </p>
@@ -801,7 +801,7 @@ export function CrisprSimulator() {
           </div>
           <ul className="space-y-2">
             {result.ethicalConsiderations.map((consideration, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+              <li key={idx} className="flex items-start gap-2 text-sm text-body">
                 <ChevronRight className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
                 {consideration}
               </li>

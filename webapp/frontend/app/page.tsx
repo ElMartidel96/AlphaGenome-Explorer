@@ -184,7 +184,7 @@ export default function HomePage() {
         {activeTab === 'myDna' && (
           <div className="space-y-6">
             {/* Sub-navigation for My DNA tools */}
-            <div className="flex flex-wrap gap-2 p-2 bg-gray-100 rounded-lg">
+            <div className="flex flex-wrap gap-2 p-2 bg-surface-muted rounded-lg">
               <Button
                 variant={activeTool === 'dna' ? 'primary' : 'light'}
                 size="xs"
@@ -328,21 +328,21 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-200 mt-16">
+      <footer className="bg-surface-soft border-t border-adaptive mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-muted">
               <p>{t('footer.poweredBy')}</p>
               <p className="mt-1">{t('footer.citation')}</p>
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="https://www.alphagenomedocs.com/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">
+              <a href="https://www.alphagenomedocs.com/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-info transition-colors">
                 {t('footer.documentation')}
               </a>
-              <a href="https://github.com/google-deepmind/alphagenome" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">
+              <a href="https://github.com/google-deepmind/alphagenome" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-info transition-colors">
                 {t('footer.github')}
               </a>
-              <a href="https://www.alphagenomecommunity.com/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">
+              <a href="https://www.alphagenomecommunity.com/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-info transition-colors">
                 {t('footer.community')}
               </a>
             </div>
@@ -478,7 +478,7 @@ function RegionExplorer({ t }: { t: any }) {
         <div className="mt-4 space-y-4">
           {/* Region Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-body mb-1">
               {t('regionExplorer.inputLabel')}
             </label>
             <div className="flex gap-2">
@@ -490,8 +490,8 @@ function RegionExplorer({ t }: { t: any }) {
                   setError(null)
                 }}
                 placeholder={t('regionExplorer.inputPlaceholder')}
-                className={`flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-                  error ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                className={`flex-1 px-3 py-2 border rounded-lg input-adaptive ${
+                  error ? 'border-danger bg-danger-soft' : ''
                 }`}
                 aria-label={t('regionExplorer.inputLabel')}
               />
@@ -504,7 +504,7 @@ function RegionExplorer({ t }: { t: any }) {
                 {isLoading ? t('regionExplorer.exploring') : t('regionExplorer.exploreButton')}
               </Button>
             </div>
-            <Text className="text-xs text-gray-500 mt-1">
+            <Text className="text-xs text-muted mt-1">
               {t('regionExplorer.inputHelp')}
             </Text>
           </div>
@@ -518,7 +518,7 @@ function RegionExplorer({ t }: { t: any }) {
 
           {/* Track Selection */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-body mb-2">
               {t('regionExplorer.selectTracks')}
             </label>
             <div className="flex flex-wrap gap-2">
@@ -535,7 +535,7 @@ function RegionExplorer({ t }: { t: any }) {
                   className={`px-3 py-1 rounded-full text-sm transition-all ${
                     selectedTracks.includes(track.id)
                       ? `${track.color} text-white`
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      : 'bg-surface-muted text-muted hover:bg-surface-soft'
                   }`}
                 >
                   {track.label}
@@ -581,23 +581,23 @@ function RegionExplorer({ t }: { t: any }) {
 
             <Grid numItems={1} numItemsSm={3} className="gap-4 mb-6">
               <Col>
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <Text className="text-sm text-gray-500">Chromosome</Text>
-                  <p className="text-xl font-bold text-blue-600">{result.chromosome}</p>
+                <div className="p-3 bg-info-soft rounded-lg">
+                  <Text className="text-sm text-muted">Chromosome</Text>
+                  <p className="text-xl font-bold text-info">{result.chromosome}</p>
                 </div>
               </Col>
               <Col>
-                <div className="p-3 bg-purple-50 rounded-lg">
-                  <Text className="text-sm text-gray-500">{t('regionExplorer.length')}</Text>
-                  <p className="text-xl font-bold text-purple-600">
+                <div className="p-3 bg-accent-soft rounded-lg">
+                  <Text className="text-sm text-muted">{t('regionExplorer.length')}</Text>
+                  <p className="text-xl font-bold text-accent">
                     {formatNumber(result.length)} <span className="text-sm font-normal">bp</span>
                   </p>
                 </div>
               </Col>
               <Col>
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <Text className="text-sm text-gray-500">{t('regionExplorer.genes')}</Text>
-                  <p className="text-xl font-bold text-green-600">{result.genes.length}</p>
+                <div className="p-3 bg-success-soft rounded-lg">
+                  <Text className="text-sm text-muted">{t('regionExplorer.genes')}</Text>
+                  <p className="text-xl font-bold text-success">{result.genes.length}</p>
                 </div>
               </Col>
             </Grid>
@@ -609,9 +609,9 @@ function RegionExplorer({ t }: { t: any }) {
                 if (!selectedTracks.includes(trackOption?.id || '')) return null
 
                 return (
-                  <div key={track.name} className="border rounded-lg p-3">
+                  <div key={track.name} className="border border-adaptive rounded-lg p-3 bg-surface-soft">
                     <div className="flex items-center justify-between mb-2">
-                      <Text className="font-medium text-sm">{track.name}</Text>
+                      <Text className="font-medium text-sm text-body">{track.name}</Text>
                       <Badge color={trackOption?.color.replace('bg-', '').replace('-500', '') as 'blue' | 'green' | 'purple' | 'orange' | 'red' | 'gray'} size="xs">
                         Active
                       </Badge>
@@ -628,10 +628,10 @@ function RegionExplorer({ t }: { t: any }) {
                       ))}
                     </div>
                     <div className="flex justify-between mt-1">
-                      <Text className="text-xs text-gray-400">
+                      <Text className="text-xs text-subtle">
                         {formatNumber(result.start)}
                       </Text>
-                      <Text className="text-xs text-gray-400">
+                      <Text className="text-xs text-subtle">
                         {formatNumber(result.end)}
                       </Text>
                     </div>
@@ -657,11 +657,11 @@ function RegionExplorer({ t }: { t: any }) {
 
       {/* Empty State */}
       {!result && !isLoading && !error && (
-        <Card className="border-2 border-dashed border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50">
+        <Card className="border-2 border-dashed border-info gradient-accent">
           <div className="text-center py-8">
-            <Layers className="w-12 h-12 text-blue-400 mx-auto mb-3" />
-            <p className="text-gray-600 font-medium">{t('regionExplorer.browserTitle')}</p>
-            <p className="text-sm text-gray-500 mt-1">
+            <Layers className="w-12 h-12 text-info mx-auto mb-3" />
+            <p className="text-body font-medium">{t('regionExplorer.browserTitle')}</p>
+            <p className="text-sm text-muted mt-1">
               {t('regionExplorer.noDataYet')}
             </p>
           </div>
@@ -879,17 +879,17 @@ function BatchAnalysis({ t }: { t: any }) {
               onDrop={handleDrop}
               className={`p-8 rounded-lg border-2 border-dashed transition-all cursor-pointer ${
                 isDragging
-                  ? 'border-green-500 bg-green-100'
+                  ? 'dropzone-active'
                   : error
-                    ? 'border-red-300 bg-red-50 hover:border-red-400'
-                    : 'border-green-200 bg-gradient-to-r from-green-50 to-teal-50 hover:border-green-400 hover:bg-green-100'
+                    ? 'dropzone-error'
+                    : 'dropzone-adaptive'
               }`}
             >
               <div className="text-center">
-                <FileUp className={`w-12 h-12 mx-auto mb-3 ${error ? 'text-red-400' : 'text-green-400'}`} />
-                <p className="text-gray-600 font-medium">{t('batchAnalysis.dropzone')}</p>
-                <p className="text-sm text-gray-500 mt-1">{t('batchAnalysis.orBrowse')}</p>
-                <p className="text-xs text-gray-400 mt-2">{t('batchAnalysis.supportedFormats')}</p>
+                <FileUp className={`w-12 h-12 mx-auto mb-3 ${error ? 'text-danger' : 'text-success'}`} />
+                <p className="text-body font-medium">{t('batchAnalysis.dropzone')}</p>
+                <p className="text-sm text-muted mt-1">{t('batchAnalysis.orBrowse')}</p>
+                <p className="text-xs text-subtle mt-2">{t('batchAnalysis.supportedFormats')}</p>
               </div>
             </div>
 
@@ -902,17 +902,17 @@ function BatchAnalysis({ t }: { t: any }) {
 
             {/* Stats */}
             <div className="mt-4 grid grid-cols-3 gap-4 text-center">
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <p className="text-2xl font-bold text-gray-800">VCF</p>
-                <p className="text-xs text-gray-500">{t('batchAnalysis.stats.inputFormat')}</p>
+              <div className="p-3 bg-surface-soft rounded-lg">
+                <p className="text-2xl font-bold text-title">VCF</p>
+                <p className="text-xs text-muted">{t('batchAnalysis.stats.inputFormat')}</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <p className="text-2xl font-bold text-gray-800">10K</p>
-                <p className="text-xs text-gray-500">{t('batchAnalysis.stats.maxVariants')}</p>
+              <div className="p-3 bg-surface-soft rounded-lg">
+                <p className="text-2xl font-bold text-title">10K</p>
+                <p className="text-xs text-muted">{t('batchAnalysis.stats.maxVariants')}</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <p className="text-2xl font-bold text-gray-800">CSV</p>
-                <p className="text-xs text-gray-500">{t('batchAnalysis.stats.exportFormat')}</p>
+              <div className="p-3 bg-surface-soft rounded-lg">
+                <p className="text-2xl font-bold text-title">CSV</p>
+                <p className="text-xs text-muted">{t('batchAnalysis.stats.exportFormat')}</p>
               </div>
             </div>
           </div>
@@ -921,19 +921,19 @@ function BatchAnalysis({ t }: { t: any }) {
         {/* Processing State */}
         {(status === 'parsing' || status === 'analyzing') && (
           <div className="mt-4 space-y-4">
-            <div className="p-6 bg-blue-50 rounded-lg">
+            <div className="p-6 bg-info-soft rounded-lg">
               <div className="flex items-center space-x-4">
-                <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+                <Loader2 className="w-8 h-8 animate-spin text-info" />
                 <div className="flex-1">
-                  <Text className="font-medium">
+                  <Text className="font-medium text-body">
                     {status === 'parsing'
                       ? t('batchAnalysis.parsing')
                       : t('batchAnalysis.analyzing').replace('{current}', currentVariant.toString()).replace('{total}', totalVariants.toString())
                     }
                   </Text>
-                  <Text className="text-sm text-gray-500">{file?.name}</Text>
+                  <Text className="text-sm text-muted">{file?.name}</Text>
                   <ProgressBar value={progress} className="mt-3" color="blue" />
-                  <Text className="text-xs text-gray-400 mt-1">{progress}%</Text>
+                  <Text className="text-xs text-subtle mt-1">{progress}%</Text>
                 </div>
               </div>
             </div>
@@ -945,7 +945,7 @@ function BatchAnalysis({ t }: { t: any }) {
       {status === 'complete' && results && (
         <div className="space-y-4">
           {/* Summary Card */}
-          <Card className="bg-gradient-to-r from-green-50 to-emerald-50">
+          <Card className="gradient-success">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <CheckCircle className="w-8 h-8 text-green-600" />
@@ -973,37 +973,37 @@ function BatchAnalysis({ t }: { t: any }) {
             <Title>{t('batchAnalysis.results.summary')}</Title>
             <Grid numItems={2} numItemsSm={4} className="gap-4 mt-4">
               <Col>
-                <div className="p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
-                  <Text className="text-sm text-gray-500">{t('batchAnalysis.results.highImpact')}</Text>
-                  <p className="text-2xl font-bold text-red-600">{results.highImpact}</p>
-                  <p className="text-xs text-gray-400">
+                <div className="p-4 bg-danger-soft rounded-lg border-l-4 border-red-500 dark:border-red-400">
+                  <Text className="text-sm text-muted">{t('batchAnalysis.results.highImpact')}</Text>
+                  <p className="text-2xl font-bold text-danger">{results.highImpact}</p>
+                  <p className="text-xs text-subtle">
                     {((results.highImpact / results.totalVariants) * 100).toFixed(1)}%
                   </p>
                 </div>
               </Col>
               <Col>
-                <div className="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-500">
-                  <Text className="text-sm text-gray-500">{t('batchAnalysis.results.moderateImpact')}</Text>
-                  <p className="text-2xl font-bold text-orange-600">{results.moderateImpact}</p>
-                  <p className="text-xs text-gray-400">
+                <div className="p-4 bg-warning-muted rounded-lg border-l-4 border-orange-500 dark:border-orange-400">
+                  <Text className="text-sm text-muted">{t('batchAnalysis.results.moderateImpact')}</Text>
+                  <p className="text-2xl font-bold text-warning">{results.moderateImpact}</p>
+                  <p className="text-xs text-subtle">
                     {((results.moderateImpact / results.totalVariants) * 100).toFixed(1)}%
                   </p>
                 </div>
               </Col>
               <Col>
-                <div className="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
-                  <Text className="text-sm text-gray-500">{t('batchAnalysis.results.lowImpact')}</Text>
-                  <p className="text-2xl font-bold text-yellow-600">{results.lowImpact}</p>
-                  <p className="text-xs text-gray-400">
+                <div className="p-4 bg-warning-soft rounded-lg border-l-4 border-yellow-500 dark:border-yellow-400">
+                  <Text className="text-sm text-muted">{t('batchAnalysis.results.lowImpact')}</Text>
+                  <p className="text-2xl font-bold text-warning">{results.lowImpact}</p>
+                  <p className="text-xs text-subtle">
                     {((results.lowImpact / results.totalVariants) * 100).toFixed(1)}%
                   </p>
                 </div>
               </Col>
               <Col>
-                <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-gray-400">
-                  <Text className="text-sm text-gray-500">{t('batchAnalysis.results.modifier')}</Text>
-                  <p className="text-2xl font-bold text-gray-600">{results.modifier}</p>
-                  <p className="text-xs text-gray-400">
+                <div className="p-4 bg-surface-soft rounded-lg border-l-4 border-gray-400 dark:border-slate-500">
+                  <Text className="text-sm text-muted">{t('batchAnalysis.results.modifier')}</Text>
+                  <p className="text-2xl font-bold text-body">{results.modifier}</p>
+                  <p className="text-xs text-subtle">
                     {((results.modifier / results.totalVariants) * 100).toFixed(1)}%
                   </p>
                 </div>
@@ -1013,23 +1013,23 @@ function BatchAnalysis({ t }: { t: any }) {
             {/* Top High Impact Variants */}
             {results.highImpact > 0 && (
               <div className="mt-6">
-                <Text className="font-medium mb-3">{t('batchAnalysis.results.highImpact')} - Top 5</Text>
+                <Text className="font-medium mb-3 text-body">{t('batchAnalysis.results.highImpact')} - Top 5</Text>
                 <div className="space-y-2">
                   {results.variants
                     .filter(v => v.impact === 'HIGH')
                     .slice(0, 5)
                     .map((variant) => (
-                      <div key={variant.id} className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+                      <div key={variant.id} className="flex items-center justify-between p-3 bg-danger-soft rounded-lg">
                         <div className="flex items-center gap-4">
                           <Badge color="red" size="sm">{variant.impact}</Badge>
                           <div>
-                            <Text className="font-medium">{variant.chromosome}:{variant.position}</Text>
-                            <Text className="text-xs text-gray-500">{variant.ref} → {variant.alt}</Text>
+                            <Text className="font-medium text-body">{variant.chromosome}:{variant.position}</Text>
+                            <Text className="text-xs text-muted">{variant.ref} → {variant.alt}</Text>
                           </div>
                         </div>
                         <div className="text-right">
-                          <Text className="font-medium text-blue-600">{variant.gene}</Text>
-                          <Text className="text-xs text-gray-500">Score: {variant.score.toFixed(3)}</Text>
+                          <Text className="font-medium text-info">{variant.gene}</Text>
+                          <Text className="text-xs text-muted">Score: {variant.score.toFixed(3)}</Text>
                         </div>
                       </div>
                     ))}
@@ -1056,10 +1056,10 @@ function LearnSection({ t }: { t: any }) {
       descKey: 'learn.lessons.dna.description',
       contentKey: 'learn.lessons.dna.content',
       color: 'blue',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
-      textColor: 'text-blue-500',
-      hoverColor: 'hover:border-blue-400'
+      bgColor: 'bg-info-soft',
+      borderColor: 'border-info',
+      textColor: 'text-info',
+      hoverColor: 'hover:border-blue-400 dark:hover:border-blue-300'
     },
     {
       id: 'variants',
@@ -1068,10 +1068,10 @@ function LearnSection({ t }: { t: any }) {
       descKey: 'learn.lessons.variants.description',
       contentKey: 'learn.lessons.variants.content',
       color: 'yellow',
-      bgColor: 'bg-yellow-50',
-      borderColor: 'border-yellow-200',
-      textColor: 'text-yellow-500',
-      hoverColor: 'hover:border-yellow-400'
+      bgColor: 'bg-warning-soft',
+      borderColor: 'border-warning',
+      textColor: 'text-warning',
+      hoverColor: 'hover:border-yellow-400 dark:hover:border-yellow-300'
     },
     {
       id: 'expression',
@@ -1080,10 +1080,10 @@ function LearnSection({ t }: { t: any }) {
       descKey: 'learn.lessons.expression.description',
       contentKey: 'learn.lessons.expression.content',
       color: 'purple',
-      bgColor: 'bg-purple-50',
-      borderColor: 'border-purple-200',
-      textColor: 'text-purple-500',
-      hoverColor: 'hover:border-purple-400'
+      bgColor: 'bg-accent-soft',
+      borderColor: 'border-accent',
+      textColor: 'text-accent',
+      hoverColor: 'hover:border-purple-400 dark:hover:border-purple-300'
     },
     {
       id: 'disease',
@@ -1092,10 +1092,10 @@ function LearnSection({ t }: { t: any }) {
       descKey: 'learn.lessons.disease.description',
       contentKey: 'learn.lessons.disease.content',
       color: 'red',
-      bgColor: 'bg-red-50',
-      borderColor: 'border-red-200',
-      textColor: 'text-red-500',
-      hoverColor: 'hover:border-red-400'
+      bgColor: 'bg-danger-soft',
+      borderColor: 'border-danger',
+      textColor: 'text-danger',
+      hoverColor: 'hover:border-red-400 dark:hover:border-red-300'
     },
   ]
 
@@ -1116,10 +1116,10 @@ function LearnSection({ t }: { t: any }) {
   return (
     <div className="space-y-6">
       {/* Header Card */}
-      <Card className="bg-gradient-to-r from-blue-50 to-purple-50">
+      <Card className="gradient-accent">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center">
               <GraduationCap className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -1128,8 +1128,8 @@ function LearnSection({ t }: { t: any }) {
             </div>
           </div>
           <div className="text-right">
-            <Text className="text-sm text-gray-500">{t('learn.progress')}</Text>
-            <p className="text-lg font-bold text-blue-600">
+            <Text className="text-sm text-muted">{t('learn.progress')}</Text>
+            <p className="text-lg font-bold text-info">
               {completedLessons.size} / {lessons.length}
             </p>
           </div>
@@ -1149,7 +1149,7 @@ function LearnSection({ t }: { t: any }) {
                 tabIndex={0}
                 onClick={() => handleLessonClick(lesson.id)}
                 onKeyDown={(e) => e.key === 'Enter' && handleLessonClick(lesson.id)}
-                className={`p-4 rounded-lg border-2 ${lesson.borderColor} ${lesson.bgColor} ${lesson.hoverColor} hover:shadow-md transition-all cursor-pointer ${isActive ? 'ring-2 ring-offset-2 ring-blue-500' : ''}`}
+                className={`p-4 rounded-lg border-2 ${lesson.borderColor} ${lesson.bgColor} ${lesson.hoverColor} hover:shadow-md transition-all cursor-pointer ${isActive ? 'ring-2 ring-offset-2 ring-blue-500 dark:ring-offset-slate-900' : ''}`}
               >
                 <div className="flex items-start justify-between">
                   <lesson.icon className={`w-8 h-8 ${lesson.textColor} mb-2`} />
@@ -1159,9 +1159,9 @@ function LearnSection({ t }: { t: any }) {
                     </Badge>
                   )}
                 </div>
-                <p className="font-semibold text-gray-800">{t(lesson.titleKey)}</p>
-                <p className="text-sm text-gray-600 mt-1">{t(lesson.descKey)}</p>
-                <p className="text-xs text-blue-600 mt-2">
+                <p className="font-semibold text-title">{t(lesson.titleKey)}</p>
+                <p className="text-sm text-body mt-1">{t(lesson.descKey)}</p>
+                <p className="text-xs text-info mt-2">
                   {isActive ? '▼ ' : '▶ '}{t('common.learn')}
                 </p>
               </div>
@@ -1172,14 +1172,14 @@ function LearnSection({ t }: { t: any }) {
 
       {/* Expanded Lesson Content */}
       {activeLessonData && (
-        <Card className="border-l-4 border-blue-500">
+        <Card className="border-l-4 border-blue-500 dark:border-blue-400">
           <div className="flex items-center gap-3 mb-4">
             <activeLessonData.icon className={`w-6 h-6 ${activeLessonData.textColor}`} />
             <Title>{t(activeLessonData.titleKey)}</Title>
           </div>
 
           <div className="prose max-w-none">
-            <Text className="text-gray-700 leading-relaxed">
+            <Text className="text-body leading-relaxed">
               {t(activeLessonData.contentKey)}
             </Text>
           </div>
@@ -1209,11 +1209,11 @@ function LearnSection({ t }: { t: any }) {
 
       {/* Achievements */}
       {completedLessons.size > 0 && (
-        <Card className="bg-gradient-to-r from-green-50 to-emerald-50">
+        <Card className="gradient-success">
           <div className="flex items-center gap-3">
-            <Sparkles className="w-6 h-6 text-green-600" />
+            <Sparkles className="w-6 h-6 text-success" />
             <div>
-              <p className="font-semibold text-gray-800">
+              <p className="font-semibold text-title">
                 {completedLessons.size === 1
                   ? t('learn.achievements.firstLesson')
                   : completedLessons.size === lessons.length
@@ -1221,7 +1221,7 @@ function LearnSection({ t }: { t: any }) {
                     : `${completedLessons.size} ${t('learn.progress')}`
                 }
               </p>
-              <Text className="text-sm">
+              <Text className="text-sm text-body">
                 {completedLessons.size === lessons.length
                   ? t('learn.achievements.allBasicsDesc')
                   : t('learn.achievements.firstLessonDesc')
@@ -1250,8 +1250,8 @@ function UseCasesSection({ t }: { t: any }) {
         <Col>
           <Card className="h-full">
             <div className="flex items-center gap-2 mb-4">
-              <Heart className="w-5 h-5 text-pink-500" />
-              <span className="font-semibold text-gray-800">{t('useCases.personal.title')}</span>
+              <Heart className="w-5 h-5 text-pink-500 dark:text-pink-400" />
+              <span className="font-semibold text-title">{t('useCases.personal.title')}</span>
             </div>
             <div className="space-y-3">
               <UseCaseItem
@@ -1277,8 +1277,8 @@ function UseCasesSection({ t }: { t: any }) {
         <Col>
           <Card className="h-full">
             <div className="flex items-center gap-2 mb-4">
-              <GraduationCap className="w-5 h-5 text-blue-500" />
-              <span className="font-semibold text-gray-800">{t('useCases.education.title')}</span>
+              <GraduationCap className="w-5 h-5 text-info" />
+              <span className="font-semibold text-title">{t('useCases.education.title')}</span>
             </div>
             <div className="space-y-3">
               <UseCaseItem
@@ -1304,8 +1304,8 @@ function UseCasesSection({ t }: { t: any }) {
         <Col>
           <Card className="h-full">
             <div className="flex items-center gap-2 mb-4">
-              <FlaskConical className="w-5 h-5 text-green-500" />
-              <span className="font-semibold text-gray-800">{t('useCases.research.title')}</span>
+              <FlaskConical className="w-5 h-5 text-success" />
+              <span className="font-semibold text-title">{t('useCases.research.title')}</span>
             </div>
             <div className="space-y-3">
               <UseCaseItem
@@ -1333,12 +1333,12 @@ function UseCasesSection({ t }: { t: any }) {
 
 function UseCaseItem({ icon: Icon, title, desc }: { icon: any; title: string; desc: string }) {
   return (
-    <div className="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+    <div className="p-3 bg-surface-soft rounded-lg hover-surface transition-colors cursor-pointer">
       <div className="flex items-start gap-2">
-        <Icon className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+        <Icon className="w-4 h-4 text-muted mt-0.5 flex-shrink-0" />
         <div>
-          <p className="text-sm font-medium text-gray-800">{title}</p>
-          <p className="text-xs text-gray-500">{desc}</p>
+          <p className="text-sm font-medium text-title">{title}</p>
+          <p className="text-xs text-muted">{desc}</p>
         </div>
       </div>
     </div>
@@ -1505,9 +1505,9 @@ function ToolsSection({ t, onToolSelect }: { t: any; onToolSelect: (toolId: stri
 
   return (
     <div className="space-y-6">
-      <Card className="bg-gradient-to-br from-blue-50 to-purple-50">
+      <Card className="gradient-accent">
         <div className="flex items-center gap-3">
-          <Wrench className="w-8 h-8 text-blue-600" />
+          <Wrench className="w-8 h-8 text-info" />
           <div>
             <Title>{t('nav.tools')}</Title>
             <Text>All available genetic analysis tools</Text>
@@ -1520,20 +1520,20 @@ function ToolsSection({ t, onToolSelect }: { t: any; onToolSelect: (toolId: stri
           <Col key={tool.id}>
             {tool.implemented ? (
               <Card
-                className="h-full hover:shadow-lg transition-shadow cursor-pointer hover:ring-2 hover:ring-blue-500"
+                className="h-full hover:shadow-lg transition-shadow cursor-pointer hover:ring-2 hover:ring-blue-500 dark:hover:ring-blue-400"
                 onClick={() => onToolSelect(tool.id)}
               >
                 <div className="flex items-start gap-3">
-                  <div className={`w-10 h-10 bg-${tool.color}-100 rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    <tool.icon className={`w-5 h-5 text-${tool.color}-600`} />
+                  <div className={`w-10 h-10 bg-${tool.color}-100 dark:bg-${tool.color}-900/30 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <tool.icon className={`w-5 h-5 text-${tool.color}-600 dark:text-${tool.color}-400`} />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <p className="font-semibold text-gray-800">{tool.name}</p>
+                      <p className="font-semibold text-title">{tool.name}</p>
                       <Badge color="green" size="xs">Ready</Badge>
                     </div>
-                    <p className="text-sm text-gray-500 mt-1">{tool.description}</p>
-                    <p className="text-xs text-blue-600 mt-2 flex items-center gap-1">
+                    <p className="text-sm text-muted mt-1">{tool.description}</p>
+                    <p className="text-xs text-info mt-2 flex items-center gap-1">
                       <span>→</span> {t('tools.clickToOpen') || 'Click to open'}
                     </p>
                   </div>

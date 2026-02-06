@@ -305,8 +305,8 @@ export function FamilyRiskAssessment() {
     const parent2 = isDominant ? ['a', 'a'] : ['C', 'c'] // Normal/Carrier
 
     return (
-      <div className="bg-gray-50 rounded-lg p-4 mt-3">
-        <p className="text-sm font-medium text-gray-700 mb-3">
+      <div className="bg-surface-soft rounded-lg p-4 mt-3">
+        <p className="text-sm font-medium text-body mb-3">
           {isSpanish ? 'Cuadro de Punnett - Herencia' : 'Punnett Square - Inheritance'}
         </p>
         <div className="grid grid-cols-3 gap-1 max-w-[200px] text-center text-sm">
@@ -330,7 +330,7 @@ export function FamilyRiskAssessment() {
             {parent1[1]}{parent2[1]}
           </div>
         </div>
-        <div className="mt-3 space-y-1 text-xs text-gray-600">
+        <div className="mt-3 space-y-1 text-xs text-body">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-red-100 rounded"></div>
             <span>{isSpanish ? 'Afectado' : 'Affected'}</span>
@@ -398,11 +398,11 @@ export function FamilyRiskAssessment() {
                   desc: isSpanish ? 'Chequeos preventivos personalizados' : 'Personalized preventive screenings',
                 },
               ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                <div key={idx} className="flex items-start gap-3 p-3 bg-surface-soft rounded-lg">
                   <item.icon className="w-5 h-5 text-purple-500 mt-0.5" />
                   <div>
-                    <p className="font-medium text-gray-800">{item.title}</p>
-                    <p className="text-sm text-gray-500">{item.desc}</p>
+                    <p className="font-medium text-title">{item.title}</p>
+                    <p className="text-sm text-muted">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -460,8 +460,8 @@ export function FamilyRiskAssessment() {
                 key={member.id}
                 className={`p-4 rounded-lg border-2 transition-colors cursor-pointer ${
                   selectedMember === member.id
-                    ? 'border-pink-500 bg-pink-50'
-                    : 'border-gray-200 hover:border-pink-300'
+                    ? 'border-pink-500 bg-pink-soft'
+                    : 'border-adaptive hover:border-pink-300'
                 }`}
                 onClick={() => setSelectedMember(selectedMember === member.id ? null : member.id)}
               >
@@ -471,12 +471,12 @@ export function FamilyRiskAssessment() {
                       member.sex === 'female' ? 'bg-pink-100' : 'bg-blue-100'
                     }`}>
                       <UserCircle className={`w-6 h-6 ${
-                        member.sex === 'female' ? 'text-pink-600' : 'text-blue-600'
+                        member.sex === 'female' ? 'text-pink-600' : 'text-info'
                       }`} />
                     </div>
                     <div>
-                      <p className="font-medium text-gray-800">{member.name}</p>
-                      <p className="text-sm text-gray-500">
+                      <p className="font-medium text-title">{member.name}</p>
+                      <p className="text-sm text-muted">
                         {member.relationship === 'self' && (isSpanish ? 'Tú' : 'You')}
                         {member.relationship === 'mother' && (isSpanish ? 'Madre' : 'Mother')}
                         {member.relationship === 'father' && (isSpanish ? 'Padre' : 'Father')}
@@ -498,8 +498,8 @@ export function FamilyRiskAssessment() {
 
                 {/* Condition editing for selected member */}
                 {selectedMember === member.id && (
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <p className="text-sm font-medium text-gray-700 mb-2">
+                  <div className="mt-4 pt-4 border-t border-adaptive">
+                    <p className="text-sm font-medium text-body mb-2">
                       {isSpanish ? 'Condiciones de salud:' : 'Health conditions:'}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -512,8 +512,8 @@ export function FamilyRiskAssessment() {
                           }}
                           className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
                             member.conditions.includes(condition.id)
-                              ? 'bg-orange-500 text-white'
-                              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                              ? 'bg-warning-muted0 text-white'
+                              : 'bg-surface-muted text-body hover:bg-gray-200'
                           }`}
                         >
                           {isSpanish ? condition.nameEs : condition.name}
@@ -527,8 +527,8 @@ export function FamilyRiskAssessment() {
           </div>
 
           {/* Add family member buttons */}
-          <div className="mt-4 pt-4 border-t border-gray-200">
-            <p className="text-sm font-medium text-gray-700 mb-3">
+          <div className="mt-4 pt-4 border-t border-adaptive">
+            <p className="text-sm font-medium text-body mb-3">
               {isSpanish ? 'Añadir familiar:' : 'Add family member:'}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -639,10 +639,10 @@ export function FamilyRiskAssessment() {
                   key={condition.id}
                   className={`p-4 rounded-lg border-2 transition-all cursor-pointer ${
                     isSelected
-                      ? 'border-red-500 bg-red-50'
+                      ? 'border-red-500 bg-danger-soft'
                       : familyHas
-                        ? 'border-orange-300 bg-orange-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-orange-300 bg-warning-muted'
+                        : 'border-adaptive hover:border-adaptive'
                   }`}
                   onClick={() => {
                     setSelectedConditions(prev =>
@@ -655,7 +655,7 @@ export function FamilyRiskAssessment() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <p className="font-medium text-gray-800">
+                        <p className="font-medium text-title">
                           {isSpanish ? condition.nameEs : condition.name}
                         </p>
                         {familyHas && (
@@ -664,8 +664,8 @@ export function FamilyRiskAssessment() {
                           </Badge>
                         )}
                       </div>
-                      <p className="text-sm text-gray-500 mt-1">
-                        <span className="font-mono text-xs bg-gray-100 px-1 rounded">
+                      <p className="text-sm text-muted mt-1">
+                        <span className="font-mono text-xs bg-surface-muted px-1 rounded">
                           {condition.gene}
                         </span>
                         {' • '}
@@ -674,14 +674,14 @@ export function FamilyRiskAssessment() {
                         {condition.inheritance === 'x_linked' && (isSpanish ? 'Ligado al X' : 'X-Linked')}
                         {condition.inheritance === 'multifactorial' && (isSpanish ? 'Multifactorial' : 'Multifactorial')}
                       </p>
-                      <p className="text-sm text-gray-600 mt-2">
+                      <p className="text-sm text-body mt-2">
                         {isSpanish ? condition.descriptionEs : condition.description}
                       </p>
                     </div>
                     <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                       isSelected
-                        ? 'border-red-500 bg-red-500'
-                        : 'border-gray-300'
+                        ? 'border-red-500 bg-danger-soft0'
+                        : 'border-adaptive'
                     }`}>
                       {isSelected && <CheckCircle className="w-4 h-4 text-white" />}
                     </div>
@@ -720,7 +720,7 @@ export function FamilyRiskAssessment() {
       <div className="space-y-6">
         <Card className="text-center py-12">
           <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
-            <Dna className="w-10 h-10 text-purple-600" />
+            <Dna className="w-10 h-10 text-accent" />
           </div>
           <Title>
             {isSpanish ? 'Analizando Patrones Hereditarios...' : 'Analyzing Hereditary Patterns...'}
@@ -732,21 +732,21 @@ export function FamilyRiskAssessment() {
           </Text>
           <div className="max-w-md mx-auto">
             <ProgressBar value={analysisProgress} color="purple" className="mt-4" />
-            <p className="text-sm text-gray-500 mt-2">{analysisProgress}%</p>
+            <p className="text-sm text-muted mt-2">{analysisProgress}%</p>
           </div>
 
           {analysisProgress > 30 && (
-            <div className="mt-6 text-sm text-gray-600 animate-fade-in">
+            <div className="mt-6 text-sm text-body animate-fade-in">
               {isSpanish ? '✓ Árbol familiar procesado' : '✓ Family tree processed'}
             </div>
           )}
           {analysisProgress > 60 && (
-            <div className="text-sm text-gray-600 animate-fade-in">
+            <div className="text-sm text-body animate-fade-in">
               {isSpanish ? '✓ Patrones de herencia identificados' : '✓ Inheritance patterns identified'}
             </div>
           )}
           {analysisProgress > 90 && (
-            <div className="text-sm text-gray-600 animate-fade-in">
+            <div className="text-sm text-body animate-fade-in">
               {isSpanish ? '✓ Calculando probabilidades...' : '✓ Calculating probabilities...'}
             </div>
           )}
@@ -767,7 +767,7 @@ export function FamilyRiskAssessment() {
       <div className="space-y-6">
         <Card className="bg-gradient-to-br from-purple-50 to-pink-50">
           <div className="flex items-center gap-3">
-            <CheckCircle className="w-8 h-8 text-green-600" />
+            <CheckCircle className="w-8 h-8 text-success" />
             <div>
               <Title>{isSpanish ? 'Análisis Completado' : 'Analysis Complete'}</Title>
               <Text>
@@ -794,7 +794,7 @@ export function FamilyRiskAssessment() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-gray-800">
+                        <p className="font-semibold text-title">
                           {isSpanish ? condition.nameEs : condition.name}
                         </p>
                         <Badge color={riskColor}>
@@ -803,8 +803,8 @@ export function FamilyRiskAssessment() {
                           {riskLevel === 'low' && (isSpanish ? 'Bajo' : 'Low')}
                         </Badge>
                       </div>
-                      <p className="text-sm text-gray-500 mt-1">
-                        <span className="font-mono text-xs bg-gray-100 px-1 rounded">
+                      <p className="text-sm text-muted mt-1">
+                        <span className="font-mono text-xs bg-surface-muted px-1 rounded">
                           {condition.gene}
                         </span>
                       </p>
@@ -814,14 +814,14 @@ export function FamilyRiskAssessment() {
                         <p className={`text-2xl font-bold text-${riskColor}-600`}>
                           {(risk * 100).toFixed(1)}%
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-muted">
                           {isSpanish ? 'Riesgo estimado' : 'Estimated risk'}
                         </p>
                       </div>
                       {expandedRisk === condition.id ? (
-                        <ChevronUp className="w-5 h-5 text-gray-400" />
+                        <ChevronUp className="w-5 h-5 text-subtle" />
                       ) : (
-                        <ChevronDown className="w-5 h-5 text-gray-400" />
+                        <ChevronDown className="w-5 h-5 text-subtle" />
                       )}
                     </div>
                   </div>
@@ -833,16 +833,16 @@ export function FamilyRiskAssessment() {
 
                 {/* Expanded details */}
                 {expandedRisk === condition.id && (
-                  <div className="mt-4 pt-4 border-t border-gray-200 space-y-4">
+                  <div className="mt-4 pt-4 border-t border-adaptive space-y-4">
                     {/* Risk factors */}
                     {factors.length > 0 && (
                       <div>
-                        <p className="text-sm font-medium text-gray-700 mb-2">
+                        <p className="text-sm font-medium text-body mb-2">
                           {isSpanish ? 'Factores de riesgo identificados:' : 'Identified risk factors:'}
                         </p>
                         <div className="space-y-1">
                           {factors.map((factor, idx) => (
-                            <div key={idx} className="flex items-center gap-2 text-sm text-gray-600">
+                            <div key={idx} className="flex items-center gap-2 text-sm text-body">
                               <AlertTriangle className="w-4 h-4 text-orange-500" />
                               <span>{factor}</span>
                             </div>
@@ -853,7 +853,7 @@ export function FamilyRiskAssessment() {
 
                     {/* Inheritance pattern */}
                     <div>
-                      <p className="text-sm font-medium text-gray-700 mb-2">
+                      <p className="text-sm font-medium text-body mb-2">
                         {isSpanish ? 'Patrón de herencia:' : 'Inheritance pattern:'}
                       </p>
                       <Badge color="purple">
@@ -872,7 +872,7 @@ export function FamilyRiskAssessment() {
                             e.stopPropagation()
                             setShowPunnett(showPunnett === condition.id ? null : condition.id)
                           }}
-                          className="text-sm text-purple-600 hover:text-purple-800 flex items-center gap-1"
+                          className="text-sm text-accent hover:text-purple-800 flex items-center gap-1"
                         >
                           <Eye className="w-4 h-4" />
                           {showPunnett === condition.id
@@ -885,9 +885,9 @@ export function FamilyRiskAssessment() {
                     )}
 
                     {/* Screening recommendations */}
-                    <div className="bg-blue-50 rounded-lg p-4">
+                    <div className="bg-info-soft rounded-lg p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <Shield className="w-5 h-5 text-blue-600" />
+                        <Shield className="w-5 h-5 text-info" />
                         <p className="font-medium text-blue-800">
                           {isSpanish ? 'Recomendaciones de Screening' : 'Screening Recommendations'}
                         </p>
@@ -915,14 +915,14 @@ export function FamilyRiskAssessment() {
         {/* Action buttons */}
         <Grid numItems={1} numItemsSm={2} className="gap-4">
           <Col>
-            <Card className="h-full bg-green-50 cursor-pointer hover:bg-green-100 transition-colors">
+            <Card className="h-full bg-success-soft cursor-pointer hover:bg-green-100 transition-colors">
               <div className="flex items-center gap-3">
-                <Baby className="w-8 h-8 text-green-600" />
+                <Baby className="w-8 h-8 text-success" />
                 <div>
                   <p className="font-medium text-green-800">
                     {isSpanish ? 'Planificación Familiar' : 'Family Planning'}
                   </p>
-                  <p className="text-sm text-green-600">
+                  <p className="text-sm text-success">
                     {isSpanish ? 'Consultar con genetista' : 'Consult with geneticist'}
                   </p>
                 </div>
@@ -930,14 +930,14 @@ export function FamilyRiskAssessment() {
             </Card>
           </Col>
           <Col>
-            <Card className="h-full bg-purple-50 cursor-pointer hover:bg-purple-100 transition-colors">
+            <Card className="h-full bg-accent-soft cursor-pointer hover:bg-purple-100 transition-colors">
               <div className="flex items-center gap-3">
-                <Activity className="w-8 h-8 text-purple-600" />
+                <Activity className="w-8 h-8 text-accent" />
                 <div>
                   <p className="font-medium text-purple-800">
                     {isSpanish ? 'Test Genético' : 'Genetic Testing'}
                   </p>
-                  <p className="text-sm text-purple-600">
+                  <p className="text-sm text-accent">
                     {isSpanish ? 'Confirmar portador' : 'Confirm carrier status'}
                   </p>
                 </div>

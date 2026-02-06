@@ -313,28 +313,28 @@ export function AgingPredictor() {
         {/* Chronological Age */}
         <Card>
           <div className="text-center">
-            <p className="text-sm text-gray-500 uppercase tracking-wide">Chronological Age</p>
+            <p className="text-sm text-muted uppercase tracking-wide">Chronological Age</p>
             <div className="mt-2">
               <input
                 type="number"
                 value={chronologicalAge}
                 onChange={(e) => setChronologicalAge(parseInt(e.target.value) || 35)}
-                className="text-4xl font-bold text-gray-800 w-20 text-center border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none bg-transparent"
+                className="text-4xl font-bold text-title w-20 text-center border-b-2 border-adaptive focus:border-blue-500 focus:outline-none bg-transparent"
                 min={18}
                 max={100}
               />
-              <span className="text-xl text-gray-500 ml-2">years</span>
+              <span className="text-xl text-muted ml-2">years</span>
             </div>
-            <p className="text-xs text-gray-400 mt-2">Your calendar age</p>
+            <p className="text-xs text-subtle mt-2">Your calendar age</p>
           </div>
         </Card>
 
         {/* Biological Age */}
-        <Card className={`${ageDifference > 0 ? 'bg-green-50 border-green-200' : ageDifference < 0 ? 'bg-red-50 border-red-200' : ''}`}>
+        <Card className={`${ageDifference > 0 ? 'bg-success-soft border-success' : ageDifference < 0 ? 'bg-danger-soft border-danger' : ''}`}>
           <div className="text-center">
-            <p className="text-sm text-gray-500 uppercase tracking-wide">Biological Age</p>
+            <p className="text-sm text-muted uppercase tracking-wide">Biological Age</p>
             <p className={`text-5xl font-bold mt-2 ${
-              ageDifference > 0 ? 'text-green-600' : ageDifference < 0 ? 'text-red-600' : 'text-gray-800'
+              ageDifference > 0 ? 'text-success' : ageDifference < 0 ? 'text-danger' : 'text-title'
             }`}>
               {biologicalAge}
             </p>
@@ -342,17 +342,17 @@ export function AgingPredictor() {
               {ageDifference > 0 ? (
                 <>
                   <TrendingDown className="w-4 h-4 text-green-500" />
-                  <span className="text-sm text-green-600">{ageDifference} years younger</span>
+                  <span className="text-sm text-success">{ageDifference} years younger</span>
                 </>
               ) : ageDifference < 0 ? (
                 <>
                   <TrendingUp className="w-4 h-4 text-red-500" />
-                  <span className="text-sm text-red-600">{Math.abs(ageDifference)} years older</span>
+                  <span className="text-sm text-danger">{Math.abs(ageDifference)} years older</span>
                 </>
               ) : (
                 <>
-                  <Minus className="w-4 h-4 text-gray-500" />
-                  <span className="text-sm text-gray-600">Matches chronological</span>
+                  <Minus className="w-4 h-4 text-muted" />
+                  <span className="text-sm text-body">Matches chronological</span>
                 </>
               )}
             </div>
@@ -362,12 +362,12 @@ export function AgingPredictor() {
         {/* Longevity Score */}
         <Card>
           <div className="text-center">
-            <p className="text-sm text-gray-500 uppercase tracking-wide">Longevity Score</p>
-            <p className="text-5xl font-bold text-purple-600 mt-2">
+            <p className="text-sm text-muted uppercase tracking-wide">Longevity Score</p>
+            <p className="text-5xl font-bold text-accent mt-2">
               {Math.round((lifestyle.reduce((acc, f) => acc + f.value, 0) / lifestyle.length +
                 LONGEVITY_GENES.reduce((acc, g) => acc + g.score, 0) / LONGEVITY_GENES.length) / 2)}
             </p>
-            <p className="text-xs text-gray-400 mt-2">Combined genetic + lifestyle</p>
+            <p className="text-xs text-subtle mt-2">Combined genetic + lifestyle</p>
           </div>
         </Card>
       </div>
@@ -387,8 +387,8 @@ export function AgingPredictor() {
               onClick={() => applyScenario(scenario.id)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 activeScenario === scenario.id
-                  ? 'bg-purple-500 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-accent-soft0 text-white'
+                  : 'bg-surface-muted text-body hover:bg-gray-200'
               }`}
             >
               {scenario.name}
@@ -425,20 +425,20 @@ export function AgingPredictor() {
                       factor.value >= 60 ? 'bg-yellow-100' : 'bg-red-100'
                     }`}>
                       <Icon className={`w-5 h-5 ${
-                        factor.value >= 80 ? 'text-green-600' :
-                        factor.value >= 60 ? 'text-yellow-600' : 'text-red-600'
+                        factor.value >= 80 ? 'text-success' :
+                        factor.value >= 60 ? 'text-yellow-600' : 'text-danger'
                       }`} />
                     </div>
                     <div>
-                      <p className="font-medium text-gray-800">{factor.name}</p>
-                      <p className="text-xs text-gray-500">
+                      <p className="font-medium text-title">{factor.name}</p>
+                      <p className="text-xs text-muted">
                         Impact: up to {factor.impact} years
                       </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="text-lg font-bold text-gray-700">{factor.value}%</span>
-                    {isExpanded ? <ChevronDown className="w-5 h-5 text-gray-400" /> : <ChevronRight className="w-5 h-5 text-gray-400" />}
+                    <span className="text-lg font-bold text-body">{factor.value}%</span>
+                    {isExpanded ? <ChevronDown className="w-5 h-5 text-subtle" /> : <ChevronRight className="w-5 h-5 text-subtle" />}
                   </div>
                 </div>
 
@@ -454,14 +454,14 @@ export function AgingPredictor() {
 
                 {/* Expanded content */}
                 {isExpanded && (
-                  <div className="mt-3 p-4 bg-gray-50 rounded-lg space-y-3">
-                    <p className="text-sm text-gray-600">{factor.description}</p>
+                  <div className="mt-3 p-4 bg-surface-soft rounded-lg space-y-3">
+                    <p className="text-sm text-body">{factor.description}</p>
                     <div>
-                      <p className="text-xs font-medium text-gray-500 uppercase mb-2">Recommendations</p>
+                      <p className="text-xs font-medium text-muted uppercase mb-2">Recommendations</p>
                       <ul className="space-y-1">
                         {factor.recommendations.map((rec, idx) => (
-                          <li key={idx} className="text-sm text-gray-600 flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                          <li key={idx} className="text-sm text-body flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 bg-success-soft0 rounded-full"></span>
                             {rec}
                           </li>
                         ))}
@@ -491,9 +491,9 @@ export function AgingPredictor() {
               <div
                 key={gene.id}
                 className={`p-4 rounded-xl border-2 transition-all cursor-pointer ${
-                  gene.effect === 'protective' ? 'border-green-200 bg-green-50/50' :
-                  gene.effect === 'risk' ? 'border-red-200 bg-red-50/50' :
-                  'border-gray-200 bg-gray-50/50'
+                  gene.effect === 'protective' ? 'border-success bg-success-soft/50' :
+                  gene.effect === 'risk' ? 'border-danger bg-danger-soft/50' :
+                  'border-adaptive bg-surface-soft/50'
                 }`}
                 onClick={() => setExpandedGene(isExpanded ? null : gene.id)}
               >
@@ -502,13 +502,13 @@ export function AgingPredictor() {
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg ${
                       gene.effect === 'protective' ? 'bg-green-100 text-green-700' :
                       gene.effect === 'risk' ? 'bg-red-100 text-red-700' :
-                      'bg-gray-100 text-gray-700'
+                      'bg-surface-muted text-body'
                     }`}>
                       {gene.symbol.slice(0, 3)}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-gray-800">{gene.symbol}</p>
+                        <p className="font-semibold text-title">{gene.symbol}</p>
                         <Badge
                           color={gene.effect === 'protective' ? 'green' : gene.effect === 'risk' ? 'red' : 'gray'}
                           size="xs"
@@ -519,33 +519,33 @@ export function AgingPredictor() {
                           <Badge color="purple" size="xs">modifiable</Badge>
                         )}
                       </div>
-                      <p className="text-sm text-gray-500">{gene.name}</p>
+                      <p className="text-sm text-muted">{gene.name}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4">
                     <div className="text-right">
-                      <p className="text-2xl font-bold text-gray-800">{gene.score}</p>
-                      <p className="text-xs text-gray-500">score</p>
+                      <p className="text-2xl font-bold text-title">{gene.score}</p>
+                      <p className="text-xs text-muted">score</p>
                     </div>
-                    {isExpanded ? <ChevronDown className="w-5 h-5 text-gray-400" /> : <ChevronRight className="w-5 h-5 text-gray-400" />}
+                    {isExpanded ? <ChevronDown className="w-5 h-5 text-subtle" /> : <ChevronRight className="w-5 h-5 text-subtle" />}
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className="mt-4 pt-4 border-t border-gray-200 space-y-3">
-                    <p className="text-sm text-gray-600">{gene.description}</p>
+                  <div className="mt-4 pt-4 border-t border-adaptive space-y-3">
+                    <p className="text-sm text-body">{gene.description}</p>
 
                     {gene.interventions && (
-                      <div className="p-3 bg-purple-50 rounded-lg">
+                      <div className="p-3 bg-accent-soft rounded-lg">
                         <p className="text-xs font-medium text-purple-700 uppercase mb-2">
                           <Zap className="w-3 h-3 inline mr-1" />
                           Ways to Optimize
                         </p>
                         <ul className="space-y-1">
                           {gene.interventions.map((intervention, idx) => (
-                            <li key={idx} className="text-sm text-gray-600 flex items-center gap-2">
-                              <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                            <li key={idx} className="text-sm text-body flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 bg-accent-soft0 rounded-full"></span>
                               {intervention}
                             </li>
                           ))}

@@ -223,7 +223,7 @@ export function VariantAnalyzer() {
         <div className="mt-6 space-y-4">
           {/* Variant Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-body mb-1">
               Variant (e.g., chr22:36201698:A&gt;C)
             </label>
             <div className="flex space-x-2">
@@ -242,7 +242,7 @@ export function VariantAnalyzer() {
                 {isLoading ? 'Analyzing...' : 'Analyze'}
               </Button>
             </div>
-            <Text className="text-xs text-gray-500 mt-1">
+            <Text className="text-xs text-muted mt-1">
               Format: chromosome:position:reference&gt;alternate
             </Text>
           </div>
@@ -250,7 +250,7 @@ export function VariantAnalyzer() {
           {/* Options Grid */}
           <Grid numItems={1} numItemsSm={3} className="gap-4">
             <Col>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-body mb-1">
                 Output Types
               </label>
               <MultiSelect
@@ -267,7 +267,7 @@ export function VariantAnalyzer() {
             </Col>
 
             <Col>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-body mb-1">
                 Tissues
               </label>
               <MultiSelect
@@ -284,7 +284,7 @@ export function VariantAnalyzer() {
             </Col>
 
             <Col>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-body mb-1">
                 Sequence Context
               </label>
               <Select value={sequenceLength} onValueChange={setSequenceLength}>
@@ -305,7 +305,7 @@ export function VariantAnalyzer() {
             <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
             <div className="flex-1">
               <Text className="font-medium">Analyzing variant...</Text>
-              <Text className="text-sm text-gray-500">
+              <Text className="text-sm text-muted">
                 This may take a few moments
               </Text>
               <ProgressBar value={45} className="mt-2" />
@@ -414,7 +414,7 @@ export function VariantAnalyzer() {
                         <TableRow key={idx}>
                           <TableCell>
                             <Text className="font-medium">{score.gene_name}</Text>
-                            <Text className="text-xs text-gray-500">{score.gene_id}</Text>
+                            <Text className="text-xs text-muted">{score.gene_id}</Text>
                           </TableCell>
                           <TableCell>
                             <Text className="text-sm">{score.tissue}</Text>
@@ -440,7 +440,7 @@ export function VariantAnalyzer() {
                     </TableBody>
                   </Table>
                   {result.scores.length > 20 && (
-                    <Text className="mt-2 text-sm text-gray-500 text-center">
+                    <Text className="mt-2 text-sm text-muted text-center">
                       Showing 20 of {result.scores.length} genes. Download for full data.
                     </Text>
                   )}
@@ -462,7 +462,7 @@ export function VariantAnalyzer() {
                 </TabPanel>
 
                 <TabPanel>
-                  <pre className="mt-4 p-4 bg-gray-50 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
+                  <pre className="mt-4 p-4 bg-surface-soft rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
                     {generateMarkdown(result)}
                   </pre>
                   <Button
@@ -501,13 +501,13 @@ function getImpactColor(impact: string): string {
 function getScoreIcon(score: number) {
   if (score > 0.01) return <TrendingUp className="w-4 h-4 text-green-600" />
   if (score < -0.01) return <TrendingDown className="w-4 h-4 text-red-600" />
-  return <Minus className="w-4 h-4 text-gray-400" />
+  return <Minus className="w-4 h-4 text-subtle" />
 }
 
 function getScoreColor(score: number): string {
   if (score > 0.01) return 'text-green-600'
   if (score < -0.01) return 'text-red-600'
-  return 'text-gray-600'
+  return 'text-body'
 }
 
 function getQuantileColor(quantile: number): string {

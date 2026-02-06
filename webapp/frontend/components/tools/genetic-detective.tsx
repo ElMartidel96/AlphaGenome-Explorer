@@ -349,11 +349,11 @@ export function GeneticDetective() {
             ].map(item => (
               <div key={item.step} className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                  <span className="text-sm font-bold text-purple-600">{item.step}</span>
+                  <span className="text-sm font-bold text-accent">{item.step}</span>
                 </div>
                 <div>
-                  <p className="font-medium text-gray-800">{item.title}</p>
-                  <p className="text-sm text-gray-500">{item.desc}</p>
+                  <p className="font-medium text-title">{item.title}</p>
+                  <p className="text-sm text-muted">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -381,7 +381,7 @@ export function GeneticDetective() {
                       {isSolved ? (
                         <CheckCircle className="w-5 h-5 text-green-500" />
                       ) : (
-                        <Lock className="w-5 h-5 text-gray-400" />
+                        <Lock className="w-5 h-5 text-subtle" />
                       )}
                       <Badge
                         color={c.difficulty === 'easy' ? 'green' : c.difficulty === 'medium' ? 'yellow' : 'red'}
@@ -393,10 +393,10 @@ export function GeneticDetective() {
                     </div>
                     <Badge color="gray">{c.suspects.length} {isSpanish ? 'sospechosos' : 'suspects'}</Badge>
                   </div>
-                  <p className="font-semibold text-gray-800 mb-2">
+                  <p className="font-semibold text-title mb-2">
                     {isSpanish ? c.titleEs : c.title}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-muted">
                     {isSpanish ? c.descriptionEs : c.description}
                   </p>
                 </Card>
@@ -470,7 +470,7 @@ export function GeneticDetective() {
 
       {/* Result Display */}
       {accusation && (
-        <Card className={isCorrect ? 'bg-green-50 border-2 border-green-500' : 'bg-red-50 border-2 border-red-500'}>
+        <Card className={isCorrect ? 'bg-success-soft border-2 border-green-500' : 'bg-danger-soft border-2 border-red-500'}>
           <div className="flex items-center gap-4">
             {isCorrect ? (
               <CheckCircle className="w-12 h-12 text-green-500" />
@@ -529,15 +529,15 @@ export function GeneticDetective() {
             </div>
 
             {showEvidence && (
-              <div className="bg-gray-50 rounded-lg p-4 overflow-x-auto">
+              <div className="bg-surface-soft rounded-lg p-4 overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b">
-                      <th className="text-left py-2 pr-4 font-medium text-gray-600">Locus</th>
-                      <th className="text-center py-2 px-4 font-medium text-gray-600">
+                      <th className="text-left py-2 pr-4 font-medium text-body">Locus</th>
+                      <th className="text-center py-2 px-4 font-medium text-body">
                         {isSpanish ? 'Alelo 1' : 'Allele 1'}
                       </th>
-                      <th className="text-center py-2 pl-4 font-medium text-gray-600">
+                      <th className="text-center py-2 pl-4 font-medium text-body">
                         {isSpanish ? 'Alelo 2' : 'Allele 2'}
                       </th>
                     </tr>
@@ -545,7 +545,7 @@ export function GeneticDetective() {
                   <tbody>
                     {activeCase.crimeSceneProfile.map(marker => (
                       <tr key={marker.locus} className="border-b last:border-0">
-                        <td className="py-2 pr-4 font-mono text-red-600">{marker.locus}</td>
+                        <td className="py-2 pr-4 font-mono text-danger">{marker.locus}</td>
                         <td className="py-2 px-4 text-center font-mono font-bold">{marker.allele1}</td>
                         <td className="py-2 pl-4 text-center font-mono font-bold">{marker.allele2}</td>
                       </tr>
@@ -574,8 +574,8 @@ export function GeneticDetective() {
                     key={suspect.id}
                     className={`p-4 rounded-lg border-2 transition-all ${
                       isSelected
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-blue-500 bg-info-soft'
+                        : 'border-adaptive hover:border-adaptive'
                     }`}
                   >
                     <div
@@ -584,13 +584,13 @@ export function GeneticDetective() {
                     >
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-                          <UserCircle className="w-6 h-6 text-gray-500" />
+                          <UserCircle className="w-6 h-6 text-muted" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-800">
+                          <p className="font-medium text-title">
                             {isSpanish ? suspect.nameEs : suspect.name}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-muted">
                             {isSpanish ? suspect.descriptionEs : suspect.description}
                           </p>
                         </div>
@@ -603,10 +603,10 @@ export function GeneticDetective() {
                     </div>
 
                     {isSelected && (
-                      <div className="mt-4 pt-4 border-t border-gray-200">
+                      <div className="mt-4 pt-4 border-t border-adaptive">
                         <div className="flex items-center justify-between mb-3">
                           <button
-                            className="text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                            className="text-sm text-info hover:text-blue-800 flex items-center gap-1"
                             onClick={(e) => {
                               e.stopPropagation()
                               setExpandedProfile(isExpanded ? null : suspect.id)
@@ -636,14 +636,14 @@ export function GeneticDetective() {
                             <table className="w-full text-sm">
                               <thead>
                                 <tr className="border-b">
-                                  <th className="text-left py-1 pr-4 font-medium text-gray-600">Locus</th>
-                                  <th className="text-center py-1 px-2 font-medium text-gray-600">
+                                  <th className="text-left py-1 pr-4 font-medium text-body">Locus</th>
+                                  <th className="text-center py-1 px-2 font-medium text-body">
                                     {isSpanish ? 'Escena' : 'Scene'}
                                   </th>
-                                  <th className="text-center py-1 px-2 font-medium text-gray-600">
+                                  <th className="text-center py-1 px-2 font-medium text-body">
                                     {isSpanish ? 'Sospechoso' : 'Suspect'}
                                   </th>
-                                  <th className="text-center py-1 pl-2 font-medium text-gray-600">?</th>
+                                  <th className="text-center py-1 pl-2 font-medium text-body">?</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -656,10 +656,10 @@ export function GeneticDetective() {
                                   return (
                                     <tr key={marker.locus} className="border-b last:border-0">
                                       <td className="py-1 pr-4 font-mono text-xs">{marker.locus}</td>
-                                      <td className="py-1 px-2 text-center font-mono text-xs text-red-600">
+                                      <td className="py-1 px-2 text-center font-mono text-xs text-danger">
                                         {scene.allele1}/{scene.allele2}
                                       </td>
-                                      <td className="py-1 px-2 text-center font-mono text-xs text-blue-600">
+                                      <td className="py-1 px-2 text-center font-mono text-xs text-info">
                                         {marker.allele1}/{marker.allele2}
                                       </td>
                                       <td className="py-1 pl-2 text-center">
@@ -685,9 +685,9 @@ export function GeneticDetective() {
           </Card>
 
           {/* Hint */}
-          <Card className="bg-blue-50">
+          <Card className="bg-info-soft">
             <div className="flex items-start gap-3">
-              <Info className="w-5 h-5 text-blue-600 mt-0.5" />
+              <Info className="w-5 h-5 text-info mt-0.5" />
               <div className="flex-1">
                 <button
                   className="font-medium text-blue-800 hover:underline"

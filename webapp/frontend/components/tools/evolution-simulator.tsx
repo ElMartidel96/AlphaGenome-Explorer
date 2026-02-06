@@ -294,7 +294,7 @@ export function EvolutionSimulator() {
       <Card className="bg-gradient-to-br from-green-50 to-blue-50">
         <div className="flex items-start gap-4">
           <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center">
-            <Globe2 className="w-8 h-8 text-green-600" />
+            <Globe2 className="w-8 h-8 text-success" />
           </div>
           <div className="flex-1">
             <Title>{t('tools.evolution.title')}</Title>
@@ -349,7 +349,7 @@ export function EvolutionSimulator() {
 
             {/* Environment selector */}
             <div className="mb-4">
-              <p className="text-sm font-medium text-gray-700 mb-2">
+              <p className="text-sm font-medium text-body mb-2">
                 {isSpanish ? 'Ambiente:' : 'Environment:'}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -381,21 +381,21 @@ export function EvolutionSimulator() {
 
             {/* Population visualization */}
             <div className="mb-4">
-              <p className="text-sm font-medium text-gray-700 mb-2">
+              <p className="text-sm font-medium text-body mb-2">
                 {isSpanish ? 'Poblacion:' : 'Population:'}
               </p>
-              <div className="flex flex-wrap gap-1 p-4 bg-gray-50 rounded-lg max-h-32 overflow-hidden">
+              <div className="flex flex-wrap gap-1 p-4 bg-surface-soft rounded-lg max-h-32 overflow-hidden">
                 {simulation.population.slice(0, 100).map((org, idx) => (
                   <div
                     key={idx}
                     className={`w-3 h-3 rounded-full transition-colors ${
-                      org.trait === 'A' ? 'bg-green-500' : 'bg-blue-500'
+                      org.trait === 'A' ? 'bg-success-soft0' : 'bg-info-soft0'
                     }`}
                     title={`${isSpanish ? 'Organismo' : 'Organism'} ${idx + 1}: ${isSpanish ? 'Rasgo' : 'Trait'} ${org.trait}`}
                   />
                 ))}
                 {simulation.population.length > 100 && (
-                  <span className="text-xs text-gray-500 ml-2">
+                  <span className="text-xs text-muted ml-2">
                     +{simulation.population.length - 100} {isSpanish ? 'mas' : 'more'}
                   </span>
                 )}
@@ -406,7 +406,7 @@ export function EvolutionSimulator() {
             <div className="space-y-2 mb-4">
               <div className="flex items-center justify-between text-sm">
                 <span className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                  <div className="w-3 h-3 rounded-full bg-success-soft0" />
                   {isSpanish ? 'Rasgo A' : 'Trait A'}
                 </span>
                 <span className="font-medium">{traitAPercent.toFixed(1)}%</span>
@@ -415,7 +415,7 @@ export function EvolutionSimulator() {
 
               <div className="flex items-center justify-between text-sm">
                 <span className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-blue-500" />
+                  <div className="w-3 h-3 rounded-full bg-info-soft0" />
                   {isSpanish ? 'Rasgo B' : 'Trait B'}
                 </span>
                 <span className="font-medium">{(100 - traitAPercent).toFixed(1)}%</span>
@@ -461,8 +461,8 @@ export function EvolutionSimulator() {
                 className="h-60"
               />
             ) : (
-              <div className="h-60 flex items-center justify-center bg-gray-50 rounded-lg">
-                <p className="text-gray-500">
+              <div className="h-60 flex items-center justify-center bg-surface-soft rounded-lg">
+                <p className="text-muted">
                   {isSpanish
                     ? 'Inicia la simulacion para ver datos'
                     : 'Start simulation to see data'}
@@ -476,7 +476,7 @@ export function EvolutionSimulator() {
             <Title className="mb-4">{isSpanish ? 'Configuracion' : 'Settings'}</Title>
             <div className="grid gap-4">
               <div>
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-body">
                   {isSpanish ? 'Tamano de poblacion:' : 'Population size:'} {populationSize}
                 </label>
                 <input
@@ -489,7 +489,7 @@ export function EvolutionSimulator() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-body">
                   {isSpanish ? 'Tasa de mutacion:' : 'Mutation rate:'} {(mutationRate * 100).toFixed(1)}%
                 </label>
                 <input
@@ -503,7 +503,7 @@ export function EvolutionSimulator() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-body">
                   {isSpanish ? 'Velocidad:' : 'Speed:'} {speed}ms
                 </label>
                 <input
@@ -533,10 +533,10 @@ export function EvolutionSimulator() {
                       <concept.icon className={`w-6 h-6 text-${concept.color}-600`} />
                     </div>
                     <div className="flex-1">
-                      <p className="font-semibold text-gray-800">
+                      <p className="font-semibold text-title">
                         {isSpanish ? concept.nameEs : concept.name}
                       </p>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="text-sm text-body mt-1">
                         {isSpanish ? concept.descriptionEs : concept.description}
                       </p>
                     </div>
@@ -549,14 +549,14 @@ export function EvolutionSimulator() {
           {/* Darwin Quote */}
           <Card className="bg-gradient-to-r from-green-50 to-blue-50">
             <div className="flex items-start gap-4">
-              <Info className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <Info className="w-6 h-6 text-success flex-shrink-0 mt-1" />
               <div>
-                <p className="italic text-gray-700">
+                <p className="italic text-body">
                   {isSpanish
                     ? '"No es el mas fuerte de las especies el que sobrevive, ni el mas inteligente, sino el que mejor responde al cambio."'
                     : '"It is not the strongest of the species that survives, nor the most intelligent, but the one most responsive to change."'}
                 </p>
-                <p className="text-sm text-gray-500 mt-2">— Charles Darwin</p>
+                <p className="text-sm text-muted mt-2">— Charles Darwin</p>
               </div>
             </div>
           </Card>
@@ -583,9 +583,9 @@ export function EvolutionSimulator() {
                   factEs: 'Los humanos todavia evolucionan - la tolerancia a la lactosa evoluciono hace solo 10,000 anos',
                 },
               ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                <div key={idx} className="flex items-start gap-3 p-3 bg-surface-soft rounded-lg">
                   <Dna className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-gray-700">{isSpanish ? item.factEs : item.fact}</p>
+                  <p className="text-body">{isSpanish ? item.factEs : item.fact}</p>
                 </div>
               ))}
             </div>
@@ -603,12 +603,12 @@ export function EvolutionSimulator() {
             <div className="min-w-[600px] p-4">
               {/* Root */}
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-4 h-4 rounded-full bg-green-500" />
+                <div className="w-4 h-4 rounded-full bg-success-soft0" />
                 <div>
                   <span className="font-semibold">
                     {isSpanish ? PHYLOGENETIC_DATA.nameEs : PHYLOGENETIC_DATA.name}
                   </span>
-                  <span className="text-sm text-gray-500 ml-2">({PHYLOGENETIC_DATA.age})</span>
+                  <span className="text-sm text-muted ml-2">({PHYLOGENETIC_DATA.age})</span>
                 </div>
               </div>
 
@@ -618,18 +618,18 @@ export function EvolutionSimulator() {
                   <div key={idx1}>
                     <div className="flex items-center gap-4 -ml-[25px] mb-2">
                       <div className="w-3 h-0.5 bg-green-300" />
-                      <div className="w-4 h-4 rounded-full bg-blue-500" />
+                      <div className="w-4 h-4 rounded-full bg-info-soft0" />
                       <div>
                         <span className="font-semibold">
                           {isSpanish ? child1.nameEs : child1.name}
                         </span>
-                        <span className="text-sm text-gray-500 ml-2">({child1.age})</span>
+                        <span className="text-sm text-muted ml-2">({child1.age})</span>
                       </div>
                     </div>
 
                     {/* Level 2 */}
                     {child1.children && (
-                      <div className="ml-8 border-l-2 border-blue-200 pl-6 space-y-3">
+                      <div className="ml-8 border-l-2 border-info pl-6 space-y-3">
                         {child1.children.map((child2: any, idx2: number) => (
                           <div key={idx2}>
                             <div className="flex items-center gap-4 -ml-[25px] mb-2">
@@ -639,7 +639,7 @@ export function EvolutionSimulator() {
                                 <span className="font-medium">
                                   {isSpanish ? child2.nameEs : child2.name}
                                 </span>
-                                <span className="text-sm text-gray-500 ml-2">({child2.age})</span>
+                                <span className="text-sm text-muted ml-2">({child2.age})</span>
                               </div>
                             </div>
 
@@ -655,7 +655,7 @@ export function EvolutionSimulator() {
                                         <span className={`text-sm ${child3.highlight ? 'font-bold text-yellow-600' : ''}`}>
                                           {isSpanish ? child3.nameEs : child3.name}
                                         </span>
-                                        <span className="text-xs text-gray-500 ml-2">({child3.age})</span>
+                                        <span className="text-xs text-muted ml-2">({child3.age})</span>
                                       </div>
                                     </div>
 
@@ -666,9 +666,9 @@ export function EvolutionSimulator() {
                                           <div key={idx4} className="flex items-center gap-3 -ml-[21px]">
                                             <div className="w-2 h-0.5 bg-orange-200" />
                                             <div className={`w-2 h-2 rounded-full ${child4.highlight ? 'bg-yellow-400 ring-2 ring-yellow-300' : 'bg-gray-400'}`} />
-                                            <span className={`text-xs ${child4.highlight ? 'font-bold text-yellow-600' : 'text-gray-600'}`}>
+                                            <span className={`text-xs ${child4.highlight ? 'font-bold text-yellow-600' : 'text-body'}`}>
                                               {isSpanish ? child4.nameEs : child4.name}
-                                              <span className="text-gray-400 ml-1">({child4.age})</span>
+                                              <span className="text-subtle ml-1">({child4.age})</span>
                                             </span>
                                           </div>
                                         ))}
@@ -688,7 +688,7 @@ export function EvolutionSimulator() {
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
+          <div className="mt-6 p-4 bg-warning-soft rounded-lg">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded-full bg-yellow-400" />
               <span className="text-sm font-medium text-yellow-800">
