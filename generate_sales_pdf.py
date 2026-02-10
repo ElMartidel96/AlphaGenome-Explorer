@@ -19,10 +19,10 @@ ACCENT_PURPLE = (163, 113, 247)
 ACCENT_ORANGE = (240, 165, 60)
 ACCENT_RED = (248, 81, 73)
 ACCENT_GOLD = (255, 215, 0)
-WHITE = (255, 255, 255)
-LIGHT_GRAY = (200, 210, 220)
-MID_GRAY = (140, 155, 170)
-SOFT_WHITE = (230, 237, 243)
+WHITE = (190, 200, 212)
+LIGHT_GRAY = (155, 165, 178)
+MID_GRAY = (120, 130, 145)
+SOFT_WHITE = (175, 185, 198)
 CARD_BG = (22, 27, 34)
 CARD_BORDER = (48, 54, 61)
 
@@ -37,10 +37,11 @@ class SalesPDF(FPDF):
         self.set_margins(18, 18, 18)
 
     def header(self):
+        # Paint dark background on EVERY page (catches auto page breaks)
+        self.set_fill_color(*DARK_BG)
+        self.rect(0, 0, 210, 297, "F")
         if self.page_no() == 1:
             return
-        self.set_fill_color(*DARK_BG)
-        self.rect(0, 0, 210, 12, "F")
         self.set_font("Sans", "B", 7)
         self.set_text_color(*MID_GRAY)
         self.set_xy(18, 3)
@@ -272,6 +273,7 @@ class SalesPDF(FPDF):
     def check_page_space(self, needed_mm):
         if self.get_y() + needed_mm > 277:
             self.add_page()
+            self.dark_page_bg()
 
     def add_dark_page(self):
         self.add_page()
