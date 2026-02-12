@@ -19,6 +19,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Types
 interface Superpower {
@@ -189,7 +192,7 @@ export function GeneticSuperpowers() {
 
   if (loading) {
     return (
-      <Card>
+      <Card role="region" aria-label="Genetic Superpowers">
         <div className="text-center py-12">
           <div className="w-20 h-20 mx-auto mb-6 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full animate-spin opacity-20"></div>
@@ -205,7 +208,7 @@ export function GeneticSuperpowers() {
   }
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Genetic Superpowers" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
         <div className="flex items-center gap-4">

@@ -21,6 +21,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Types
 interface Gene {
@@ -400,7 +403,7 @@ export function CrisprSimulator() {
   // Gene Selection State
   if (state === 'select') {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="CRISPR Simulator" className="space-y-6">
         {/* Header */}
         <Card className="bg-gradient-to-br from-purple-50 via-pink-50 to-red-50">
           <div className="flex items-center gap-4">
@@ -419,6 +422,7 @@ export function CrisprSimulator() {
           <button
             onClick={() => setShowEducation(!showEducation)}
             className="flex items-center gap-2 text-info hover:text-blue-700 w-full"
+            aria-label="Toggle CRISPR education section"
           >
             <BookOpen className="w-5 h-5" />
             <span className="font-medium">What is CRISPR?</span>
@@ -499,7 +503,7 @@ export function CrisprSimulator() {
   // Design State
   if (state === 'design' && selectedGene) {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="CRISPR Simulator" className="space-y-6">
         {/* Header */}
         <Card className="bg-gradient-to-r from-purple-100 to-pink-100">
           <div className="flex items-center justify-between">
@@ -553,6 +557,7 @@ export function CrisprSimulator() {
               value={targetPosition}
               onChange={(e) => setTargetPosition(parseInt(e.target.value))}
               className="w-full mt-2"
+              aria-label="Target position"
             />
           </div>
         </Card>
@@ -618,7 +623,7 @@ export function CrisprSimulator() {
   // Targeting/Cutting/Repairing Animation States
   if ((state === 'targeting' || state === 'cutting' || state === 'repairing') && selectedGene) {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="CRISPR Simulator" className="space-y-6">
         <Card>
           <div className="text-center py-8">
             {/* Animation */}
@@ -712,7 +717,7 @@ export function CrisprSimulator() {
   // Result State
   if (state === 'result' && selectedGene && result) {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="CRISPR Simulator" className="space-y-6">
         {/* Success Header */}
         <Card className={`bg-gradient-to-r ${editType === 'knockout' ? 'from-red-50 to-orange-50' : 'from-green-50 to-teal-50'}`}>
           <div className="flex items-center gap-4">

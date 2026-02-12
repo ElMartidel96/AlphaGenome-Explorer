@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getLocale } from 'next-intl/server'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
+import { SkipLink } from '@/components/shared/SkipLink'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -38,10 +39,11 @@ export default async function RootLayout({
         <meta name="theme-color" content="#0A0E15" />
       </head>
       <body className={inter.className}>
+        <SkipLink />
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <Providers>
-              <main className="min-h-screen theme-gradient-bg transition-colors duration-300">
+              <main id="main-content" className="min-h-screen theme-gradient-bg transition-colors duration-300">
                 {children}
               </main>
               <Toaster

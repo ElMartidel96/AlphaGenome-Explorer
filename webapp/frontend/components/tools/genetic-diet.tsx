@@ -23,6 +23,9 @@ import {
   ChevronUp,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Types
 interface GeneticTrait {
@@ -319,7 +322,7 @@ export function GeneticDiet() {
   }
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Genetic Diet" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
         <div className="flex items-center gap-4">
@@ -536,6 +539,7 @@ export function GeneticDiet() {
         <div className="mb-4">
           <Text className="mb-2">{t('cuisineType')}</Text>
           <Select
+            aria-label="Cuisine type selector"
             value={selectedCuisine}
             onValueChange={setSelectedCuisine}
             placeholder="Select cuisine type..."

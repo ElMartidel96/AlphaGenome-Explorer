@@ -28,6 +28,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Types
 interface CognitiveGene {
@@ -322,7 +325,7 @@ export function CapabilitiesOptimizer() {
   }
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Capabilities Optimizer" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
         <div className="flex items-center gap-4">
@@ -361,6 +364,7 @@ export function CapabilitiesOptimizer() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
+            aria-label={tab.label}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all flex-1 justify-center ${
               activeTab === tab.id
                 ? 'bg-white shadow text-blue-700'

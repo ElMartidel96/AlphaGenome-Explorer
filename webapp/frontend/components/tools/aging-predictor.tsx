@@ -26,6 +26,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Types
 interface LongevityGene {
@@ -294,7 +297,7 @@ export function AgingPredictor() {
   }
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Aging Predictor" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-orange-950/30 dark:via-amber-950/30 dark:to-yellow-950/30">
         <div className="flex items-center gap-4">
@@ -322,6 +325,7 @@ export function AgingPredictor() {
                 className="text-4xl font-bold text-title w-20 text-center border-b-2 border-adaptive focus:border-blue-500 focus:outline-none bg-transparent"
                 min={18}
                 max={100}
+                aria-label="Chronological age"
               />
               <span className="text-xl text-muted ml-2">years</span>
             </div>
@@ -450,6 +454,7 @@ export function AgingPredictor() {
                   value={factor.value}
                   onChange={(e) => updateLifestyleFactor(factor.id, parseInt(e.target.value))}
                   className="w-full h-2 bg-gray-200 dark:bg-slate-700 rounded-xl appearance-none cursor-pointer accent-purple-500"
+                  aria-label={`${factor.name} level`}
                 />
 
                 {/* Expanded content */}

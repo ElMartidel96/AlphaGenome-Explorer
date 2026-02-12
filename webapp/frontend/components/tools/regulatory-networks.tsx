@@ -19,6 +19,9 @@ import {
   Layers,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Types
 interface GeneNode {
@@ -246,7 +249,7 @@ export function RegulatoryNetworks() {
   }
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Regulatory Networks" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
         <div className="flex items-center gap-4">
@@ -280,6 +283,7 @@ export function RegulatoryNetworks() {
               {PATHWAYS.map(pathway => (
                 <button
                   key={pathway.id}
+                  aria-label={`Filter by ${pathway.name}`}
                   onClick={() => setActivePathway(activePathway === pathway.id ? null : pathway.id)}
                   className={`px-2 py-1 text-xs rounded-full transition-all ${
                     activePathway === pathway.id
@@ -298,10 +302,10 @@ export function RegulatoryNetworks() {
 
           {/* Zoom controls */}
           <div className="flex items-center gap-1 border-l pl-4">
-            <Button variant="secondary" size="xs" icon={ZoomOut} onClick={handleZoomOut} />
+            <Button aria-label="Zoom out" variant="secondary" size="xs" icon={ZoomOut} onClick={handleZoomOut} />
             <span className="text-sm text-muted w-12 text-center">{Math.round(zoom * 100)}%</span>
-            <Button variant="secondary" size="xs" icon={ZoomIn} onClick={handleZoomIn} />
-            <Button variant="secondary" size="xs" icon={Maximize2} onClick={handleResetView} />
+            <Button aria-label="Zoom in" variant="secondary" size="xs" icon={ZoomIn} onClick={handleZoomIn} />
+            <Button aria-label="Reset view" variant="secondary" size="xs" icon={Maximize2} onClick={handleResetView} />
           </div>
         </div>
       </Card>

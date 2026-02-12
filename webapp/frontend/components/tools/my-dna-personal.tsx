@@ -18,6 +18,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Types
 interface Variant {
@@ -307,6 +310,7 @@ export function MyDnaPersonal() {
   // Render upload zone
   if (state === 'idle' || state === 'dragging' || state === 'error') {
     return (
+      <div role="region" aria-label="My DNA Personal">
       <Card>
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 bg-info-soft rounded-xl flex items-center justify-center">
@@ -389,12 +393,14 @@ export function MyDnaPersonal() {
           </div>
         </div>
       </Card>
+      </div>
     )
   }
 
   // Render processing state
   if (state === 'uploading' || state === 'processing') {
     return (
+      <div role="region" aria-label="My DNA Personal">
       <Card>
         <div className="text-center py-8">
           <div className="w-20 h-20 mx-auto mb-6 relative">
@@ -421,13 +427,14 @@ export function MyDnaPersonal() {
           </div>
         </div>
       </Card>
+      </div>
     )
   }
 
   // Render results
   if (state === 'success' && result) {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="My DNA Personal" className="space-y-6">
         {/* Summary Card */}
         <Card className="gradient-success border-success">
           <div className="flex items-center justify-between">

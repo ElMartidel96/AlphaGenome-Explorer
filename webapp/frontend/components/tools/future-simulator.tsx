@@ -17,6 +17,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 type Scenario = 'natural' | 'positive_selection' | 'crispr_intervention'
 
@@ -152,7 +155,7 @@ export function FutureSimulator() {
   }
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Future Simulator" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/20 dark:to-purple-950/20">
         <div className="text-center">
@@ -177,6 +180,7 @@ export function FutureSimulator() {
               {(Object.keys(scenarioDescriptions) as Scenario[]).map((s) => (
                 <button
                   key={s}
+                  aria-label={scenarioDescriptions[s].label}
                   onClick={() => { setScenario(s); setShowResults(false); }}
                   className={`w-full p-3 rounded-xl text-left transition-all ${
                     scenario === s
@@ -198,6 +202,7 @@ export function FutureSimulator() {
               {[3, 5, 10].map((g) => (
                 <button
                   key={g}
+                  aria-label={`${g} generaciones`}
                   onClick={() => { setGenerations(g); setShowResults(false); }}
                   className={`w-full p-4 rounded-xl text-center transition-all ${
                     generations === g

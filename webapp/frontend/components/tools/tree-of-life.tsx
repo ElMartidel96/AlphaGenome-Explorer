@@ -13,6 +13,9 @@ import {
   ArrowLeftRight,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 interface Species {
   id: string
@@ -224,7 +227,7 @@ export function TreeOfLife() {
   const sortedSpecies = [...filteredSpecies].sort((a, b) => b.sharedDna - a.sharedDna)
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Tree of Life" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20">
         <div className="text-center">
@@ -245,6 +248,7 @@ export function TreeOfLife() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
           <input
             type="text"
+            aria-label="Buscar especie"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Buscar especie..."
@@ -277,6 +281,7 @@ export function TreeOfLife() {
                   <div>
                     <Text className="text-xs text-muted mb-2">Especie 1</Text>
                     <select
+                      aria-label="Especie 1"
                       value={selectedSpecies?.id || ''}
                       onChange={(e) => setSelectedSpecies(SPECIES_DATA.find((s) => s.id === e.target.value) || null)}
                       className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
@@ -290,6 +295,7 @@ export function TreeOfLife() {
                   <div>
                     <Text className="text-xs text-muted mb-2">Especie 2</Text>
                     <select
+                      aria-label="Especie 2"
                       value={compareSpecies?.id || ''}
                       onChange={(e) => setCompareSpecies(SPECIES_DATA.find((s) => s.id === e.target.value) || null)}
                       className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
@@ -333,6 +339,7 @@ export function TreeOfLife() {
                 {sortedSpecies.map((species) => (
                   <button
                     key={species.id}
+                    aria-label={`Select ${species.commonNameEs}`}
                     onClick={() => setSelectedSpecies(species)}
                     className={`w-full flex items-center gap-3 p-3 rounded-xl text-left transition-all ${
                       selectedSpecies?.id === species.id

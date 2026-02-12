@@ -22,6 +22,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 type AnalysisStep = 'upload' | 'analyzing' | 'results'
 
@@ -159,6 +162,7 @@ export function CoupleCompatibility() {
 
   if (step === 'analyzing') {
     return (
+      <div role="region" aria-label="Couple Compatibility">
       <Card>
         <div className="text-center py-12">
           <div className="w-20 h-20 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
@@ -171,12 +175,13 @@ export function CoupleCompatibility() {
           </div>
         </div>
       </Card>
+      </div>
     )
   }
 
   if (step === 'results' && result) {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="Couple Compatibility" className="space-y-6">
         {/* Header with score */}
         <Card className="bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-950/20 dark:to-rose-950/20 border-pink-200 dark:border-pink-800">
           <div className="text-center py-4">
@@ -237,6 +242,7 @@ export function CoupleCompatibility() {
                 <button
                   onClick={() => setExpandedCondition(expandedCondition === condition.id ? null : condition.id)}
                   className="w-full flex items-center gap-3 p-4 hover:bg-surface-soft transition-colors text-left"
+                  aria-label={`Toggle details for ${condition.nameEs}`}
                 >
                   {getRiskIcon(condition.riskLevel)}
                   <div className="flex-1">
@@ -312,7 +318,7 @@ export function CoupleCompatibility() {
 
   // Upload step
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Couple Compatibility" className="space-y-6">
       <Card>
         <div className="text-center mb-6">
           <div className="w-16 h-16 bg-pink-100 dark:bg-pink-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -330,6 +336,7 @@ export function CoupleCompatibility() {
           <button
             onClick={() => setShowAnonymousInfo(!showAnonymousInfo)}
             className="flex items-center gap-2 w-full text-left"
+            aria-label="Toggle anonymous mode information"
           >
             <Lock className="w-5 h-5 text-green-500" />
             <span className="font-medium text-title flex-1">Modo Anonimo Activado</span>

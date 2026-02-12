@@ -45,6 +45,12 @@ import {
   BookOpen,
   Clock,
   BarChart3,
+  Microscope,
+  Syringe,
+  Share2,
+  Shield,
+  Activity,
+  Flame,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useApiKeyStore } from '@/lib/store'
@@ -75,13 +81,64 @@ import { SplicingPredictor } from '@/components/tools/splicing-predictor'
 import { AgingErrorCorrector } from '@/components/tools/aging-error-corrector'
 import { BeneficialVariantsLibrary } from '@/components/tools/beneficial-variants-library'
 import { FutureSimulator } from '@/components/tools/future-simulator'
+import { Pharmacogenomics } from '@/components/tools/pharmacogenomics'
+import { MicrobiomeConnector } from '@/components/tools/microbiome-connector'
+import { EpigeneticClock } from '@/components/tools/epigenetic-clock'
+import { GeneTherapyCompanion } from '@/components/tools/gene-therapy-companion'
+import { RareVariantsNetwork } from '@/components/tools/rare-variants-network'
+import { ImmuneResponsePredictor } from '@/components/tools/immune-response-predictor'
+import { EpigeneticCoach } from '@/components/tools/epigenetic-coach'
 import { FeatureRequestPlaceholder } from '@/components/feature-request-placeholder'
+import { ConnectWallet } from '@/components/auth/ConnectWallet'
+import { CategoryNav } from '@/components/navigation/CategoryNav'
+import { ToolCard } from '@/components/navigation/ToolCard'
+import { ToolSearch } from '@/components/navigation/ToolSearch'
+import { useFavorites } from '@/hooks/useFavorites'
+import { useRecentTools } from '@/hooks/useRecentTools'
+import { ToolCategory, TOOLS_METADATA, getToolsByCategory, searchTools, getCategoryCounts } from '@/lib/tools/categories'
+import { HistoryPanel } from '@/components/analysis/HistoryPanel'
+
+// Maps category tool IDs (kebab-case) to the activeTool state IDs (short)
+const CATEGORY_TO_TOOL_ID: Record<string, string> = {
+  'my-dna-personal': 'dna',
+  'genetic-superpowers': 'superpowers',
+  'genetic-diet': 'diet',
+  'crispr-simulator': 'crispr',
+  'regulatory-networks': 'networks',
+  'mind-genome-connector': 'mindgenome',
+  'aging-predictor': 'aging',
+  'capabilities-optimizer': 'capabilities',
+  'family-risk-assessment': 'familyrisk',
+  'ancestry-explorer': 'ancestors',
+  'virtual-lab': 'virtuallab',
+  'evolution-simulator': 'evolution',
+  'genetic-detective': 'detective',
+  'couple-compatibility': 'couple',
+  'organism-designer': 'organism',
+  'tree-of-life': 'treeoflife',
+  'batch-analyzer': 'batchanalyzer',
+  'drug-target-finder': 'drugtargets',
+  'genome-comparator': 'genomecomp',
+  'splicing-predictor': 'splicing',
+  'aging-error-corrector': 'agingcorrector',
+  'beneficial-variants-library': 'beneficialvariants',
+  'future-simulator': 'futuresim',
+  'pharmacogenomics': 'pharmacogenomics',
+  'microbiome-connector': 'microbiome',
+  'epigenetic-clock': 'epigeneticclock',
+  'gene-therapy-companion': 'genetherapy',
+  'rare-variants-network': 'rarevariants',
+  'immune-response-predictor': 'immuneresponse',
+  'epigenetic-coach': 'epigeneticcoach',
+}
 
 export default function HomePage() {
   const t = useTranslations()
   const { isConfigured } = useApiKeyStore()
-  const [activeTab, setActiveTab] = useState<'analyze' | 'explore' | 'batch' | 'myDna' | 'tools' | 'learn'>('myDna')
-  const [activeTool, setActiveTool] = useState<'dna' | 'superpowers' | 'diet' | 'crispr' | 'networks' | 'mindgenome' | 'aging' | 'capabilities' | 'familyrisk' | 'ancestors' | 'virtuallab' | 'evolution' | 'detective' | 'couple' | 'organism' | 'treeoflife' | 'batchanalyzer' | 'drugtargets' | 'genomecomp' | 'splicing' | 'agingcorrector' | 'beneficialvariants' | 'futuresim'>('dna')
+  const [activeTab, setActiveTab] = useState<'analyze' | 'explore' | 'batch' | 'myDna' | 'tools' | 'learn' | 'history'>('myDna')
+  const [activeTool, setActiveTool] = useState<'dna' | 'superpowers' | 'diet' | 'crispr' | 'networks' | 'mindgenome' | 'aging' | 'capabilities' | 'familyrisk' | 'ancestors' | 'virtuallab' | 'evolution' | 'detective' | 'couple' | 'organism' | 'treeoflife' | 'batchanalyzer' | 'drugtargets' | 'genomecomp' | 'splicing' | 'agingcorrector' | 'beneficialvariants' | 'futuresim' | 'pharmacogenomics' | 'microbiome' | 'epigeneticclock' | 'genetherapy' | 'rarevariants' | 'immuneresponse' | 'epigeneticcoach'>('dna')
+  const [searchOpen, setSearchOpen] = useState(false)
+  const { recent, addRecent } = useRecentTools()
 
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -106,6 +163,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex items-center space-x-1.5 sm:space-x-3 flex-shrink-0">
+              <ConnectWallet />
               <ThemeToggle />
               <LanguageToggle />
 
@@ -134,7 +192,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 overflow-x-hidden">
+      <main id="main-content" className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 overflow-x-hidden">
         {/* API Key Setup (if not configured) */}
         {!isConfigured && (
           <div className="mb-8">
@@ -193,6 +251,14 @@ export default function HomePage() {
             disabled={!isConfigured}
           >
             {t('nav.batchAnalysis')}
+          </Button>
+          {/* 7. History */}
+          <Button
+            variant={activeTab === 'history' ? 'primary' : 'secondary'}
+            onClick={() => setActiveTab('history')}
+            icon={Clock}
+          >
+            {t('nav.history') || 'History'}
           </Button>
         </div>
 
@@ -394,6 +460,62 @@ export default function HomePage() {
               >
                 {t('tools.futureSimulator.title')}
               </Button>
+              <Button
+                variant={activeTool === 'pharmacogenomics' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('pharmacogenomics')}
+                icon={Pill}
+              >
+                {t('tools.pharmacogenomics.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'microbiome' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('microbiome')}
+                icon={Microscope}
+              >
+                {t('tools.microbiomeConnector.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'epigeneticclock' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('epigeneticclock')}
+                icon={Activity}
+              >
+                {t('tools.epigeneticClock.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'genetherapy' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('genetherapy')}
+                icon={Syringe}
+              >
+                {t('tools.geneTherapy.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'rarevariants' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('rarevariants')}
+                icon={Share2}
+              >
+                {t('tools.rareVariants.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'immuneresponse' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('immuneresponse')}
+                icon={Shield}
+              >
+                {t('tools.immuneResponse.title')}
+              </Button>
+              <Button
+                variant={activeTool === 'epigeneticcoach' ? 'primary' : 'light'}
+                size="xs"
+                onClick={() => setActiveTool('epigeneticcoach')}
+                icon={Flame}
+              >
+                {t('tools.epigeneticCoach.title')}
+              </Button>
             </div>
 
             {/* Tool content */}
@@ -420,20 +542,56 @@ export default function HomePage() {
             {activeTool === 'agingcorrector' && <AgingErrorCorrector />}
             {activeTool === 'beneficialvariants' && <BeneficialVariantsLibrary />}
             {activeTool === 'futuresim' && <FutureSimulator />}
+            {activeTool === 'pharmacogenomics' && <Pharmacogenomics />}
+            {activeTool === 'microbiome' && <MicrobiomeConnector />}
+            {activeTool === 'epigeneticclock' && <EpigeneticClock />}
+            {activeTool === 'genetherapy' && <GeneTherapyCompanion />}
+            {activeTool === 'rarevariants' && <RareVariantsNetwork />}
+            {activeTool === 'immuneresponse' && <ImmuneResponsePredictor />}
+            {activeTool === 'epigeneticcoach' && <EpigeneticCoach />}
           </div>
         )}
 
-        {/* Tools Section (placeholder for future tools) */}
+        {/* Tools Section with enhanced navigation */}
         {activeTab === 'tools' && (
           <ToolsSection
             t={t}
             onToolSelect={(toolId) => {
-              // Navigate to My DNA tab and select the tool
+              addRecent(toolId)
               setActiveTab('myDna')
               setActiveTool(toolId as typeof activeTool)
             }}
+            searchOpen={searchOpen}
+            onSearchOpenChange={setSearchOpen}
           />
         )}
+
+        {/* History Section */}
+        {activeTab === 'history' && (
+          <div className="space-y-4">
+            <Card className="gradient-accent">
+              <div className="flex items-center gap-3">
+                <Clock className="w-8 h-8 text-info" />
+                <div>
+                  <Title>{t('nav.history') || 'History'}</Title>
+                  <Text>Your past analyses and results</Text>
+                </div>
+              </div>
+            </Card>
+            <HistoryPanel />
+          </div>
+        )}
+
+        {/* Global Search Modal */}
+        <ToolSearch
+          isOpen={searchOpen}
+          onOpenChange={setSearchOpen}
+          onSelect={(toolId) => {
+            addRecent(toolId)
+            setActiveTab('myDna')
+            setActiveTool(CATEGORY_TO_TOOL_ID[toolId] as typeof activeTool || toolId as typeof activeTool)
+          }}
+        />
 
         {/* Use Cases Section */}
         <UseCasesSection t={t} />
@@ -1508,262 +1666,115 @@ function FeaturesSection({ t }: { t: any }) {
   )
 }
 
-// Tools Section - All available tools with placeholders for future features
-function ToolsSection({ t, onToolSelect }: { t: any; onToolSelect: (toolId: string) => void }) {
-  const tools = [
-    // Phase 1 - MVP (Implemented)
-    {
-      id: 'my-dna',
-      name: t('tools.myDna.title'),
-      description: t('tools.myDna.description'),
-      icon: Upload,
-      color: 'blue' as const,
-      implemented: true,
-    },
-    {
-      id: 'superpowers',
-      name: t('tools.superpowers.title'),
-      description: t('tools.superpowers.description'),
-      icon: Zap,
-      color: 'purple' as const,
-      implemented: true,
-    },
-    {
-      id: 'diet',
-      name: t('tools.diet.title'),
-      description: t('tools.diet.description'),
-      icon: Utensils,
-      color: 'green' as const,
-      implemented: true,
-    },
-    {
-      id: 'crispr',
-      name: t('tools.crispr.title'),
-      description: t('tools.crispr.description'),
-      icon: FlaskConical,
-      color: 'purple' as const,
-      implemented: true,
-    },
-    {
-      id: 'networks',
-      name: t('tools.regulatoryNetworks.title'),
-      description: t('tools.regulatoryNetworks.description'),
-      icon: Layers,
-      color: 'blue' as const,
-      implemented: true,
-    },
-    {
-      id: 'mindgenome',
-      name: t('tools.mindGenome.title'),
-      description: t('tools.mindGenome.description'),
-      icon: Brain,
-      color: 'purple' as const,
-      implemented: true,
-    },
-    {
-      id: 'aging',
-      name: t('tools.agingPredictor.title'),
-      description: t('tools.agingPredictor.description'),
-      icon: Heart,
-      color: 'orange' as const,
-      implemented: true,
-    },
-    {
-      id: 'capabilities',
-      name: t('tools.capabilitiesOptimizer.title'),
-      description: t('tools.capabilitiesOptimizer.description'),
-      icon: Target,
-      color: 'cyan' as const,
-      implemented: true,
-    },
-    {
-      id: 'familyrisk',
-      name: t('tools.familyRisk.title'),
-      description: t('tools.familyRisk.description'),
-      icon: Users,
-      color: 'pink' as const,
-      implemented: true,
-    },
-    {
-      id: 'ancestors',
-      name: t('tools.ancestors.title'),
-      description: t('tools.ancestors.description'),
-      icon: Globe2,
-      color: 'blue' as const,
-      implemented: true,
-    },
-    {
-      id: 'virtuallab',
-      name: t('tools.virtualLab.title'),
-      description: t('tools.virtualLab.description'),
-      icon: FlaskConical,
-      color: 'purple' as const,
-      implemented: true,
-    },
-    {
-      id: 'evolution',
-      name: t('tools.evolution.title'),
-      description: t('tools.evolution.description'),
-      icon: Globe2,
-      color: 'green' as const,
-      implemented: true,
-    },
-    {
-      id: 'detective',
-      name: t('tools.detective.title'),
-      description: t('tools.detective.description'),
-      icon: Search,
-      color: 'orange' as const,
-      implemented: true,
-    },
-    {
-      id: 'couple',
-      name: t('tools.coupleCompatibility.title'),
-      description: t('tools.coupleCompatibility.description'),
-      icon: Heart,
-      color: 'pink' as const,
-      implemented: true,
-    },
-    {
-      id: 'organism',
-      name: t('tools.organismDesigner.title'),
-      description: t('tools.organismDesigner.description'),
-      icon: Bug,
-      color: 'green' as const,
-      implemented: true,
-    },
-    {
-      id: 'treeoflife',
-      name: t('tools.treeOfLife.title'),
-      description: t('tools.treeOfLife.description'),
-      icon: TreePine,
-      color: 'green' as const,
-      implemented: true,
-    },
-    {
-      id: 'batchanalyzer',
-      name: t('tools.batchAnalyzer.title'),
-      description: t('tools.batchAnalyzer.description'),
-      icon: BarChart3,
-      color: 'blue' as const,
-      implemented: true,
-    },
-    {
-      id: 'drugtargets',
-      name: t('tools.drugTargetFinder.title'),
-      description: t('tools.drugTargetFinder.description'),
-      icon: Pill,
-      color: 'purple' as const,
-      implemented: true,
-    },
-    {
-      id: 'genomecomp',
-      name: t('tools.genomeComparator.title'),
-      description: t('tools.genomeComparator.description'),
-      icon: Globe2,
-      color: 'blue' as const,
-      implemented: true,
-    },
-    {
-      id: 'splicing',
-      name: t('tools.splicingPredictor.title'),
-      description: t('tools.splicingPredictor.description'),
-      icon: Scissors,
-      color: 'blue' as const,
-      implemented: true,
-    },
-    {
-      id: 'agingcorrector',
-      name: t('tools.agingErrorCorrector.title'),
-      description: t('tools.agingErrorCorrector.description'),
-      icon: Bug,
-      color: 'orange' as const,
-      implemented: true,
-    },
-    {
-      id: 'beneficialvariants',
-      name: t('tools.beneficialVariants.title'),
-      description: t('tools.beneficialVariants.description'),
-      icon: BookOpen,
-      color: 'orange' as const,
-      implemented: true,
-    },
-    {
-      id: 'futuresim',
-      name: t('tools.futureSimulator.title'),
-      description: t('tools.futureSimulator.description'),
-      icon: Clock,
-      color: 'purple' as const,
-      implemented: true,
-    },
-  ]
+// Tools Section - Enhanced with CategoryNav, ToolCard, ToolSearch, Favorites
+function ToolsSection({ t, onToolSelect, searchOpen, onSearchOpenChange }: {
+  t: any
+  onToolSelect: (toolId: string) => void
+  searchOpen: boolean
+  onSearchOpenChange: (open: boolean) => void
+}) {
+  const [selectedCategory, setSelectedCategory] = useState<ToolCategory | 'ALL'>('ALL')
+  const { favorites, toggleFavorite, isFavorite } = useFavorites()
+  const { recent } = useRecentTools()
+
+  const filteredTools = selectedCategory === 'ALL'
+    ? TOOLS_METADATA
+    : getToolsByCategory(selectedCategory)
+
+  const favoriteTools = TOOLS_METADATA.filter((t) => favorites.includes(t.id))
+  const recentTools = recent
+    .map((id) => TOOLS_METADATA.find((t) => t.id === id))
+    .filter(Boolean) as typeof TOOLS_METADATA
+
+  function handleSelect(categoryToolId: string) {
+    const shortId = CATEGORY_TO_TOOL_ID[categoryToolId] || categoryToolId
+    onToolSelect(shortId)
+  }
 
   return (
     <div className="space-y-6">
+      {/* Header with search */}
       <Card className="gradient-accent">
-        <div className="flex items-center gap-3">
-          <Wrench className="w-8 h-8 text-info" />
-          <div>
-            <Title>{t('nav.tools')}</Title>
-            <Text>All available genetic analysis tools</Text>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Wrench className="w-8 h-8 text-info" />
+            <div>
+              <Title>{t('nav.tools')}</Title>
+              <Text>All available genetic analysis tools</Text>
+            </div>
           </div>
+          <Button
+            variant="secondary"
+            icon={Search}
+            onClick={() => onSearchOpenChange(true)}
+            size="xs"
+          >
+            Search (Ctrl+K)
+          </Button>
         </div>
       </Card>
 
-      <Grid numItems={1} numItemsSm={2} numItemsLg={3} className="gap-4">
-        {tools.map((tool) => (
+      {/* Category Navigation */}
+      <CategoryNav selected={selectedCategory} onSelect={setSelectedCategory} />
+
+      {/* Favorites Section */}
+      {favoriteTools.length > 0 && selectedCategory === 'ALL' && (
+        <div>
+          <Text className="font-medium text-body mb-3 flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-yellow-400" />
+            Favorites
+          </Text>
+          <Grid numItems={2} numItemsSm={3} numItemsLg={4} className="gap-3">
+            {favoriteTools.map((tool) => (
+              <Col key={tool.id}>
+                <ToolCard
+                  tool={tool}
+                  isFavorite={true}
+                  onSelect={handleSelect}
+                  onToggleFavorite={(id) => toggleFavorite(id)}
+                />
+              </Col>
+            ))}
+          </Grid>
+        </div>
+      )}
+
+      {/* Recent Section */}
+      {recentTools.length > 0 && selectedCategory === 'ALL' && (
+        <div>
+          <Text className="font-medium text-body mb-3 flex items-center gap-2">
+            <Clock className="w-4 h-4 text-gray-400" />
+            Recent
+          </Text>
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
+            {recentTools.map((tool) => {
+              const Icon = tool.icon
+              return (
+                <button
+                  key={tool.id}
+                  onClick={() => handleSelect(tool.id)}
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-all whitespace-nowrap text-sm"
+                  aria-label={`Open ${tool.name}`}
+                >
+                  <Icon className={`w-4 h-4 text-${tool.color}-400`} />
+                  <span className="text-gray-300">{tool.name}</span>
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Tools Grid */}
+      <Grid numItems={2} numItemsSm={3} numItemsLg={4} className="gap-3">
+        {filteredTools.map((tool) => (
           <Col key={tool.id}>
-            {tool.implemented ? (
-              <Card
-                className="h-full hover:shadow-lg transition-shadow cursor-pointer hover:ring-2 hover:ring-blue-500 dark:hover:ring-blue-400"
-                onClick={() => onToolSelect(tool.id)}
-              >
-                <div className="flex items-start gap-3">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    ({
-                      blue: 'bg-blue-100 dark:bg-blue-900/30',
-                      purple: 'bg-purple-100 dark:bg-purple-900/30',
-                      green: 'bg-green-100 dark:bg-green-900/30',
-                      orange: 'bg-orange-100 dark:bg-orange-900/30',
-                      pink: 'bg-pink-100 dark:bg-pink-900/30',
-                      cyan: 'bg-cyan-100 dark:bg-cyan-900/30',
-                      red: 'bg-red-100 dark:bg-red-900/30',
-                    } as Record<string, string>)[tool.color] || 'bg-blue-100 dark:bg-blue-900/30'
-                  }`}>
-                    <tool.icon className={`w-5 h-5 ${
-                      ({
-                        blue: 'text-blue-600 dark:text-blue-400',
-                        purple: 'text-purple-600 dark:text-purple-400',
-                        green: 'text-green-600 dark:text-green-400',
-                        orange: 'text-orange-600 dark:text-orange-400',
-                        pink: 'text-pink-600 dark:text-pink-400',
-                        cyan: 'text-cyan-600 dark:text-cyan-400',
-                        red: 'text-red-600 dark:text-red-400',
-                      } as Record<string, string>)[tool.color] || 'text-blue-600 dark:text-blue-400'
-                    }`} />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <p className="font-semibold text-title">{tool.name}</p>
-                      <Badge color="green" size="xs">Ready</Badge>
-                    </div>
-                    <p className="text-sm text-muted mt-1">{tool.description}</p>
-                    <p className="text-xs text-info mt-2 flex items-center gap-1">
-                      <span>→</span> {t('tools.clickToOpen') || 'Click to open'}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ) : (
-              <FeatureRequestPlaceholder
-                featureId={tool.id}
-                featureName={tool.name}
-                featureDescription={tool.description}
-                featureIcon={<tool.icon className="w-6 h-6" />}
-                estimatedPhase={(tool as { phase?: string }).phase || 'Coming Soon'}
-                color={tool.color as 'blue' | 'purple' | 'green' | 'orange' | 'pink'}
-              />
-            )}
+            <ToolCard
+              tool={tool}
+              isFavorite={isFavorite(tool.id)}
+              onSelect={handleSelect}
+              onToggleFavorite={(id) => toggleFavorite(id)}
+            />
           </Col>
         ))}
       </Grid>

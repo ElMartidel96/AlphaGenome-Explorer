@@ -16,7 +16,7 @@ import logging
 import time
 
 from .config import get_settings
-from .routers import predict_router, metadata_router, export_router
+from .routers import predict_router, metadata_router, export_router, ai_router, profile_router
 from .models import HealthResponse
 
 # Configure logging
@@ -117,6 +117,8 @@ async def global_exception_handler(request: Request, exc: Exception):
 app.include_router(predict_router)
 app.include_router(metadata_router)
 app.include_router(export_router)
+app.include_router(ai_router)
+app.include_router(profile_router)
 
 
 # Root endpoints

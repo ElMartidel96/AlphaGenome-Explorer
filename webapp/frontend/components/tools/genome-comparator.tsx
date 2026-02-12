@@ -14,6 +14,9 @@ import {
   Map,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 interface Population {
   id: string
@@ -143,7 +146,7 @@ export function GenomeComparator() {
   const maxHeterozygosity = Math.max(...POPULATIONS.map((p) => p.heterozygosity))
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Genome Comparator" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/20 dark:to-blue-950/20">
         <div className="text-center">
@@ -269,6 +272,7 @@ export function GenomeComparator() {
             <div>
               <Text className="text-xs text-muted mb-1">Poblacion 1</Text>
               <select
+                aria-label="Poblacion 1"
                 value={comparePop1}
                 onChange={(e) => setComparePop1(e.target.value)}
                 className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
@@ -281,6 +285,7 @@ export function GenomeComparator() {
             <div>
               <Text className="text-xs text-muted mb-1">Poblacion 2</Text>
               <select
+                aria-label="Poblacion 2"
                 value={comparePop2}
                 onChange={(e) => setComparePop2(e.target.value)}
                 className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"

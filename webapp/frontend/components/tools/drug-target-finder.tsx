@@ -18,6 +18,9 @@ import {
   TrendingUp,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 interface DrugTarget {
   id: string
@@ -254,7 +257,7 @@ export function DrugTargetFinder() {
     )
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Drug Target Finder" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950/20 dark:to-indigo-950/20">
         <div className="text-center">
@@ -280,12 +283,14 @@ export function DrugTargetFinder() {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Buscar por gen, nombre o indicacion..."
               className="w-full pl-10 pr-4 py-2.5 bg-surface-soft border border-adaptive rounded-xl text-body text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              aria-label="Search drug targets"
             />
           </div>
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
             className="p-2.5 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
+            aria-label="Filter by category"
           >
             <option value="all">Todas las categorias</option>
             <option value="kinase">Quinasas</option>

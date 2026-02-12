@@ -703,6 +703,34 @@
       "simulateFuture": "Simular Futuro",
       "ethicalConsiderations": "Consideraciones Eticas",
       "newSimulation": "Nueva simulacion"
+    },
+    "pharmacogenomics": {
+      "title": "Farmacogenomica",
+      "description": "Predice como tu genoma afecta el metabolismo de farmacos via enzimas CYP450"
+    },
+    "microbiomeConnector": {
+      "title": "Conector Microbioma",
+      "description": "Conecta tu genotipo HLA con recomendaciones personalizadas para el microbioma intestinal"
+    },
+    "epigeneticClock": {
+      "title": "Reloj Epigenetico",
+      "description": "Mide tu edad biologica a traves de patrones de metilacion del ADN e impacto del estilo de vida"
+    },
+    "geneTherapy": {
+      "title": "Companion de Terapia Genica",
+      "description": "Explora terapias genicas aprobadas por la FDA y tu relevancia genetica personal"
+    },
+    "rareVariants": {
+      "title": "Red de Variantes Raras",
+      "description": "Conecta con la comunidad global de enfermedades raras y explora bases de datos de variantes"
+    },
+    "immuneResponse": {
+      "title": "Predictor de Respuesta Inmune",
+      "description": "Predice tu respuesta inmune a patogenos y vacunas basado en tu genotipo HLA"
+    },
+    "epigeneticCoach": {
+      "title": "Coach Epigenético",
+      "description": "Planes personalizados de intervención epigenética para silenciar genes de riesgo y activar genes de potencial mediante nutrición, ejercicio, sueño y coaching con IA"
     }
   }
 }

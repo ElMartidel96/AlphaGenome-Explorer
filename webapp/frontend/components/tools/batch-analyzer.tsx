@@ -19,6 +19,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 type AnalysisState = 'idle' | 'uploading' | 'analyzing' | 'complete'
 
@@ -131,7 +134,7 @@ export function BatchAnalyzer() {
 
   if (state === 'idle') {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="Batch Analyzer" className="space-y-6">
         <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20">
           <div className="text-center">
             <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -167,6 +170,7 @@ export function BatchAnalyzer() {
 
   if (state === 'uploading' || state === 'analyzing') {
     return (
+      <div role="region" aria-label="Batch Analyzer">
       <Card>
         <div className="text-center py-12">
           <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
@@ -181,12 +185,13 @@ export function BatchAnalyzer() {
           </div>
         </div>
       </Card>
+      </div>
     )
   }
 
   // Results view
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Batch Analyzer" className="space-y-6">
       {/* Summary cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card decoration="top" decorationColor="red">
@@ -210,6 +215,7 @@ export function BatchAnalyzer() {
       {/* Filters */}
       <Card>
         <button
+          aria-label="Toggle advanced filters"
           onClick={() => setShowFilters(!showFilters)}
           className="flex items-center gap-2 w-full"
         >
@@ -224,6 +230,7 @@ export function BatchAnalyzer() {
             <div>
               <Text className="text-xs text-muted mb-1">Cromosoma</Text>
               <select
+                aria-label="Chromosome filter"
                 value={filters.chromosome}
                 onChange={(e) => setFilters({ ...filters, chromosome: e.target.value })}
                 className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
@@ -236,6 +243,7 @@ export function BatchAnalyzer() {
             <div>
               <Text className="text-xs text-muted mb-1">Impacto</Text>
               <select
+                aria-label="Impact filter"
                 value={filters.impact}
                 onChange={(e) => setFilters({ ...filters, impact: e.target.value })}
                 className="w-full p-2 bg-surface-soft border border-adaptive rounded-xl text-body text-sm"
@@ -248,6 +256,7 @@ export function BatchAnalyzer() {
             <div>
               <Text className="text-xs text-muted mb-1">Score minimo</Text>
               <input
+                aria-label="Minimum score filter"
                 type="range"
                 min="0"
                 max="1"
@@ -263,6 +272,7 @@ export function BatchAnalyzer() {
               <div className="relative">
                 <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 text-muted" />
                 <input
+                  aria-label="Gene search"
                   type="text"
                   value={filters.gene}
                   onChange={(e) => setFilters({ ...filters, gene: e.target.value })}
@@ -281,6 +291,7 @@ export function BatchAnalyzer() {
           <Title className="text-title text-sm">Resultados ({filteredVariants.length})</Title>
           <div className="flex gap-2">
             <select
+              aria-label="Sort results by"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
               className="p-1.5 bg-surface-soft border border-adaptive rounded-xl text-body text-xs"

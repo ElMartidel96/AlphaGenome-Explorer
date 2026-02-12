@@ -29,6 +29,9 @@ import {
   ChevronUp,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Types for family members and conditions
 interface FamilyMember {
@@ -351,7 +354,7 @@ export function FamilyRiskAssessment() {
   // Intro step
   if (step === 'intro') {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="Family Risk Assessment" className="space-y-6">
         <Card className="bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-950/30 dark:to-purple-950/30">
           <div className="flex items-start gap-4">
             <div className="w-14 h-14 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center">
@@ -441,7 +444,7 @@ export function FamilyRiskAssessment() {
   // Family building step
   if (step === 'family') {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="Family Risk Assessment" className="space-y-6">
         <Card>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
@@ -510,6 +513,7 @@ export function FamilyRiskAssessment() {
                             e.stopPropagation()
                             toggleCondition(member.id, condition.id)
                           }}
+                          aria-label={`Toggle ${isSpanish ? condition.nameEs : condition.name} for ${member.name}`}
                           className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
                             member.conditions.includes(condition.id)
                               ? 'bg-warning-muted0 text-white'
@@ -616,7 +620,7 @@ export function FamilyRiskAssessment() {
     const familyConditions = new Set(family.flatMap(m => m.conditions))
 
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="Family Risk Assessment" className="space-y-6">
         <Card>
           <div className="flex items-center gap-3 mb-4">
             <Heart className="w-6 h-6 text-red-500" />
@@ -717,7 +721,7 @@ export function FamilyRiskAssessment() {
   // Analysis progress step
   if (step === 'analysis') {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="Family Risk Assessment" className="space-y-6">
         <Card className="text-center py-12">
           <div className="w-20 h-20 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
             <Dna className="w-10 h-10 text-accent" />
@@ -764,7 +768,7 @@ export function FamilyRiskAssessment() {
     }).sort((a, b) => b.risk - a.risk)
 
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="Family Risk Assessment" className="space-y-6">
         <Card className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30">
           <div className="flex items-center gap-3">
             <CheckCircle className="w-8 h-8 text-success" />
@@ -873,6 +877,7 @@ export function FamilyRiskAssessment() {
                             setShowPunnett(showPunnett === condition.id ? null : condition.id)
                           }}
                           className="text-sm text-accent hover:text-purple-800 flex items-center gap-1"
+                          aria-label="Toggle Punnett Square"
                         >
                           <Eye className="w-4 h-4" />
                           {showPunnett === condition.id

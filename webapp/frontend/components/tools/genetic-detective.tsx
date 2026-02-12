@@ -31,6 +31,9 @@ import {
   Target,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // DNA Profile marker type
 interface DnaMarker {
@@ -298,7 +301,7 @@ export function GeneticDetective() {
   // Case selection view
   if (!activeCase) {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="Genetic Detective" className="space-y-6">
         <Card className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30">
           <div className="flex items-start gap-4">
             <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center">
@@ -443,7 +446,7 @@ export function GeneticDetective() {
   const isCorrect = accusation === guilty?.id
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Genetic Detective" className="space-y-6">
       {/* Case Header */}
       <Card className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30">
         <div className="flex items-center justify-between">
@@ -606,6 +609,7 @@ export function GeneticDetective() {
                       <div className="mt-4 pt-4 border-t border-adaptive">
                         <div className="flex items-center justify-between mb-3">
                           <button
+                            aria-label={isExpanded ? 'Hide DNA Profile' : 'View DNA Profile'}
                             className="text-sm text-info hover:text-blue-800 flex items-center gap-1"
                             onClick={(e) => {
                               e.stopPropagation()
@@ -690,6 +694,7 @@ export function GeneticDetective() {
               <Info className="w-5 h-5 text-info mt-0.5" />
               <div className="flex-1">
                 <button
+                  aria-label={showHint ? 'Hide hint' : 'Show hint'}
                   className="font-medium text-blue-800 dark:text-blue-300 hover:underline"
                   onClick={() => setShowHint(!showHint)}
                 >

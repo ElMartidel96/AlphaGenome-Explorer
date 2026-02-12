@@ -21,6 +21,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 interface Gene {
   id: string
@@ -253,7 +256,7 @@ export function OrganismDesigner() {
   const categories = ['visual', 'defense', 'metabolic', 'structural'] as const
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Organism Designer" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/20 dark:to-teal-950/20">
         <div className="text-center">
@@ -285,6 +288,7 @@ export function OrganismDesigner() {
                   return (
                     <button
                       key={gene.id}
+                      aria-label={`Toggle ${gene.nameEs}`}
                       onClick={() => toggleGene(gene.id)}
                       className={`w-full flex items-center gap-3 p-3 rounded-xl text-left transition-all ${
                         isSelected

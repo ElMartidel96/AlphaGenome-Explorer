@@ -32,6 +32,9 @@ import {
   Target,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Organism types for simulation
 interface Organism {
@@ -289,7 +292,7 @@ export function EvolutionSimulator() {
   const traitAPercent = (traitACount / populationSize) * 100
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Evolution Simulator" className="space-y-6">
       {/* Header Card */}
       <Card className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/30 dark:to-blue-950/30">
         <div className="flex items-start gap-4">
@@ -486,6 +489,7 @@ export function EvolutionSimulator() {
                   value={populationSize}
                   onChange={(e) => setPopulationSize(Number(e.target.value))}
                   className="w-full mt-2"
+                  aria-label="Population size"
                 />
               </div>
               <div>
@@ -500,6 +504,7 @@ export function EvolutionSimulator() {
                   value={mutationRate}
                   onChange={(e) => setMutationRate(Number(e.target.value))}
                   className="w-full mt-2"
+                  aria-label="Mutation rate"
                 />
               </div>
               <div>
@@ -514,6 +519,7 @@ export function EvolutionSimulator() {
                   value={speed}
                   onChange={(e) => setSpeed(Number(e.target.value))}
                   className="w-full mt-2"
+                  aria-label="Simulation speed"
                 />
               </div>
             </div>

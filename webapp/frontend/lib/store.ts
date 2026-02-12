@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import type { UserRole } from '@/lib/supabase/types'
 
+// API Key Store
 interface ApiKeyState {
   apiKey: string | null
   isConfigured: boolean
@@ -26,13 +28,11 @@ export const useApiKeyStore = create<ApiKeyState>()(
     }),
     {
       name: 'alphagenome-api-key',
-      // Only persist to localStorage, not sessionStorage
-      // The key stays in the browser, never sent to our server storage
     }
   )
 )
 
-// Analysis history store
+// Analysis History Store
 interface AnalysisResult {
   id: string
   timestamp: Date
@@ -53,12 +53,52 @@ export const useHistoryStore = create<HistoryState>()(
       analyses: [],
       addAnalysis: (result: AnalysisResult) =>
         set((state) => ({
-          analyses: [result, ...state.analyses].slice(0, 50), // Keep last 50
+          analyses: [result, ...state.analyses].slice(0, 50),
         })),
       clearHistory: () => set({ analyses: [] }),
     }),
     {
       name: 'alphagenome-history',
+    }
+  )
+)
+
+// Profile Store (auth + role)
+interface ProfileState {
+  walletAddress: string | null
+  displayName: string | null
+  role: UserRole
+  profileId: string | null
+  setProfile: (data: { walletAddress: string; displayName?: string; role?: UserRole; profileId?: string }) => void
+  setRole: (role: UserRole) => void
+  clearProfile: () => void
+}
+
+export const useProfileStore = create<ProfileState>()(
+  persist(
+    (set) => ({
+      walletAddress: null,
+      displayName: null,
+      role: 'FREE' as UserRole,
+      profileId: null,
+      setProfile: ({ walletAddress, displayName, role, profileId }) =>
+        set({
+          walletAddress,
+          displayName: displayName ?? null,
+          role: role ?? 'FREE',
+          profileId: profileId ?? null,
+        }),
+      setRole: (role: UserRole) => set({ role }),
+      clearProfile: () =>
+        set({
+          walletAddress: null,
+          displayName: null,
+          role: 'FREE' as UserRole,
+          profileId: null,
+        }),
+    }),
+    {
+      name: 'alphagenome-profile',
     }
   )
 )

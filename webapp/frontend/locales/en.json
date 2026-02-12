@@ -703,6 +703,34 @@
       "simulateFuture": "Simulate Future",
       "ethicalConsiderations": "Ethical Considerations",
       "newSimulation": "New simulation"
+    },
+    "pharmacogenomics": {
+      "title": "Pharmacogenomics",
+      "description": "Predict how your genome affects drug metabolism via CYP450 enzymes"
+    },
+    "microbiomeConnector": {
+      "title": "Microbiome Connector",
+      "description": "Connect your HLA genotype with personalized gut microbiome recommendations"
+    },
+    "epigeneticClock": {
+      "title": "Epigenetic Clock",
+      "description": "Measure your biological age through DNA methylation patterns and lifestyle impact"
+    },
+    "geneTherapy": {
+      "title": "Gene Therapy Companion",
+      "description": "Explore FDA-approved gene therapies and your personal genetic relevance"
+    },
+    "rareVariants": {
+      "title": "Rare Variants Network",
+      "description": "Connect with the global rare disease community and explore variant databases"
+    },
+    "immuneResponse": {
+      "title": "Immune Response Predictor",
+      "description": "Predict your immune response to pathogens and vaccines based on HLA genotype"
+    },
+    "epigeneticCoach": {
+      "title": "Epigenetic Coach",
+      "description": "Personalized epigenetic intervention plans to silence risk genes and activate potential genes via nutrition, exercise, sleep, and AI coaching"
     }
   }
 }

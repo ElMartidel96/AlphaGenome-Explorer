@@ -17,6 +17,9 @@ import {
   Wrench,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 interface AgingBug {
   id: string
@@ -205,7 +208,7 @@ export function AgingErrorCorrector() {
   )
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Aging Error Corrector" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-rose-50 to-orange-50 dark:from-rose-950/20 dark:to-orange-950/20">
         <div className="text-center">

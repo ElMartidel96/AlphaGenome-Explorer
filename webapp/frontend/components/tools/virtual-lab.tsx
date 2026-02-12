@@ -29,6 +29,9 @@ import {
   Scissors,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Lab experiment types
 type ExperimentType = 'dna-extraction' | 'pcr' | 'gel-electrophoresis' | 'restriction-digest'
@@ -326,7 +329,7 @@ export function VirtualLab() {
   // Experiment selection view
   if (!selectedExperiment) {
     return (
-      <div className="space-y-6">
+      <div role="region" aria-label="Virtual Lab" className="space-y-6">
         <Card className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30">
           <div className="flex items-start gap-4">
             <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
@@ -439,7 +442,7 @@ export function VirtualLab() {
 
   // Experiment view
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Virtual Lab" className="space-y-6">
       {/* Header */}
       <Card className={`bg-gradient-to-br from-${experiment?.color}-50 to-white`}>
         <div className="flex items-center justify-between">

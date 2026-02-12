@@ -21,6 +21,9 @@ import {
   Filter,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 interface BeneficialVariant {
   id: string
@@ -278,7 +281,7 @@ export function BeneficialVariantsLibrary() {
     )
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Beneficial Variants Library" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/20 dark:to-yellow-950/20">
         <div className="text-center">
@@ -304,6 +307,7 @@ export function BeneficialVariantsLibrary() {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Buscar por gen, nombre o efecto..."
               className="w-full pl-10 pr-4 py-2.5 bg-surface-soft border border-adaptive rounded-xl text-body text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              aria-label="Search beneficial variants"
             />
           </div>
         </div>

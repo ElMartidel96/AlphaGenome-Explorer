@@ -24,6 +24,9 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import toast from 'react-hot-toast'
+import { useToolState } from '@/hooks/useToolState'
+import { LoadingState } from '@/components/shared/LoadingState'
+import { ErrorState } from '@/components/shared/ErrorState'
 
 // Types
 interface DailyCheckin {
@@ -322,6 +325,7 @@ export function MindGenomeConnector() {
         {[1, 2, 3, 4, 5].map(n => (
           <button
             key={n}
+            aria-label={`${label} rating ${n}`}
             onClick={() => onChange(n)}
             className={`w-10 h-10 rounded-xl font-medium transition-all ${
               value === n
@@ -337,7 +341,7 @@ export function MindGenomeConnector() {
   )
 
   return (
-    <div className="space-y-6">
+    <div role="region" aria-label="Mind-Genome Connector" className="space-y-6">
       {/* Header */}
       <Card className="bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 dark:from-purple-950/30 dark:via-indigo-950/30 dark:to-blue-950/30">
         <div className="flex items-center justify-between">
@@ -370,6 +374,7 @@ export function MindGenomeConnector() {
         ].map(tab => (
           <button
             key={tab.id}
+            aria-label={tab.label}
             onClick={() => setActiveSection(tab.id as any)}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all flex-1 justify-center ${
               activeSection === tab.id
@@ -535,6 +540,7 @@ export function MindGenomeConnector() {
               <Card key={habit.id} className={habit.completed ? 'bg-success-soft border-success' : ''}>
                 <div className="flex items-center gap-4">
                   <button
+                    aria-label={`Toggle ${habit.name}`}
                     onClick={() => toggleHabit(habit.id)}
                     className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
                       habit.completed
