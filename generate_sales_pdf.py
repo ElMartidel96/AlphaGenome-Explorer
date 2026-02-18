@@ -54,7 +54,7 @@ class SalesPDF(FPDF):
         self.set_y(-12)
         self.set_font("Sans", "", 6)
         self.set_text_color(*MID_GRAY)
-        self.cell(0, 6, "AlphaGenome Explorer — Open Source | Powered by Google DeepMind AlphaGenome API", align="C")
+        self.cell(0, 6, "AlphaGenome Explorer — Source-Available | PolyForm Noncommercial License | Powered by Google DeepMind AlphaGenome API", align="C")
 
     def dark_page_bg(self):
         self.set_fill_color(*DARK_BG)
@@ -333,7 +333,7 @@ def build_pdf():
     pdf.ln(12)
     pdf.set_font("Sans", "", 8.5)
     pdf.set_text_color(*MID_GRAY)
-    pdf.cell(0, 5, "Powered by Google DeepMind AlphaGenome API  |  Open Source", align="C")
+    pdf.cell(0, 5, "Powered by Google DeepMind AlphaGenome API  |  Source-Available (PolyForm NC)", align="C")
     pdf.ln(5)
     pdf.cell(0, 5, "Next.js 15 + FastAPI + TypeScript + Python 3.12  |  Febrero 2026", align="C")
 
@@ -781,7 +781,7 @@ def build_pdf():
         ("Infra:", "Docker Compose, Redis cache, rate limiting, health checks, 7 formatos export"),
         ("Seguridad:", "API keys solo en el navegador. Cero datos sensibles en servidor"),
         ("i18n:", "Español e inglés desde el día uno"),
-        ("Open Source:", "Cada línea auditable, mejorable, extendible"),
+        ("Source-Available:", "Cada línea auditable. Uso comercial requiere licencia"),
     ]
     for bold, desc in tech_items:
         pdf.check_page_space(10)
@@ -951,7 +951,7 @@ def build_pdf():
 
     info_lines = [
         ("Stack:", "Next.js 15 | FastAPI | TypeScript | Python 3.12 | Docker"),
-        ("Licencia:", "Open Source"),
+        ("Licencia:", "PolyForm Noncommercial 1.0.0 (Source-Available)"),
         ("Estado:", "30 herramientas, arquitectura producción"),
         ("API:", "Google DeepMind AlphaGenome (gratuita)"),
         ("Publicación:", "Nature, enero 2026"),
