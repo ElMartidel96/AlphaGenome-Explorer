@@ -1,5 +1,8 @@
 # AlphaGenome Explorer
 
+> **Source-Available Software** | [PolyForm Noncommercial License 1.0.0](../LICENSE)
+> Commercial use requires a separate license. See [LICENSE-COMMERCIAL.md](../LICENSE-COMMERCIAL.md).
+
 A professional web interface for Google DeepMind's AlphaGenome API.
 
 ## Features
@@ -146,7 +149,15 @@ If you use AlphaGenome in your research, please cite:
 
 ## License
 
-This web interface is open source. AlphaGenome API usage is subject to [Google DeepMind's terms of use](https://deepmind.google.com/science/alphagenome/terms).
+This software is **source-available** under the [PolyForm Noncommercial License 1.0.0](../LICENSE).
+
+- **Permitted**: Personal use, research, education, evaluation, nonprofit use
+- **Prohibited**: Commercial use, production deployment, SaaS hosting, resale
+- **Commercial use**: Requires a separate license from mbxarts.com - The Moon in a Box. See [LICENSE-COMMERCIAL.md](../LICENSE-COMMERCIAL.md)
+
+AlphaGenome API usage is subject to [Google DeepMind's terms of use](https://deepmind.google.com/science/alphagenome/terms).
+
+Copyright 2024-2026 mbxarts.com - The Moon in a Box. All rights reserved.
 
 ## Support
 
